@@ -5,6 +5,11 @@
     <title>Home</title>
 </head>
 <body>
+{% if user.is_authenticated %}
 
+        <h3> You are authenticated as {{ request.user.email }}</h3>
+{% else %}
+<h3>Please Log in </h3>
+{% endif %}
 </body>
 </html>

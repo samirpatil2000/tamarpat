@@ -8,14 +8,16 @@
 <h3>Register</h3>
 <form  method="post">
     {% csrf_token %}
+    {% load crispy_forms_tags %}
 
 
   {% for field in registration_form %}
       <p>
-          {{field.label_tag}}
+        {% comment %}  {{field.label_tag}}  {% endcomment %}
 
-          {{field}}
+          {{field | as_crispy_field }}
 
+{% comment %}
           {% if field.help_text %}
                 <small>{{field.help_text}}</small>
           {% endif %}
@@ -27,7 +29,7 @@
           {% if login_form.non_field_errors %}
                 <p style="color: red">{{ login_form.non_field_errors }}</p>
           {% endif %}
-
+{% endcomment %}
       </p>
   {% endfor %}
 

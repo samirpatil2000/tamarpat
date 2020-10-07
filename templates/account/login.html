@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+    {% load crispy_forms_tags %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,16 +14,16 @@
 
   {% for field in login_form %}
       <p>
-          {{field.label_tag}}
+          <h1>{{field.label_tag }}</h1>
 
-          {{field}}
+          <h3>{{ field | as_crispy_field }}</h3>
 
           {% if field.help_text %}
-                <small>{{field.help_text}}</small>
+                <small>{{field.help_text|as_crispy_field}}</small>
           {% endif %}
 
           {% for error in field.errors %}
-                <p style="color: red">{{ error }}</p>
+                <p style="color: red">{{ error | as_crispy_field}}</p>
           {% endfor %}
 
       </p>

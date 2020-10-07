@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from phonenumber_field.modelfields import PhoneNumberField
+
 
 class MyAccountManager(BaseUserManager):
 	def create_user(self, email, username, password=None):
@@ -52,10 +54,10 @@ class Account(AbstractBaseUser):
 
 	# other
 	#first_name             = models
-
+	phone_number = PhoneNumberField(default='1234567890')
 
 	USERNAME_FIELD = 'email'   # This with login with email
-	REQUIRED_FIELDS = ['username']  # other than email
+	REQUIRED_FIELDS = ['phone_number']  # other than email
 
 	objects= MyAccountManager()
 
