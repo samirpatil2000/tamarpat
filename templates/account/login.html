@@ -1,39 +1,23 @@
-<!DOCTYPE html>
-    {% load crispy_forms_tags %}
+{% extends 'account/base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-<body>
-<h3>Login</h3>
-<form  method="post">
-    {% csrf_token %}
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="'border-bottom mb-4">Login Form </legend>
+           {{ login_form | crispy  }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Login</button>
+        </div>
+    </form>
+    <div class="'border-top pt-3">
+        <small class="'text-muted">
+            New Here <a class="ml-2" href="#">Register</a>
+        </small>
+    </div>
+</div>
 
-
-  {% for field in login_form %}
-      <p>
-          <h1>{{field.label_tag }}</h1>
-
-          <h3>{{ field | as_crispy_field }}</h3>
-
-          {% if field.help_text %}
-                <small>{{field.help_text|as_crispy_field}}</small>
-          {% endif %}
-
-          {% for error in field.errors %}
-                <p style="color: red">{{ error | as_crispy_field}}</p>
-          {% endfor %}
-
-      </p>
-  {% endfor %}
-
-
-
-  <button  type="submit">Login</button>
-
-</form>
-
-</body>
-</html>
+{% endblock body%}

@@ -1,43 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-</head>
-<body>
-<h3>Register</h3>
-<form  method="post">
-    {% csrf_token %}
-    {% load crispy_forms_tags %}
 
+{% extends 'account/base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
 
-  {% for field in registration_form %}
-      <p>
-        {% comment %}  {{field.label_tag}}  {% endcomment %}
-
-          {{field | as_crispy_field }}
-
-{% comment %}
-          {% if field.help_text %}
-                <small>{{field.help_text}}</small>
-          {% endif %}
-
-          {% for error in field.errors %}
-                <p style="color: red">{{ error }}</p>
-          {% endfor %}
-
-          {% if login_form.non_field_errors %}
-                <p style="color: red">{{ login_form.non_field_errors }}</p>
-          {% endif %}
-{% endcomment %}
-      </p>
-  {% endfor %}
-
-
-
-  <button  type="submit">Register</button>
-
-</form>
-
-</body>
-</html>
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="'border-bottom mb-4">Register </legend>
+           {{ registration_form | crispy  }}
+        </fieldset>
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit"> Sign Up</button>
+        </div>
+    </form>
+    <div class="'border-top pt-3">
+        <small class="'text-muted">
+            Already Have An Account ? <a class="ml-2" href="#">Login</a>
+        </small>
+    </div>
+</div>
+{% endblock%}
