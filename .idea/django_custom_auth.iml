@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/env/lib/python3.8/site-packages/PIL" />
+      <excludeFolder url="file://$MODULE_DIR$/env/lib/python3.8/site-packages/Pillow-8.0.0.dist-info" />
+      <excludeFolder url="file://$MODULE_DIR$/env/lib/python3.8/site-packages/crispy_forms" />
+      <excludeFolder url="file://$MODULE_DIR$/env/lib/python3.8/site-packages/django_crispy_forms-1.9.2.dist-info" />
+      <excludeFolder url="file://$MODULE_DIR$/env/lib/python3.8/site-packages/django_phonenumber_field-5.0.0.dist-info" />
+      <excludeFolder url="file://$MODULE_DIR$/env/lib/python3.8/site-packages/djangorestframework-3.12.1.dist-info" />
+      <excludeFolder url="file://$MODULE_DIR$/env/lib/python3.8/site-packages/phonenumber_field" />
+      <excludeFolder url="file://$MODULE_DIR$/env/lib/python3.8/site-packages/phonenumbers" />
+      <excludeFolder url="file://$MODULE_DIR$/env/lib/python3.8/site-packages/phonenumbers-8.12.10.dist-info" />
+      <excludeFolder url="file://$MODULE_DIR$/env/lib/python3.8/site-packages/rest_framework" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
