@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'phonenumber_field',
     'phonenumbers',
+    'django_cleanup',
 
     #Apps
     'account',
