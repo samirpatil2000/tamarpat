@@ -63,36 +63,35 @@
           <ul class="navbar-nav">
             {% if user.is_authenticated %}
                 <li class="nav-item dropdown">
-                  <a
-                    href="#"
+                  <a href="#"
                     class="nav-link dropdown-toggle mb-0"
                     data-toggle="dropdown">
-                    {{request.user}}
+                    {{ request.user }}
                       user
                   </a>
                   <div class="dropdown-menu">
                     <a href="#" class="dropdown-item">Profile</a>
                       {% if request.user.is_superuser or request.user.is_staff or request.user.is_classcr %}
-                        <a href="#" class="dropdown-item">Upload-Request</a>
+                            <a href="#" class="dropdown-item">Upload-Request</a>
                       {% endif %}
-                    <a href="#" class="dropdown-item">
+                            <a href="#" class="dropdown-item">
                       Change Password
                     </a>
-                    <a href="#" class="dropdown-item">Logout</a>
+                        <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
                   </div>
                 </li>
             {% else %}
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="{% url 'login' %}" class="nav-link">
 {#                    <i class="fa fa-sign-in fa-lg"></i> #}
                       Login
                   </a>
                 </li>
-{#                <li class="nav-item">#}
-{#                  <a href="#" class="nav-link">#}
-{#                    <i class="fa fa-user-plus fa-lg"></i> Register#}
-{#                  </a>#}
-{#                </li>#}
+                <li class="nav-item">
+                  <a href="{% url 'register' %}" class="nav-link">
+                    <i class="fa fa-user-plus fa-lg"></i> Register
+                  </a>
+                </li>
             {% endif %}
           </ul>
         </div>
