@@ -4,28 +4,27 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class MyAccountManager(BaseUserManager):
-	def create_user(self, email, username, password=None):
+	def create_user(self, email, password=None):
 
 		if not email:
 			raise ValueError('Users must have an email address')
-		if not username:
-			raise ValueError('Users must have a username')
+		# if not username:
+		# 	raise ValueError('Users must have a username')
 
 		user = self.model(
 			email=self.normalize_email(email),
-			username=username,
+			username=str(email),
 		)
 
 		user.set_password(password)
 		user.save(using=self._db)
 		return user
 
-	def create_superuser(self, email, username, password):
+	def create_superuser(self, email, password):
 
 		user = self.create_user(
 			email=self.normalize_email(email),
 			password=password,
-			username=username,
 		)
 		user.is_admin     = True
 		user.is_staff     = True
@@ -54,10 +53,10 @@ class Account(AbstractBaseUser):
 
 	# other
 	#first_name             = models
-	phone_number = PhoneNumberField(default='1234567890')
+	# phone_number = PhoneNumberField(default='1234567890')
 
 	USERNAME_FIELD = 'email'   # This with login with email
-	REQUIRED_FIELDS = ['phone_number']  # other than email
+	REQUIRED_FIELDS = []  # other than email
 
 	objects= MyAccountManager()
 
