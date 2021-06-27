@@ -133,3 +133,4 @@ account/migrations
 /db.sqlite3
 
 media/media
+blog/migrations
