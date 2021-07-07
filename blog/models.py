@@ -1,6 +1,6 @@
 
 from django.db import models
-
+from ckeditor.fields import RichTextField
 # Create your models here.
 class Images(models.Model):
     image=models.ImageField(upload_to='media',blank=True)
@@ -8,7 +8,7 @@ class Images(models.Model):
 
 class BaseModel(models.Model):
     title=models.CharField(max_length=100,default="Title")
-    desc=models.TextField(default="Text here",blank=True,null=True)
+    desc=RichTextField(default="Text here",blank=True,null=True)
     date=models.DateTimeField(auto_now_add=True)
     thumbnail=models.ImageField(upload_to='media',blank=True,default='no-image.jpg')
     author=models.CharField(max_length=10,blank=True,null=True)
@@ -18,6 +18,7 @@ class BaseModel(models.Model):
 
 class Blog(BaseModel):
     images=models.ManyToManyField(Images,blank=True)
+    # content=RichTextField(default="Some Text",blank=True,null=True)
 
 
 class Completation(BaseModel):

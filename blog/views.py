@@ -3,7 +3,7 @@ from .forms import ImageForm,BlogForm
 # Create your views here.
 
 def index(request):
-    return render(request,'bootstrap/')
+    return render(request,'bootstrap/index.html')
 
 
 def createSlug(title):

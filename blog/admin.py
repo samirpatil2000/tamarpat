@@ -20,9 +20,9 @@ class CompetetionAdmin(admin.ModelAdmin):
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('title',)}
-
+    # class Media:
+    #     js=('tinymce.js')
 
 @admin.register(ThesisProject)
 class ThesisProjectAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('title',)}
-

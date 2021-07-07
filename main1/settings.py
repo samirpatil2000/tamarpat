@@ -42,10 +42,12 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'phonenumbers',
     'django_cleanup',
+    'ckeditor',
 
     #Apps
     'account',
     'blog',
+
 ]
 
 AUTH_USER_MODEL = 'account.Account' #appName.modelName
