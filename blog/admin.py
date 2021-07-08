@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import ThesisProject,ContactUs,Completation,Blog,Images
+from .models import ThesisProject,ContactUs,Completation,Blog,Images,Author
 
 
 
@@ -26,3 +26,5 @@ class BlogAdmin(admin.ModelAdmin):
 @admin.register(ThesisProject)
 class ThesisProjectAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('title',)}
+
+admin.site.register(Author)
