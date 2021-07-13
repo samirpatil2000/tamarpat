@@ -1,0 +1,298 @@
+{% extends 'new/base.html' %}
+{% load  static %}
+{% block title %}TAMARPAT{% endblock %}
+{% block content %}
+  <main class="flex-grow bg-tur">
+
+    <section class="flex flex-col items-center pb-10 max-w-6xl mx-auto mt-20">
+      <div class="flex relative w-full px-10" style="max-width: 600px">
+        <input class="
+              shadow
+              rounded
+              p-2
+              w-full
+              focus:outline-none
+              focus:ring-2
+              focus:ring-teal-400
+              focus:border-transparent
+            " type="text" placeholder="Search" />
+        <button class="absolute right-16 top-2">
+          <svg viewBox="0 0 24 24" width="24" height="24" stroke="#444" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" fill="none" shape-rendering="geometricPrecision">
+            <path d="M11 17.25a6.25 6.25 0 110-12.5 6.25 6.25 0 010 12.5z" />
+            <path d="M16 16l4.5 4.5" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Cards Container -->
+      <div class="
+            p-10
+            grid grid-cols-1
+            sm:grid-cols-1
+            md:grid-cols-3
+            lg:grid-cols-3
+            xl:grid-cols-3
+            gap-5
+          ">
+        <!-- Card - 1 -->
+        <div class="rounded overflow-hidden shadow-lg bg-white">
+          <div class="text-center">
+            <img src="{%  static 'media/banner-1.jpeg' %}" alt="">
+            <div class="py-2">
+              <p class="font-bold text-xl mb-2">Title: Lorem ipsum </p>
+              <p class="text-gray-700 text-base">
+                Voluptatibus quia, nulla!
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Card - 2 -->
+        <div class="rounded overflow-hidden shadow-lg bg-white">
+          <div class="text-center">
+            <img src="{%  static 'media/banner-2.jpeg' %}" alt="">
+            <div class="py-2">
+              <p class="font-bold text-xl mb-2">Title: Lorem ipsum </p>
+              <p class="text-gray-700 text-base">
+                Voluptatibus quia, nulla!
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Card - 3 -->
+        <div class="rounded overflow-hidden shadow-lg bg-white">
+          <div class="text-center">
+            <img src="{%  static 'media/banner-6.jpeg' %}" alt="">
+            <div class="py-2">
+              <p class="font-bold text-xl mb-2">Title: Lorem ipsum </p>
+              <p class="text-gray-700 text-base">
+                Voluptatibus quia, nulla!
+              </p>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <!-- English Marathi Starts  -->
+
+    <section class="flex flex-col items-center max-w-6xl mx-auto mt-10 mb-20 px-6">
+      <div class="flex flex-wrap w-full justify-around">
+        <div class="shadow rounded flex flex-col px-4 py-2 w-full sm:w-96 bg-white my-4 md:my-0">
+          <h2 class="font-bold text-2xl">English</h2>
+          <div class="my-2 border-b pb-2">
+            <h3 class="font-semibold text-lg">Lorem ipsum dolor sit amet.</h3>
+            <p>Lorem, ipsum dolor.</p>
+          </div>
+          <div class="my-2 border-b pb-2">
+            <h3 class="font-semibold text-lg">Lorem ipsum dolor sit amet.</h3>
+            <p>Lorem, ipsum dolor.</p>
+          </div>
+          <div class="my-2 border-b pb-2">
+            <h3 class="font-semibold text-lg">Lorem ipsum dolor sit amet.</h3>
+            <p>Lorem, ipsum dolor.</p>
+          </div>
+          <div class="my-2 border-b pb-2">
+            <h3 class="font-semibold text-lg">Lorem ipsum dolor sit amet.</h3>
+            <p>Lorem, ipsum dolor.</p>
+          </div>
+          <div class="my-2 border-b pb-2">
+            <h3 class="font-semibold text-lg">Lorem ipsum dolor sit amet.</h3>
+            <p>Lorem, ipsum dolor.</p>
+          </div>
+          <div class="my-2 border-b pb-2">
+            <h3 class="font-semibold text-lg">Lorem ipsum dolor sit amet.</h3>
+            <p>Lorem, ipsum dolor.</p>
+          </div>
+        </div>
+        <div class="shadow rounded flex flex-col px-4 py-2 w-full sm:w-96 bg-white my-4 md:my-0">
+          <h2 class="font-bold text-2xl">Marathi</h2>
+          <div class="my-2 border-b pb-2">
+            <h3 class="font-semibold text-lg">Lorem ipsum dolor sit amet.</h3>
+            <p>Lorem, ipsum dolor.</p>
+          </div>
+          <div class="my-2 border-b pb-2">
+            <h3 class="font-semibold text-lg">Lorem ipsum dolor sit amet.</h3>
+            <p>Lorem, ipsum dolor.</p>
+          </div>
+          <div class="my-2 border-b pb-2">
+            <h3 class="font-semibold text-lg">Lorem ipsum dolor sit amet.</h3>
+            <p>Lorem, ipsum dolor.</p>
+          </div>
+          <div class="my-2 border-b pb-2">
+            <h3 class="font-semibold text-lg">Lorem ipsum dolor sit amet.</h3>
+            <p>Lorem, ipsum dolor.</p>
+          </div>
+          <div class="my-2 border-b pb-2">
+            <h3 class="font-semibold text-lg">Lorem ipsum dolor sit amet.</h3>
+            <p>Lorem, ipsum dolor.</p>
+          </div>
+          <div class="my-2 border-b pb-2">
+            <h3 class="font-semibold text-lg">Lorem ipsum dolor sit amet.</h3>
+            <p>Lorem, ipsum dolor.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Engligh Marathi Ends -->
+
+    <!-- Features Section -->
+    <section class="flex flex-col items-center pb-20 max-w-6xl mx-auto">
+
+      <div class="
+            p-4
+            grid grid-cols-1
+            sm:grid-cols-1
+            md:grid-cols-3
+            lg:grid-cols-3
+            xl:grid-cols-3
+            gap-5
+          ">
+        <!-- Card - 1 -->
+        <div class="rounded overflow-hidden shadow-lg px-6 py-4 text-left bg-white">
+          <p class="font-bold text-2xl mb-2">Academics</p>
+          <ul class="list-disc list-inside">
+            <li font-semibold mb-2>Competitions</li>
+            <li font-semibold mb-2>Scholarships</li>
+            <li font-semibold mb-2>Fellowships</li>
+            <li font-semibold mb-2>Grants</li>
+          </ul>
+        </div>
+        <div class="rounded overflow-hidden shadow-lg px-6 py-4 text-left bg-white">
+          <p class="font-bold text-2xl mb-2">Exams and Mentorship</p>
+          <ul class="list-disc list-inside">
+            <li class="font-semibold  mb-2">Entrance Exams</li>
+            <li class="font-semibold  mb-2">Guidance</li>
+          </ul>
+        </div>
+        <div class="rounded overflow-hidden shadow-lg px-6 py-4 text-left bg-white">
+          <p class="font-bold text-2xl mb-2">Publish Your Work Now</p>
+          <ul class="list-disc list-inside">
+            <li class="font-semibold  mb-2">Art Projects</li>
+            <li class="font-semibold  mb-2">Thesis</li>
+            <li class="font-semibold  mb-2">Art related Research Paper</li>
+            <li class="font-semibold  mb-2">Documentation</li>
+          </ul>
+        </div>
+      </div>
+
+{#      <!-- <div class="max-w-3xl mx-auto mt-20" data-aos="zoom-y-out">#}
+{#        <div class="#}
+{#              relative#}
+{#              flex#}
+{#              items-start#}
+{#              border-2 border-gray-200#}
+{#              rounded#}
+{#              bg-white#}
+{#            ">#}
+{#          <div class="text-center px-12 py-8 pt-20 mx-4 md:mx-0">#}
+{#            <div class="absolute top-0 -mt-8 left-1/2 transform -translate-x-1/2">#}
+{#              <svg class="#}
+{#                    absolute#}
+{#                    top-0#}
+{#                    right-0#}
+{#                    -mt-3#}
+{#                    -mr-8#}
+{#                    w-16#}
+{#                    h-16#}
+{#                    fill-current#}
+{#                    text-teal-500#}
+{#                  " viewBox="0 0 64 64" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">#}
+{#                <path#}
+{#                  d="M37.89 58.338c-2.648-5.63-3.572-10.045-2.774-13.249.8-3.203 8.711-13.383 23.737-30.538l2.135.532c-6.552 10.033-10.532 17.87-11.939 23.515-.583 2.34.22 6.158 2.41 11.457l-13.57 8.283zm-26.963-6.56c-2.648-5.63-3.572-10.046-2.773-13.25.799-3.203 8.71-13.382 23.736-30.538l2.136.533c-6.552 10.032-10.532 17.87-11.94 23.515-.583 2.339.22 6.158 2.41 11.456l-13.57 8.283z" />#}
+{#              </svg>#}
+{#              <img class="relative rounded-full" src="https://i.pravatar.cc/" width="96" height="96"#}
+{#                alt="Testimonial 01" />#}
+{#            </div>#}
+{#            <blockquote class="text-xl font-medium mb-4">#}
+{#              “ Lorem ipsum dolor sit amet, consectetur adipisicing elit.#}
+{#              Voluptatibus quia, nulla! Maiores et perferendis eaque,#}
+{#              exercitationem praesentium nihil. Voluptatibus quia, nulla!#}
+{#              Maiores et perferendis “#}
+{#            </blockquote>#}
+{#            <cite class="block font-bold text-lg not-italic mb-1">Author Name</cite>#}
+{#            <div class="text-gray-600">#}
+{#              <span>Writer</span>#}
+{#              <a class="text-teal-600 hover:underline" href="#0">@Company</a>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div> -->#}
+    </section>
+
+    <section>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="pb-12 md:pb-20">
+          <div class="
+                relative
+                bg-white
+                rounded
+                py-10
+                px-8
+                md:py-16 md:px-12
+                shadow-lg
+                overflow-hidden
+              ">
+            <div class="
+                  relative
+                  flex flex-col
+                  lg:flex-row
+                  justify-between
+                  items-center
+                ">
+              <div class="text-center lg:text-left lg:max-w-xl">
+                <form class="w-full lg:w-auto">
+                  <div class="
+                        flex flex-col
+                        sm:flex-row
+                        justify-center
+                        max-w-xs
+                        mx-auto
+                        sm:max-w-md
+                        lg:mx-0
+                      ">
+                    <input type="email" class="
+                          w-full
+                          appearance-none
+                          bg-gray-100
+                          border border-gray-200
+                          focus:border-gray-300
+                          rounded-sm
+                          px-4
+                          py-3
+                          mb-2
+                          sm:mb-0 sm:mr-2
+                          text-black
+                          placeholder-gray-500
+                        " placeholder="Your email " aria-label="Your email " />
+                    <a class="
+                          btn
+                          text-white
+                          bg-teal-600
+                          hover:bg-teal-700
+                          shadow
+                        " href="#0">Subscribe</a>
+                  </div>
+                </form>
+              </div>
+              <div class="my-5 flex space-x-5">
+                <a href="">
+                  <img width="24" src="{% static 'media/fb.svg' %}" alt="" />
+                </a>
+                <a href="">
+                  <img width="24" src="{% static 'media/ig.svg' %}" alt="" />
+                </a>
+                <a href="">
+                  <img width="24" src="{% static 'media/yt.svg' %}" alt="" />
+                </a>
+                <a href="">
+                  <img width="24" src="{% static '/media/linkedin.svg' %}" alt="" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+{% endblock %}

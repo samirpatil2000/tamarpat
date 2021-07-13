@@ -2,10 +2,18 @@ from django.shortcuts import render, redirect
 from .forms import ImageForm,BlogForm
 # Create your views here.
 
+
 def index(request):
-    return render(request,'bootstrap/index.html')
+    return render(request,'new/index.html')
+def author(request):
+    return render(request,'new/author.html')
+def opportunity(request):
+    return render(request,'new/opportunity.html')
+def publish(request):
+    return render(request,'new/publish.html')
 
-
+def detailPage(request):
+    return render(request,'new/guide.html')
 def createSlug(title):
     slug_=""
     for i in title:

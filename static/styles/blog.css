@@ -1,0 +1,9 @@
+p {
+  margin: 20px 0;
+}
+strong {
+  font-weight: bold;
+}
+pre {
+  word-wrap: break-word;
+}

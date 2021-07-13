@@ -1,0 +1,142 @@
+{% extends 'new/base.html' %}
+{% block title %}TAMARPAT{% endblock %}
+{% block content %}
+
+<main class="flex-grow">
+    <section class="relative">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 mt-28">
+        <h1 class="text-3xl font-bold">Publish</h1>
+
+        <p class="my-6">
+          Artist/Writer/Student are requested to submit only their own and
+          original Project/thesis/research paper. Please submit your work
+          strictly according to rules.
+        </p>
+
+        <form action="" class="flex flex-col pb-44">
+          <span>Project / thesis Title : </span>
+          <input type="text" class="shadow
+              rounded
+              p-2
+              w-full
+              focus:outline-none
+              focus:ring-2
+              focus:ring-teal-400
+              focus:border-transparent my-2 border" />
+
+          <span>Name of corresponding Artist/Student:</span>
+          <input type="text" class="shadow
+              rounded
+              p-2
+              w-full
+              focus:outline-none
+              focus:ring-2
+              focus:ring-teal-400 border
+              focus:border-transparent my-2" />
+
+          <span>Email of corresponding Artist/Student: </span>
+          <input type="text" class="shadow
+              rounded
+              p-2
+              w-full
+              focus:outline-none
+              focus:ring-2
+              focus:ring-teal-400
+              focus:border-transparent my-2 border" />
+
+          <span>Included In</span>
+          <div class="flex space-x-4 items-center mt-2">
+            <input type="checkbox" />
+            <span>Art Projects</span>
+          </div>
+          <div class="flex space-x-4 items-center mt-2">
+            <input type="checkbox" />
+            <span>Articles</span>
+          </div>
+          <div class="flex space-x-4 items-center mt-2">
+            <input type="checkbox" />
+            <span>Thesis</span>
+          </div>
+          <div class="flex space-x-4 items-center mt-2">
+            <input type="checkbox" />
+            <span>Research Paper</span>
+          </div>
+
+          <div class="my-4">
+            <span>Short Bio</span>
+            <textarea class="rounded
+              p-2
+              w-full
+              focus:outline-none
+              focus:ring-2
+              focus:ring-teal-400
+              focus:border-transparent border  my-2"></textarea>
+          </div>
+
+
+
+          <span>Self Photograph</span>
+          <div class="my-4 bg-grey-lighter">
+            <label
+              class="w-48 flex flex-col items-center px-2 py-3 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer">
+              <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path
+                  d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+              </svg>
+              <span class="mt-2 text-base leading-normal">Select a file</span>
+              <input type='file' class="hidden" />
+            </label>
+          </div>
+
+          <span>Upload your Project / thesis/research work in Ms-word only (.doc
+            or.docx)
+          </span>
+          <div class="my-4 bg-grey-lighter">
+            <label
+              class="w-48 flex flex-col items-center px-2 py-3 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer">
+              <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path
+                  d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+              </svg>
+              <span class="mt-2 text-base leading-normal">Select a file</span>
+              <input type='file' class="hidden" />
+            </label>
+          </div>
+
+
+          <div class="flex space-x-4 items-center mt-2">
+            <input type="checkbox" />
+            <span>1. The article/Project does not contravene any existing copyright or any other third party rights.
+            </span>
+          </div>
+
+          <div class="flex space-x-4 items-center mt-2">
+            <input type="checkbox" />
+            <span>2. The article/Project contains no such material that may be unlawful, infringe any proprietary or
+              personal rights of others.
+            </span>
+          </div>
+
+
+          <button class="
+          mt-10
+          btn
+          text-white
+          bg-teal-600
+          hover:bg-teal-700
+          mb-4
+          sm:w-auto sm:mb-0
+          focus:ring-2 focus:ring-teal-500
+          
+        " style="width: 120px;">
+            Publish
+          </button>
+
+
+
+        </form>
+      </div>
+    </section>
+  </main>
+
+{% endblock %}

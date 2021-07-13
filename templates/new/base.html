@@ -1,0 +1,30 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    {% include 'new/a_head.html' %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body class="flex flex-col min-h-screen overflow-y-scroll overflow-x-hidden">
+      {% include 'new/a_navbar.html' %}
+      <div class="container">
+           {% if messages %}
+                <div class="mt-0 pt-4">
+                  {% for message in messages %}
+                      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                  {% endfor %}
+                </div>
+          {% endif %}
+      </div>
+  {% block content %} {% endblock %}
+{% include 'new/a_footer.html' %}
+</body>
+
+{#<script src="../js/slider.js"></script>#}
+<script src="{% static 'js/slider.js' %}"></script>
+</html>

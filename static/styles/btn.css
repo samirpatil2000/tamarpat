@@ -1,0 +1,164 @@
+.btn {
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 0.5rem 2rem;
+}
+.footer {
+  display: flex;
+}
+
+.bg-tur {
+  background: #e7f8f5;
+}
+.bg-nav-tur {
+  background-color: #d9f3ee;
+}
+
+@media screen and (max-width: 600px) {
+  .footer {
+    flex-direction: column;
+  }
+}
+
+.teal {
+  color: #f0fdfa;
+}
+
+.bg-teal {
+  background-color: #f0fdfa;
+}
+
+.teal-100 {
+  color: #ccfbf1;
+}
+
+.bg-teal-100 {
+  background-color: #ccfbf1;
+}
+
+.teal-200 {
+  color: #99f6e4;
+}
+
+.bg-teal-200 {
+  background-color: #99f6e4;
+}
+
+.teal-300 {
+  color: #5eead4;
+}
+
+.bg-teal-300 {
+  background-color: #5eead4;
+}
+
+.teal-400 {
+  color: #2dd4bf;
+}
+
+.bg-teal-400 {
+  background-color: #2dd4bf;
+}
+
+.teal-500 {
+  color: #14b8a6;
+}
+
+.bg-teal-500 {
+  background-color: #14b8a6;
+}
+
+.teal-600 {
+  color: #0d9488;
+}
+
+.bg-teal-600 {
+  background-color: #0d9488;
+}
+
+.teal-700 {
+  color: #0f766e;
+}
+
+.bg-teal-700 {
+  background-color: #0f766e;
+}
+
+.teal-800 {
+  color: #115e59;
+}
+
+.bg-teal-800 {
+  background-color: #115e59;
+}
+
+.teal-900 {
+  color: #134e4a;
+}
+
+.bg-teal-900 {
+  background-color: #134e4a;
+}
+#btn-next {
+  position: absolute;
+  color: red;
+  z-index: 50;
+  top: 50%;
+  right: 0;
+  font-size: 20px;
+}
+#btn-prev {
+  position: absolute;
+  color: red;
+  z-index: 50;
+  top: 50%;
+  left: 0;
+  font-size: 20px;
+}
+
+.slide-img {
+  animation: fadeIn 1s ease-in;
+  animation: goGray 1s ease-in reverse;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.2;
+  }
+  40% {
+    opacity: 0.4;
+  }
+  60% {
+    opacity: 0.6;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes goGray {
+  0% {
+    filter: grayscale(0%);
+    -webkit-filter: grayscale(0%);
+    -moz-filter: grayscale(0%);
+    -ms-filter: grayscale(0%);
+    -o-filter: grayscale(0%);
+  }
+  99% {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+  }
+}
