@@ -1,1 +1,1 @@
-Tamarapat
+Tamarpat
