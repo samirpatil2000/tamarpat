@@ -150,3 +150,13 @@ EMAIL_PORT=587
 EMAIL_USE_TLS=True
 EMAIL_HOST_USER='nousername7420@gmail.com'
 EMAIL_HOST_PASSWORD=pas
+
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 500,
+        'width': 'auto',
+    },
+}

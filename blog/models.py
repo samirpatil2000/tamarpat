@@ -2,6 +2,8 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from django.conf import settings
+from django.urls import reverse
+
 user=settings.AUTH_USER_MODEL
 # Create your models here.
 class Images(models.Model):
@@ -28,6 +30,9 @@ class BaseModel(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('detailPage',kwargs={'slug':self.slug})
+
 class Blog(BaseModel):
     images=models.ManyToManyField(Images,blank=True)
     author=models.ForeignKey(Author,on_delete=models.SET_NULL,blank=True,null=True)
@@ -36,11 +41,47 @@ class Blog(BaseModel):
 class Completation(BaseModel):
     url=models.URLField(blank=True,null=True)
 
+class Language(models.Model):
+    name=models.CharField(max_length=20)
 
+    def __str__(self):
+        return self.name
 class ThesisProject(BaseModel):
-    document=models.FileField(upload_to='media/pdf/',blank=True)
-    google_drive_url=models.URLField(blank=True,null=True)
+
     author=models.ForeignKey(Author,on_delete=models.SET_NULL,blank=True,null=True)
+    language=models.ForeignKey(Language,blank=True,null=True,on_delete=models.SET_NULL)
+
+
+TYPE = (
+    ('Art Projects', 'Art Projects'),
+    ('Articles', 'Articles'),
+    ('Thesis', 'Thesis'),
+    ('Research Paper', 'Research Paper'),
+)
+
+class Category(models.Model):
+    name=models.CharField(choices=TYPE,max_length=20,unique=True)
+
+    def __str__(self):
+        return self.name
+
+
+class ThesisFiles(models.Model):
+    title = models.CharField(max_length=100, default="Title")
+    profile_pic = models.ImageField(upload_to='ProfilePics', default="avatar.svg")
+    full_name = models.CharField(max_length=100, default="Full Name")
+    email = models.EmailField(max_length=100,default="example@gmail.com")
+    college_name = models.CharField(max_length=100, default="College Name", blank=True, null=True)
+    bio=models.TextField(blank=True,null=True)
+    document = models.FileField(upload_to='media/pdf/',blank=True)
+    google_drive_url = models.URLField(blank=True,null=True)
+    copyright = models.BooleanField(default=False)
+    personal_rights=models.BooleanField(default=False)
+    category=models.ManyToManyField(Category,blank=True)
+
+    def __str__(self):
+        return self.title+"-"+self.full_name
+
 
 class ContactUs(models.Model):
     full_name = models.CharField(max_length=50,default="Your Name")

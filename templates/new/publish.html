@@ -13,9 +13,10 @@
           strictly according to rules.
         </p>
 
-        <form action="" class="flex flex-col pb-44">
-          <span>Project / thesis Title : </span>
-          <input type="text" class="shadow
+        <form method="POST" action="" class="flex flex-col pb-44">
+            {% csrf_token %}
+          <span>Project / thesis Title :* </span>
+          <input type="text" name="thesis_title" required="True" class="shadow
               rounded
               p-2
               w-full
@@ -24,8 +25,8 @@
               focus:ring-teal-400
               focus:border-transparent my-2 border" />
 
-          <span>Name of corresponding Artist/Student:</span>
-          <input type="text" class="shadow
+          <span>Name of corresponding Artist/Student:*</span>
+          <input type="text" name="student_name" required="True" class="shadow
               rounded
               p-2
               w-full
@@ -34,8 +35,8 @@
               focus:ring-teal-400 border
               focus:border-transparent my-2" />
 
-          <span>Email of corresponding Artist/Student: </span>
-          <input type="text" class="shadow
+          <span>Email of corresponding Artist/Student:* </span>
+          <input type="text" name="student_email" required="True" class="shadow
               rounded
               p-2
               w-full
@@ -46,25 +47,25 @@
 
           <span>Included In</span>
           <div class="flex space-x-4 items-center mt-2">
-            <input type="checkbox" />
+            <input type="checkbox" name="ArtProjects_checkbox" />
             <span>Art Projects</span>
           </div>
           <div class="flex space-x-4 items-center mt-2">
-            <input type="checkbox" />
+            <input type="checkbox" name="Articles_checkbox"/>
             <span>Articles</span>
           </div>
           <div class="flex space-x-4 items-center mt-2">
-            <input type="checkbox" />
+            <input type="checkbox" name="Thesis_checkbox" />
             <span>Thesis</span>
           </div>
           <div class="flex space-x-4 items-center mt-2">
-            <input type="checkbox" />
+            <input type="checkbox" name="ResearchPaper_checkbox"/>
             <span>Research Paper</span>
           </div>
 
           <div class="my-4">
             <span>Short Bio</span>
-            <textarea class="rounded
+            <textarea name="bio" class="rounded
               p-2
               w-full
               focus:outline-none
@@ -84,12 +85,12 @@
                   d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
               </svg>
               <span class="mt-2 text-base leading-normal">Select a file</span>
-              <input type='file' class="hidden" />
+              <input type='file' class="hidden" name="Self_Photograph" />
             </label>
           </div>
 
           <span>Upload your Project / thesis/research work in Ms-word only (.doc
-            or.docx)
+            or.docx)*
           </span>
           <div class="my-4 bg-grey-lighter">
             <label
@@ -99,19 +100,19 @@
                   d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
               </svg>
               <span class="mt-2 text-base leading-normal">Select a file</span>
-              <input type='file' class="hidden" />
+              <input type='file' class="hidden" name="Project" required="True"/>
             </label>
           </div>
 
 
           <div class="flex space-x-4 items-center mt-2">
-            <input type="checkbox" />
+            <input type="checkbox" name="Copyright_checkbox"/>
             <span>1. The article/Project does not contravene any existing copyright or any other third party rights.
             </span>
           </div>
 
           <div class="flex space-x-4 items-center mt-2">
-            <input type="checkbox" />
+            <input type="checkbox" name="PersonalRights_checkbox" />
             <span>2. The article/Project contains no such material that may be unlawful, infringe any proprietary or
               personal rights of others.
             </span>
@@ -128,7 +129,7 @@
           sm:w-auto sm:mb-0
           focus:ring-2 focus:ring-teal-500
           
-        " style="width: 120px;">
+        " style="width: 120px;" type="submit">
             Publish
           </button>
 
