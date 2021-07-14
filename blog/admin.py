@@ -8,8 +8,10 @@ from .models import (ThesisProject,
                      Blog,Images,
                      Author,
                      ThesisFiles,
-Category,
-Subscriber,
+                    Category,
+                    Subscriber,
+                     Scholarship,
+                     Career,
                      Language)
 
 
@@ -40,3 +42,5 @@ admin.site.register(ThesisFiles)
 admin.site.register(Language)
 admin.site.register(Category)
 admin.site.register(Subscriber)
+admin.site.register(Scholarship)
+admin.site.register(Career)

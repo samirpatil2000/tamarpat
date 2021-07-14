@@ -1,0 +1,57 @@
+{% extends 'new/base.html' %}
+{% load  static %}
+{% block title %}Competition{% endblock %}
+{% block content %}
+
+<main class="flex-grow px-4 md:px-0">
+    <section class="flex flex-col items-center pb-10 max-w-6xl mx-auto mt-20 ">
+        {% for obj in objects %}
+            <h1 class="font-bold text-3xl mb-5">The Asian Contemporary Fine Art Competition
+            </h1>
+            <p class="text-lg">
+              The Competition is an ideal way to exhibit your talent to a wider international audience. With a distinguished
+              panel of jurors and more than $55,000 in valuable prizes, it is open to visual artists from Asia at any stage
+              of their careers. Painting, sculpture, photography, drawing, mixed media, and print are the accepted mediums.
+            </p>
+            <img class="w-full max-w-lg my-4" src=".{% static '/media/comp/asian.png' %}" alt="">
+            <div class="
+                my-5
+                grid grid-cols-1
+                sm:grid-cols-1
+                md:grid-cols-3
+                lg:grid-cols-3
+                xl:grid-cols-3
+                gap-5
+              ">
+              <!-- Card - 1 -->
+              <div class="rounded overflow-hidden shadow-lg p-2">
+                <p class="font-bold text-xl mb-2">Accepted Media</p>
+                <p class="text-gray-700 text-base">
+                  {{ obj.acceptedMedia }}
+                </p>
+              </div>
+              <div class="rounded overflow-hidden shadow-lg p-2">
+                <p class="font-bold text-xl mb-2">Eligibility</p>
+                <p class="text-gray-700 text-base">
+                  {{ obj.eligibility }}
+                </p>
+              </div>
+              <div class="rounded overflow-hidden shadow-lg p-2">
+
+                <p class="font-bold text-xl mb-2">Deadline</p>
+                <p class="text-gray-700 text-base">
+                 {{ obj.deadline }}
+                </p>
+
+              </div>
+              <p>
+                Official Website : <a class="underline text-blue-600 bg-teal-100
+                px-2 py-1 rounded" href="{{ obj.url }}">Link</a>
+              </p>
+            </div>
+            <hr style="height:2px;background-color: rgba(128, 128, 128, 0.459);" class="my-10">
+        {% endfor %}
+
+    </section>
+</main>
+{% endblock %}

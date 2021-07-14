@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from .forms import ImageForm
-from .models import ThesisFiles,Category,ThesisProject,Subscriber
+from .models import ThesisFiles,Category,ThesisProject,Subscriber,Completation,Scholarship,Career
 import datetime
 
 def index(request):
@@ -30,7 +30,23 @@ def author(request):
 def opportunity(request):
     return render(request,'new/opportunity.html')
 
+def competition(request):
+    context={
+        'objects':Completation.objects.all()
+    }
+    return render(request,'new/competition.html',context)
 
+def scholarships(request):
+    context={
+        'objects':Scholarship.objects.all()
+    }
+    return render(request,'new/scholarship.html',context)
+
+def career(request):
+    context={
+        'objects':Career.objects.all()
+    }
+    return render(request,'new/scholarship.html',context)
 
 
 def publish(request):

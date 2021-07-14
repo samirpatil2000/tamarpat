@@ -1,0 +1,25 @@
+{% extends 'new/base.html' %}
+{% load  static %}
+{% block title %}Scholarship{% endblock %}
+{% block content %}
+
+<main class="flex-grow px-4 md:px-0">
+    <section class="flex flex-col items-center pb-10 max-w-6xl mx-auto mt-20 ">
+        {% for obj in objects %}
+            <div>
+                <h1 class="font-bold text-3xl mb-5">{{ obj.title }}
+                </h1>
+                <p>
+                    {{ obj.desc|safe }}
+                </p>
+                <p>
+                  Official Website : <a class="underline text-blue-600 bg-teal-100
+                  px-2 py-1 rounded" href="{{ obj.url }}
+                  ">Link</a>
+                </p>
+            </div>
+          <hr style="height:2px;background-color: rgba(128, 128, 128, 0.459);" class="my-10">
+        {% endfor %}
+    </section>
+</main>
+{% endblock %}

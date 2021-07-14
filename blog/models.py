@@ -3,6 +3,7 @@ from django.db import models
 from ckeditor.fields import RichTextField
 from django.conf import settings
 from django.urls import reverse
+from django.utils import timezone
 
 user=settings.AUTH_USER_MODEL
 # Create your models here.
@@ -17,8 +18,7 @@ class Author(models.Model):
     date_of_birth=models.DateField(blank=None,null=True)
     bio=models.TextField(blank=True,null=True)
 
-    def __str__(self):
-        return self.full_name
+    def __str__(self):return self.full_name
 
 class BaseModel(models.Model):
     title=models.CharField(max_length=100,default="Title")
@@ -27,8 +27,7 @@ class BaseModel(models.Model):
     thumbnail=models.ImageField(upload_to='media',blank=True,default='no-image.jpg')
     slug=models.SlugField(unique=True,blank=True,null=True)
 
-    def __str__(self):
-        return self.title
+    def __str__(self):return self.title
 
     def get_absolute_url(self):
         return reverse('detailPage',kwargs={'slug':self.slug})
@@ -40,12 +39,23 @@ class Blog(BaseModel):
 
 class Completation(BaseModel):
     url=models.URLField(blank=True,null=True)
+    acceptedMedia=models.TextField(blank=True,null=True)
+    eligibility=models.TextField(blank=True,null=True)
+    deadline=models.TextField(blank=True,null=True)
+
+
+
+class Scholarship(BaseModel):
+    url=models.URLField(blank=True,null=True)
+
+class Career(BaseModel):
+    url=models.URLField(blank=True,null=True)
 
 class Language(models.Model):
     name=models.CharField(max_length=20)
 
-    def __str__(self):
-        return self.name
+    def __str__(self):return self.name
+
 class ThesisProject(BaseModel):
     headline=RichTextField(default="Headline here",blank=True,null=True)
     author=models.ForeignKey(Author,on_delete=models.SET_NULL,blank=True,null=True)
@@ -62,8 +72,7 @@ TYPE = (
 class Category(models.Model):
     name=models.CharField(choices=TYPE,max_length=20,unique=True)
 
-    def __str__(self):
-        return self.name
+    def __str__(self):return self.name
 
 
 class ThesisFiles(models.Model):
@@ -79,8 +88,7 @@ class ThesisFiles(models.Model):
     personal_rights=models.BooleanField(default=False)
     category=models.ManyToManyField(Category,blank=True)
 
-    def __str__(self):
-        return self.title+"-"+self.full_name
+    def __str__(self):return self.title+"-"+self.full_name
 
 
 class ContactUs(models.Model):
@@ -88,12 +96,10 @@ class ContactUs(models.Model):
     email = models.EmailField(max_length=100,default="example@gmail.com")
     query = models.TextField()
 
-    def __str__(self):
-        return self.full_name
+    def __str__(self):return self.full_name
 
 class Subscriber(models.Model):
     email = models.EmailField(max_length=100, default="example@gmail.com",unique=True)
 
 
-    def __str__(self):
-        return self.email
+    def __str__(self):return self.email
