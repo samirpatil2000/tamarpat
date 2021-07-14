@@ -47,6 +47,7 @@ class Language(models.Model):
     def __str__(self):
         return self.name
 class ThesisProject(BaseModel):
+    headline=RichTextField(default="Headline here",blank=True,null=True)
     author=models.ForeignKey(Author,on_delete=models.SET_NULL,blank=True,null=True)
     language=models.ForeignKey(Language,blank=True,null=True,on_delete=models.SET_NULL)
 

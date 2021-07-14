@@ -44,7 +44,7 @@
                 <div class="py-2">
                   <p class="font-bold text-xl mb-2" href="{{ obj.get_absolute_url }}">{{ obj.title }} </p>
                   <p class="text-gray-700 text-base">
-                    {{ obj.desc|truncatechars:100|safe }}
+                    {{ obj.headline|truncatechars:100|safe }}
                   </p>
                 </div>
               <a class="
@@ -76,7 +76,7 @@
             {% for obj in english_projects %}
                 <div class="my-2 border-b pb-2">
                     <h3 class="font-semibold text-lg">{{ obj.title }}</h3>
-                    <p>Lorem, ipsum dolor.</p>
+                    <p>{{ obj.headline|truncatechars:100|safe }}</p>
                 </div>
             {% endfor %}
          {% comment %}
@@ -95,7 +95,7 @@
             {% for obj in marathi_projects %}
                 <div class="my-2 border-b pb-2">
                     <h3 class="font-semibold text-lg">{{ obj.title }}</h3>
-                    <p>Lorem, ipsum dolor.</p>
+                    <p>{{ obj.headline|truncatechars:100|safe }}</p>
                 </div>
             {% endfor %}
         {% comment %}
