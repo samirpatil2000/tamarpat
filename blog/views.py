@@ -1,15 +1,26 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from .forms import ImageForm
-from .models import ThesisFiles,Category,ThesisProject
+from .models import ThesisFiles,Category,ThesisProject,Subscriber
 import datetime
 
 def index(request):
     context={
-        'objects':ThesisProject.objects.all(),
+        'objects':ThesisProject.objects.all()[:3],
         'english_projects':ThesisProject.objects.filter(language__name__contains="English"),
         'marathi_projects':ThesisProject.objects.filter(language__name__contains="Marathi")
     }
+    if request.GET:
+        query=request.GET.get('search_query')
+        qs=ThesisProject.objects.all().filter(title__icontains=query)
+        context['objects']=qs
+    if request.POST:
+        email=request.POST.get('email')
+        if Subscriber.objects.filter(email=email).exists():
+            messages.warning(request,"Already Subscribe")
+        else:
+            Subscriber.objects.create(email=email)
+            messages.success(request, "Subscribe Successfully")
     return render(request,'new/index.html',context)
 
 

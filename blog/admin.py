@@ -9,6 +9,7 @@ from .models import (ThesisProject,
                      Author,
                      ThesisFiles,
 Category,
+Subscriber,
                      Language)
 
 
@@ -38,3 +39,4 @@ admin.site.register(Author)
 admin.site.register(ThesisFiles)
 admin.site.register(Language)
 admin.site.register(Category)
+admin.site.register(Subscriber)

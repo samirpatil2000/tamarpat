@@ -47,7 +47,6 @@ class Language(models.Model):
     def __str__(self):
         return self.name
 class ThesisProject(BaseModel):
-
     author=models.ForeignKey(Author,on_delete=models.SET_NULL,blank=True,null=True)
     language=models.ForeignKey(Language,blank=True,null=True,on_delete=models.SET_NULL)
 
@@ -91,3 +90,9 @@ class ContactUs(models.Model):
     def __str__(self):
         return self.full_name
 
+class Subscriber(models.Model):
+    email = models.EmailField(max_length=100, default="example@gmail.com",unique=True)
+
+
+    def __str__(self):
+        return self.email
