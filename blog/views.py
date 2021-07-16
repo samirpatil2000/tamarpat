@@ -1,18 +1,18 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from .forms import ImageForm
-from .models import ThesisFiles,Category,ThesisProject,Subscriber,Completation,Scholarship,Career
+from .models import ThesisFiles,Category,ThesisProject,Subscriber,Competition,Scholarship,Career,ThesisIndex
 import datetime
 
 def index(request):
     context={
-        'objects':ThesisProject.objects.all()[:3],
-        'english_projects':ThesisProject.objects.filter(language__name__contains="English"),
-        'marathi_projects':ThesisProject.objects.filter(language__name__contains="Marathi")
+        'objects':ThesisProject.objects.filter(is_checked=True)[:3],
+        'english_projects':ThesisProject.objects.filter(language__contains="English",is_checked=True),
+        'marathi_projects':ThesisProject.objects.filter(language__contains="Marathi",is_checked=True)
     }
     if request.GET:
         query=request.GET.get('search_query')
-        qs=ThesisProject.objects.all().filter(title__icontains=query)
+        qs=ThesisProject.objects.all().filter(title__icontains=query,is_checked=True)
         context['objects']=qs
     if request.POST:
         email=request.POST.get('email')
@@ -32,19 +32,19 @@ def opportunity(request):
 
 def competition(request):
     context={
-        'objects':Completation.objects.all()
+        'objects':Competition.objects.all().filter(is_checked=True)
     }
     return render(request,'new/competition.html',context)
 
 def scholarships(request):
     context={
-        'objects':Scholarship.objects.all()
+        'objects':Scholarship.objects.all().filter(is_checked=True)
     }
     return render(request,'new/scholarship.html',context)
 
 def career(request):
     context={
-        'objects':Career.objects.all()
+        'objects':Career.objects.all().filter(is_checked=True)
     }
     return render(request,'new/scholarship.html',context)
 
@@ -114,6 +114,16 @@ def detailPage(request,slug):
         'object':object
     }
     return render(request,'new/guide.html',context)
+
+
+def detailWithIndexPage(request,thesis_slug:str,id:int):
+    thesis = ThesisProject.objects.get(slug=thesis_slug)
+    object=ThesisIndex.objects.get(pk=id)
+    context={
+        'object':object,
+        'thesis':thesis
+    }
+    return render(request,'new/indexDetail.html',context)
 
 def createSlug(title):
     slug_=""

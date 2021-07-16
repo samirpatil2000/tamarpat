@@ -22,10 +22,11 @@ class Author(models.Model):
 
 class BaseModel(models.Model):
     title=models.CharField(max_length=100,default="Title")
-    desc=RichTextField(default="Text here",blank=True,null=True)
     date=models.DateTimeField(auto_now_add=True)
     thumbnail=models.ImageField(upload_to='media',blank=True,default='no-image.jpg')
     slug=models.SlugField(unique=True,blank=True,null=True)
+    is_checked=models.BooleanField(default=True)
+    is_complete=models.BooleanField(default=True)
 
     def __str__(self):return self.title
 
@@ -33,34 +34,56 @@ class BaseModel(models.Model):
         return reverse('detailPage',kwargs={'slug':self.slug})
 
 class Blog(BaseModel):
+    desc = RichTextField(default="Text here", blank=True, null=True)
     images=models.ManyToManyField(Images,blank=True)
     author=models.ForeignKey(Author,on_delete=models.SET_NULL,blank=True,null=True)
 
 
-class Completation(BaseModel):
+class Competition(BaseModel):
+    desc = RichTextField(default="Text here", blank=True, null=True)
     url=models.URLField(blank=True,null=True)
     acceptedMedia=models.TextField(blank=True,null=True)
     eligibility=models.TextField(blank=True,null=True)
     deadline=models.TextField(blank=True,null=True)
 
+    class Meta:
+        verbose_name_plural="Competition's"
 
+class ThesisIndex(models.Model):
+    name_of_index = models.CharField(max_length=100,default="Title")
+    content = RichTextField(default='content here', blank=True, null=True)
+
+    def __str__(self):
+        return self.name_of_index
+
+    class Meta:
+        verbose_name_plural="ThesisIndex's"
 
 class Scholarship(BaseModel):
+    desc = RichTextField(default="Text here", blank=True, null=True)
     url=models.URLField(blank=True,null=True)
+    class Meta:
+        verbose_name_plural="Scholarship's"
 
 class Career(BaseModel):
+    desc = RichTextField(default="Text here", blank=True, null=True)
     url=models.URLField(blank=True,null=True)
+    class Meta:
+        verbose_name_plural="Career's"
 
-class Language(models.Model):
-    name=models.CharField(max_length=20)
-
-    def __str__(self):return self.name
+LANGUAGE = (
+    ('English', 'English'),
+    ('Marathi', 'Marathi'),
+)
 
 class ThesisProject(BaseModel):
     headline=RichTextField(default="Headline here",blank=True,null=True)
+    desc = models.ManyToManyField(ThesisIndex,blank=True)
     author=models.ForeignKey(Author,on_delete=models.SET_NULL,blank=True,null=True)
-    language=models.ForeignKey(Language,blank=True,null=True,on_delete=models.SET_NULL)
+    language=models.CharField(choices=LANGUAGE,max_length=10,default=LANGUAGE[0][0])
 
+    class Meta:
+        verbose_name_plural="Thesis Project's"
 
 TYPE = (
     ('Art Projects', 'Art Projects'),
@@ -74,6 +97,9 @@ class Category(models.Model):
 
     def __str__(self):return self.name
 
+
+    class Meta:
+        verbose_name_plural="Category Of Projects"
 
 class ThesisFiles(models.Model):
     title = models.CharField(max_length=100, default="Title")
@@ -90,6 +116,9 @@ class ThesisFiles(models.Model):
 
     def __str__(self):return self.title+"-"+self.full_name
 
+    class Meta:
+        verbose_name_plural="Thesis Uploaded By User"
+
 
 class ContactUs(models.Model):
     full_name = models.CharField(max_length=50,default="Your Name")
@@ -98,8 +127,14 @@ class ContactUs(models.Model):
 
     def __str__(self):return self.full_name
 
+    class Meta:
+        verbose_name_plural="Contact Messages"
+
 class Subscriber(models.Model):
     email = models.EmailField(max_length=100, default="example@gmail.com",unique=True)
 
 
     def __str__(self):return self.email
+
+    class Meta:
+        verbose_name_plural="Subscriber's"

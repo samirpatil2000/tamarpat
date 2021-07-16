@@ -9,6 +9,7 @@ urlpatterns = [
     path('scholarships/',views.scholarships,name='scholarships'),
     path('career/',views.career,name='career'),
     path('publish/',views.publish,name='publish'),
-    path('detailPage/<str:slug>',views.detailPage,name='detailPage')
+    path('detailPage/<str:slug>',views.detailPage,name='detailPage'),
+    path('detailWithIndexPage/<str:thesis_slug>/<int:id>',views.detailWithIndexPage,name='detailWithIndexPage')
 
 ]

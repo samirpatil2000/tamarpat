@@ -7,7 +7,8 @@
 
     <section class="flex flex-col items-center pb-10 max-w-6xl mx-auto mt-20 px-4 md:px-0">
       <!-- Blog Header -->
-      <h1 class="font-bold text-5xl">{{ object.title }}</h1>
+      <h1 class="font-bold text-5xl">{{ thesis.title }}</h1>
+      <h3 class="font-bold text-5xl">{{ object.name_of_index }}</h3>
       <!-- Blog Meta -->
 
       <div class="flex items-center mt-20 mb-10 w-full mx-auto justify-around">
@@ -36,10 +37,7 @@
       <!-- Blog Content -->
       <div class="max-w-2xl text-lg  tracking-wide">
 
-      {% for index in object.desc.all %}
-          <a href="{% url 'detailWithIndexPage' object.slug index.id %}">{{ index.name_of_index }}</a>
-          <br>
-      {% endfor %}
+      {{ object.content|safe }}
 
       </div>
 

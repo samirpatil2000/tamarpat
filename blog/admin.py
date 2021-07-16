@@ -4,15 +4,16 @@ from django.contrib import admin
 
 from .models import (ThesisProject,
                      ContactUs,
-                     Completation,
-                     Blog,Images,
+                     Competition,
+                     Blog, Images,
                      Author,
                      ThesisFiles,
-                    Category,
-                    Subscriber,
+                     Category,
+                     Subscriber,
                      Scholarship,
                      Career,
-                     Language)
+ThesisIndex,
+                     )
 
 
 
@@ -23,13 +24,13 @@ admin.site.register(Images)
 
 
 
-@admin.register(Completation)
+@admin.register(Competition)
 class CompetetionAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('title',)}
 
-@admin.register(Blog)
-class BlogAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug':('title',)}
+# @admin.register(Blog)
+# class BlogAdmin(admin.ModelAdmin):
+#     prepopulated_fields = {'slug':('title',)}
     # class Media:
     #     js=('tinymce.js')
 
@@ -39,8 +40,16 @@ class ThesisProjectAdmin(admin.ModelAdmin):
 
 admin.site.register(Author)
 admin.site.register(ThesisFiles)
-admin.site.register(Language)
 admin.site.register(Category)
+
+
 admin.site.register(Subscriber)
-admin.site.register(Scholarship)
-admin.site.register(Career)
+
+@admin.register(Scholarship)
+class ScholarshipAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}
+@admin.register(Career)
+class CareerAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}
+
+admin.site.register(ThesisIndex)
