@@ -1,6 +1,6 @@
 from django import  forms
 
-from .models import Blog,Images,ThesisProject
+from .models import Blog,Images,ThesisProject,ThesisIndex
 
 
 
@@ -15,7 +15,13 @@ class ImageForm(forms.ModelForm):
         model=Images
         fields='__all__'
 
-class ThesisForm(forms.ModelForm):
+class CreateThesisIndexForm(forms.ModelForm):
+    class Meta:
+        model=ThesisIndex
+        fields='__all__'
+
+class CreateThesisForm(forms.ModelForm):
     class Meta:
         model=ThesisProject
         fields="__all__"
+        exclude=('desc','slug')

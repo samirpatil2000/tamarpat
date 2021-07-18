@@ -5,6 +5,8 @@ from django.conf import settings
 from django.urls import reverse
 from django.utils import timezone
 
+from django.core.validators import MaxValueValidator,MinValueValidator
+
 user=settings.AUTH_USER_MODEL
 # Create your models here.
 class Images(models.Model):
@@ -51,6 +53,9 @@ class Competition(BaseModel):
         verbose_name_plural="Competition's"
 
 class ThesisIndex(models.Model):
+    index_no=models.IntegerField(blank=True,null=True
+                                 ,validators=[MinValueValidator(0),MaxValueValidator(50)]
+                                 )
     name_of_index = models.CharField(max_length=100,default="Title")
     content = RichTextField(default='content here', blank=True, null=True)
 

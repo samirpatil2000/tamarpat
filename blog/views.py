@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from .forms import ImageForm
+from .forms import ImageForm,CreateThesisForm,CreateThesisIndexForm
 from .models import (ThesisFiles,Category,
                      ThesisProject,Subscriber,
                      Competition,Scholarship,
@@ -159,6 +159,41 @@ def createSlug(title):
 #             return redirect('index')
 #     return render(request,'')
 
+
+def addIndexTOThesisProject(request,proj_slug):
+    project=ThesisProject.objects.get(slug=proj_slug)
+    form=CreateThesisIndexForm()
+
+    if request.POST:
+        form=CreateThesisIndexForm(request.POST or None,request.FILES or None)
+        if form.is_valid():
+            index=form.save(commit=False)
+            index.save()
+            project.desc.add(index)
+            return redirect('detailPage',proj_slug)
+    context={
+        'form':form,
+        'slug':proj_slug,
+        'project':project,
+    }
+    return render(request,'new/addIndexTOThesis.html',context)
+
+def addThesisProject(request):
+    form=CreateThesisForm()
+
+    # if not request.user.is_authenticated:
+
+    if request.method=="POST":
+        form=CreateThesisForm(request.POST or None,request.FILES or None)
+        if form.is_valid():
+            proj=form.save(commit=False)
+            proj.slug=createSlug(proj.title)
+            form.save()
+            return redirect('detailPage',proj.slug)
+    context={
+        'form':form,
+    }
+    return render(request,'new/addThesisProject.html',context)
 
 
 

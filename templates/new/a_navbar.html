@@ -107,6 +107,22 @@
               focus:text-gray-900
               focus:bg-gray-200 focus:outline-none focus:shadow-outline
             " href="{% url 'publish' %}">Publish</a>
+          {% if request.user.is_superuser %}
+              <a class="
+              px-4
+              py-2
+              mt-2
+              text-sm
+              font-semibold
+              bg-transparent
+              rounded-lg
+
+              md:mt-0 md:ml-4
+              hover:text-gray-900
+              focus:text-gray-900
+              focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                 href="{% url 'add_thesis' %}">ADD NEW</a>
+          {% endif %}
       </nav>
     </div>
   </div>

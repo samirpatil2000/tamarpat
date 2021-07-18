@@ -12,4 +12,10 @@ urlpatterns = [
     path('detailWithIndexPage/<str:thesis_slug>/<int:id>',views.detailWithIndexPage,name='detailWithIndexPage'),
     path('authors/',views.authors,name='authors'),
 
+    # add thesis
+
+    path('addThesis/',views.addThesisProject,name='add_thesis'),
+    path('addIndex/<str:proj_slug>',views.addIndexTOThesisProject,name='add_index_to_thesis')
+
+
 ]
