@@ -1,7 +1,11 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from .forms import ImageForm
-from .models import ThesisFiles,Category,ThesisProject,Subscriber,Competition,Scholarship,Career,ThesisIndex
+from .models import (ThesisFiles,Category,
+                     ThesisProject,Subscriber,
+                     Competition,Scholarship,
+                     Career,ThesisIndex,
+                     Author)
 import datetime
 
 def index(request):
@@ -23,10 +27,6 @@ def index(request):
             messages.success(request, "Subscribe Successfully")
     return render(request,'new/index.html',context)
 
-
-
-def author(request):
-    return render(request,'new/author.html')
 def opportunity(request):
     return render(request,'new/opportunity.html')
 
@@ -124,6 +124,20 @@ def detailWithIndexPage(request,thesis_slug:str,id:int):
         'thesis':thesis
     }
     return render(request,'new/indexDetail.html',context)
+
+
+def authors(request):
+    context={
+        'objects':Author.objects.all().filter(is_active=True)
+    }
+    return  render(request,'new/author.html',context)
+
+
+def authorDetailView(request,email):
+    context={
+        'user':Author.objects.get(user__email=email)
+    }
+    return render(request,'new/author.html')
 
 def createSlug(title):
     slug_=""
