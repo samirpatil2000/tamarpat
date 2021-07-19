@@ -75,7 +75,7 @@
           <h2 class="font-bold text-2xl">English</h2>
             {% for obj in english_projects %}
                 <div class="my-2 border-b pb-2">
-                    <h3 class="font-semibold text-lg">{{ obj.title }}</h3>
+                    <a class="font-semibold text-lg h3" href="{% url 'detailPage' obj.slug %}">{{ obj.title }}</a>
                     <p>{{ obj.headline|truncatechars:100|safe }}</p>
                 </div>
             {% endfor %}
@@ -94,7 +94,7 @@
           <h2 class="font-bold text-2xl">Marathi</h2>
             {% for obj in marathi_projects %}
                 <div class="my-2 border-b pb-2">
-                    <h3 class="font-semibold text-lg">{{ obj.title }}</h3>
+                    <a class="font-semibold text-lg h3" href="{% url 'detailPage' obj.slug %}">{{ obj.title }}</a>
                     <p>{{ obj.headline|truncatechars:100|safe }}</p>
                 </div>
             {% endfor %}
