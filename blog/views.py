@@ -1,6 +1,11 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from .forms import ImageForm,CreateThesisForm,CreateThesisIndexForm
+from .forms import (ImageForm,
+                    CreateThesisForm,
+                    CreateThesisIndexForm,
+                    UpdateThesisProjectForm,
+                    UpdateThesisIndexForm)
+
 from .models import (ThesisFiles,Category,
                      ThesisProject,Subscriber,
                      Competition,Scholarship,
@@ -46,7 +51,7 @@ def career(request):
     context={
         'objects':Career.objects.all().filter(is_checked=True)
     }
-    return render(request,'new/scholarship.html',context)
+    return render(request,'new/career.html',context)
 
 
 def publish(request):
@@ -195,7 +200,51 @@ def addThesisProject(request):
     }
     return render(request,'new/addThesisProject.html',context)
 
+def editThesisPoject(request,proj_slug):
+    update_form=UpdateThesisProjectForm()
+    current_project=ThesisProject.objects.get(slug=proj_slug)
+    if request.POST:
+        update_form=UpdateThesisProjectForm(request.POST or None,request.FILES or None,instance=current_project)
+        if update_form.is_valid():
+            proj=update_form.save(commit=False)
+            proj.save()
+            return redirect('detailPage',proj_slug)
 
+    update_form=UpdateThesisProjectForm(
+        initial={
+            "title":current_project.title,
+            "thumbnail":current_project.thumbnail,
+            "is_checked":current_project.is_checked,
+            "is_complete":current_project.is_complete,
+            "headline":current_project.headline,
+            "author":current_project.author,
+            "language":current_project.language,
+        }
+    )
+    context={
+        'form':update_form,
+    }
+    return render(request,'new/updateThesisProject.html',context)
 
+def editThesisIndex(request,thesis_slug,id):
+    update_form=UpdateThesisIndexForm()
+    current_index=ThesisIndex.objects.get(id=id)
 
+    if request.POST:
+        update_form=UpdateThesisIndexForm(request.POST or None,request.FILES or None,instance=current_index)
+        if update_form.is_valid():
+            index=update_form.save(commit=False)
+            index.save()
+            return redirect('detailWithIndexPage',thesis_slug,id)
+    update_form=UpdateThesisIndexForm(
+        initial={
+            "index_no":current_index.index_no,
+            "name_of_index":current_index.name_of_index,
+            "content":current_index.content,
+        }
+    )
+    context={
+        'form':update_form
+    }
+    return render(request,'new/updateThesisIndex.html',context)
 

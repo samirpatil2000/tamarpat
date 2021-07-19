@@ -24,7 +24,7 @@ class Author(models.Model):
     def __str__(self):return self.full_name
 
 class BaseModel(models.Model):
-    title=models.CharField(max_length=100,default="Title")
+    title=models.CharField(max_length=200,default="Title")
     date=models.DateTimeField(auto_now_add=True)
     thumbnail=models.ImageField(upload_to='media',blank=True,default='no-image.jpg')
     slug=models.SlugField(unique=True,blank=True,null=True)

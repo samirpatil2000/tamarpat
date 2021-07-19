@@ -15,7 +15,10 @@ urlpatterns = [
     # add thesis
 
     path('addThesis/',views.addThesisProject,name='add_thesis'),
-    path('addIndex/<str:proj_slug>',views.addIndexTOThesisProject,name='add_index_to_thesis')
+    path('addIndex/<str:proj_slug>',views.addIndexTOThesisProject,name='add_index_to_thesis'),
 
+    # update
+    path('u/<str:proj_slug>',views.editThesisPoject,name='edit_thesis'),
+    path('u/<str:thesis_slug>/<int:id>', views.editThesisIndex, name='edit_thesisIndex'),
 
 ]
