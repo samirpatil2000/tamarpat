@@ -12,13 +12,21 @@ urlpatterns = [
     path('detailWithIndexPage/<str:thesis_slug>/<int:id>',views.detailWithIndexPage,name='detailWithIndexPage'),
     path('authors/',views.authors,name='authors'),
 
-    # add thesis
 
+    # add thesis
+    path('add/',views.add,name='add'),
     path('addThesis/',views.addThesisProject,name='add_thesis'),
     path('addIndex/<str:proj_slug>',views.addIndexTOThesisProject,name='add_index_to_thesis'),
+
+    # add
+    path('addCompetations/',views.addCompetions,name='add_competitions'),
+    path('addScholarship/',views.addScholarship,name='add_scholarship'),
+    path('addCareer/',views.addCareer,name='add_career'),
 
     # update
     path('u/<str:proj_slug>',views.editThesisPoject,name='edit_thesis'),
     path('u/<str:thesis_slug>/<int:id>', views.editThesisIndex, name='edit_thesisIndex'),
+
+
 
 ]

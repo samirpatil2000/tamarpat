@@ -40,7 +40,12 @@
           {% for obj in objects %}
             <div class="rounded overflow-hidden shadow-lg bg-white">
               <div class="text-center">
-                <img href="{{ obj.get_absolute_url }}" src="{%  static 'media/banner-1.jpeg' %}" alt="">
+                  {% if obj.thumbnail.url %}
+                      <img href="{{ obj.get_absolute_url }}" src="{{ obj.thumbnail.url }}" alt="">
+
+                  {% else %}
+                      <img href="{{ obj.get_absolute_url }}" src="{%  static 'media/banner-1.jpeg' %}" alt="">
+                  {% endif %}
                 <div class="py-2">
                   <p class="font-bold text-xl mb-2" href="{{ obj.get_absolute_url }}">{{ obj.title }} </p>
                   <p class="text-gray-700 text-base">
@@ -133,7 +138,6 @@
             <li font-semibold mb-2><a  href="{% url 'competition' %}">Competitions</a></li>
             <li font-semibold mb-2><a  href="{% url 'scholarships' %}">Scholarships</a></li>
             <li font-semibold mb-2><a  href="{% url 'career' %}">Career</a></li>
-            <li font-semibold mb-2>Grants</li>
           </ul>
         </div>
         <div class="rounded overflow-hidden shadow-lg px-6 py-4 text-left bg-white">

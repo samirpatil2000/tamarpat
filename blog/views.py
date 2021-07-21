@@ -3,8 +3,11 @@ from django.shortcuts import render, redirect
 from .forms import (ImageForm,
                     CreateThesisForm,
                     CreateThesisIndexForm,
+                    CreateCompitationsForm,
+CreateCareerForm,CreateScholarshipForm,
                     UpdateThesisProjectForm,
-                    UpdateThesisIndexForm)
+                    UpdateThesisIndexForm
+                    )
 
 from .models import (ThesisFiles,Category,
                      ThesisProject,Subscriber,
@@ -118,7 +121,7 @@ def detailPage(request,slug):
     context={
         'object':object
     }
-    return render(request,'new/guide.html',context)
+    return render(request, 'new/thesisDetail.html', context)
 
 
 def detailWithIndexPage(request,thesis_slug:str,id:int):
@@ -143,6 +146,9 @@ def authorDetailView(request,email):
         'user':Author.objects.get(user__email=email)
     }
     return render(request,'new/author.html')
+
+def add(request):
+    return render(request,'new/add.html')
 
 def createSlug(title):
     slug_=""
@@ -235,7 +241,7 @@ def editThesisIndex(request,thesis_slug,id):
         if update_form.is_valid():
             index=update_form.save(commit=False)
             index.save()
-            return redirect('detailWithIndexPage',thesis_slug,id)
+            return redirect('detailPage',thesis_slug)
     update_form=UpdateThesisIndexForm(
         initial={
             "index_no":current_index.index_no,
@@ -248,3 +254,55 @@ def editThesisIndex(request,thesis_slug,id):
     }
     return render(request,'new/updateThesisIndex.html',context)
 
+def addCompetions(request):
+    form=CreateCompitationsForm()
+
+    # if not request.user.is_authenticated:
+
+    if request.method=="POST":
+        form=CreateCompitationsForm(request.POST or None,request.FILES or None)
+        if form.is_valid():
+            proj=form.save(commit=False)
+            proj.slug=createSlug(proj.name_of_index)
+            form.save()
+            return redirect('competition')
+    context={
+        'form':form,
+    }
+    return render(request,'new/addCompetation.html',context)
+
+
+def addCareer(request):
+    form=CreateCareerForm()
+
+    # if not request.user.is_authenticated:
+
+    if request.method=="POST":
+        form=CreateCareerForm(request.POST or None,request.FILES or None)
+        if form.is_valid():
+            proj=form.save(commit=False)
+            proj.slug=createSlug(proj.name_of_index)
+            form.save()
+            return redirect('career')
+    context={
+        'form':form,
+    }
+    return render(request,'new/addCareers.html',context)
+
+
+def addScholarship(request):
+    form=CreateScholarshipForm()
+
+    # if not request.user.is_authenticated:
+
+    if request.method=="POST":
+        form=CreateScholarshipForm(request.POST or None,request.FILES or None)
+        if form.is_valid():
+            proj=form.save(commit=False)
+            proj.slug=createSlug(proj.name_of_index)
+            form.save()
+            return redirect('scholarships')
+    context={
+        'form':form,
+    }
+    return render(request,'new/addSchorships.html',context)

@@ -1,8 +1,6 @@
 from django import  forms
 
-from .models import Blog,Images,ThesisProject,ThesisIndex
-
-
+from .models import Blog, Images, ThesisProject, ThesisIndex, Competition, Scholarship, Career
 
 
 class BlogForm(forms.ModelForm):
@@ -61,3 +59,22 @@ class UpdateThesisIndexForm(forms.ModelForm):
         if commit:
             index.save()
         return index
+
+class CreateCompitationsForm(forms.ModelForm):
+    class Meta:
+        model=Competition
+        fields='__all__'
+        exclude = ('date',)
+
+class CreateScholarshipForm(forms.ModelForm):
+    class Meta:
+        model=Scholarship
+        fields='__all__'
+        exclude = ('date',)
+
+
+class CreateCareerForm(forms.ModelForm):
+    class Meta:
+        model=Career
+        fields='__all__'
+        exclude = ('date',)

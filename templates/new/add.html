@@ -1,0 +1,49 @@
+{% extends 'new/base.html' %}
+{% block title %}ADD NEW{% endblock %}
+{% load  static %}
+{% block content%}
+
+
+
+    <section class="flex flex-col items-center pb-20 max-w-6xl mx-auto">
+
+      <div class="
+            p-4
+            grid grid-cols-1
+            sm:grid-cols-1
+            md:grid-cols-3
+            lg:grid-cols-3
+            xl:grid-cols-3
+            gap-5
+          ">
+        <!-- Card - 1 -->
+        <div class="rounded overflow-hidden shadow-lg px-6 py-4 text-left bg-white">
+          <p class="font-bold text-2xl mb-2">ADD NEW</p>
+          <ul class="list-disc list-inside">
+
+            <li font-semibold mb-2><a  href="{% url 'add_thesis' %}">Thesis</a></li>
+
+            <li font-semibold mb-2><a  href="{% url 'add_competitions' %}">Competitions</a></li>
+            <li font-semibold mb-2><a  href="{% url 'add_scholarship' %}">Scholarships</a></li>
+            <li font-semibold mb-2><a  href="{% url 'add_career' %}">Career</a></li>
+          </ul>
+        </div>
+
+{#        <div class="rounded overflow-hidden shadow-lg px-6 py-4 text-left bg-white">#}
+{#          <p class="font-bold text-2xl mb-2">Exams and Mentorship</p>#}
+{#          <ul class="list-disc list-inside">#}
+{#            <li class="font-semibold  mb-2">Entrance Exams</li>#}
+{#            <li class="font-semibold  mb-2">Guidance</li>#}
+{#          </ul>#}
+{#          <ol class="list-decimal list-inside my-2">#}
+{#            <li>Competions</li>#}
+{#            <li>Scholarships</li>#}
+{#            <li>Career</li>#}
+{#          </ol>#}
+{#        </div>#}
+{#      </div>#}
+
+    </section>
+
+{% endblock %}
+

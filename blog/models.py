@@ -13,7 +13,7 @@ class Images(models.Model):
     image=models.ImageField(upload_to='media',blank=True)
 
 class Author(models.Model):
-    user=models.OneToOneField(user,on_delete=models.CASCADE)
+    # user=models.OneToOneField(user,on_delete=models.CASCADE)
     profile_pic = models.ImageField(upload_to='ProfilePics', default="avatar.svg")
     full_name=models.CharField(max_length=100,default="Full Name")
     college_name=models.CharField(max_length=100,default="College Name",blank=True,null=True)

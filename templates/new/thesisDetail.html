@@ -1,7 +1,60 @@
 {% extends 'new/base.html' %}
 {% block title %}TAMARPAT{% endblock %}
 {% load static %}
+
+
+
 {% block content %}
+
+    <style>
+      html{
+        scroll-behavior: smooth;
+        scroll-padding-top: 40px;
+      }
+    </style>
+  <section class="flex justify-between max-w-5xl mx-auto pt-10">
+    <!-- Sidebar -->
+    <div class="sticky top-10  bg-gray-100 w-72 px-4 text-left" style="height: 600px;">
+
+      <p class="font-bold text-lg">Index</p>
+        {% for obj in object.desc.all %}
+            <a href="#{{ obj.index_no }}" class="block my-2 py-1 underline">{{ forloop.counter }} .  {{ obj.name_of_index|safe }}</a>
+        {% endfor %}
+      <div class="font-bold mt-4">
+        Company Logo
+      </div>
+      <p class="my-4">
+        Cadre is building the world's first digital stock market for alternative assets. We leverage our superior technology and data-driven insight to open once-exclusive industries to the world’s investors.
+      </p>
+    </div>
+    <!-- Content -->
+    <div class="pl-10 w-full">
+        <h1>{{ object.title }}</h1>
+        <a class="btn text-white bg-teal-600 hover:bg-teal-700 shadow" href="{% url 'edit_thesis' object.slug %}">Edit</a>
+    {% if object.thumbnail %}
+        <img src="{{ object.thumbnail.url }}">
+    {% else %}
+              <img src="https://images.unsplash.com/photo-1626320290598-03656e931a31?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="">
+    {% endif %}
+        {% for obj in object.desc.all %}
+
+            <h1 id="{{ obj.index_no }}" class="font-bold text-4xl my-4">
+            {{ obj.name_of_index|safe }}
+          </h1>
+            <a class="btn
+                          text-white
+                          bg-teal-600
+                          hover:bg-teal-700
+                          shadow" href="{% url 'edit_thesisIndex' object.slug obj.id %}">Edit</a>
+          <p class="text-lg my-4">
+            {{ obj.content|safe }}
+          </p>
+        {% endfor %}
+    </div>
+  </section>
+
+{% endblock %}
+{% comment %}
 
   <main class="flex-grow break-words">
 
@@ -13,9 +66,15 @@
       <div class="flex items-center mt-20 mb-10 w-full mx-auto justify-around">
 
         <div class="flex items-center space-x-2">
-          <img class="inline object-cover w-10 h-10 mr-2 rounded-full"
-            src="https://images.pexels.com/photos/2589653/pexels-photo-2589653.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-            alt="Profile image" />
+            {% if object.author.profile_pic.url %}
+                  <img class="inline object-cover w-10 h-10 mr-2 rounded-full"
+                    src="{{ object.author.profile_pic.url }}"
+                    alt="Profile image" />
+            {% else %}
+                <img class="inline object-cover w-10 h-10 mr-2 rounded-full"
+                src="https://images.pexels.com/photos/2589653/pexels-photo-2589653.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+                alt="Profile image" />
+            {% endif %}
           <span class="font-semibold">{{ object.author.full_name }}</span>
           <span>Jun 9 2020</span>
           <span>10min read</span>
@@ -106,4 +165,4 @@
 
 
   <!-- Footer -->
- {% endblock %}
+ {% endcomment %}
