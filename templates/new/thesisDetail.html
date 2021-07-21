@@ -17,7 +17,7 @@
     <div class="sticky top-10  bg-gray-100 w-72 px-4 text-left" style="height: 600px;">
 
       <p class="font-bold text-lg">Index</p>
-        {% for obj in object.desc.all %}
+        {% for obj in desc %}
             <a href="#{{ obj.index_no }}" class="block my-2 py-1 underline">{{ forloop.counter }} .  {{ obj.name_of_index|safe }}</a>
         {% endfor %}
       <div class="font-bold mt-4">
@@ -36,7 +36,7 @@
     {% else %}
               <img src="https://images.unsplash.com/photo-1626320290598-03656e931a31?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="">
     {% endif %}
-        {% for obj in object.desc.all %}
+        {% for obj in desc %}
 
             <h1 id="{{ obj.index_no }}" class="font-bold text-4xl my-4">
             {{ obj.name_of_index|safe }}

@@ -119,7 +119,8 @@ def publish(request):
 def detailPage(request,slug):
     object=ThesisProject.objects.get(slug=slug)
     context={
-        'object':object
+        'object':object,
+        'desc':object.desc.all().order_by('index_no')
     }
     return render(request, 'new/thesisDetail.html', context)
 
