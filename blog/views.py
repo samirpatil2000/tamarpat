@@ -229,6 +229,7 @@ def editThesisPoject(request,proj_slug):
     )
     context={
         'form':update_form,
+        'slug':proj_slug,
     }
     return render(request,'new/updateThesisProject.html',context)
 
