@@ -26,7 +26,7 @@ class Author(models.Model):
 class BaseModel(models.Model):
     title=models.CharField(max_length=200,default="Title")
     date=models.DateTimeField(auto_now_add=True)
-    thumbnail=models.ImageField(upload_to='media',blank=True,default='no-image.jpg')
+    thumbnail=models.ImageField(upload_to='media',blank=True,null=True,default='no-image.jpg')
     slug=models.SlugField(unique=True,blank=True,null=True)
     is_checked=models.BooleanField(default=True)
     is_complete=models.BooleanField(default=True)
