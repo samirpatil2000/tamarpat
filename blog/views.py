@@ -1,12 +1,18 @@
+from lib2to3.fixes.fix_input import context
+
 from django.contrib import messages
 from django.shortcuts import render, redirect
+from django.db.models import Q
 from .forms import (ImageForm,
                     CreateThesisForm,
                     CreateThesisIndexForm,
                     CreateCompitationsForm,
-CreateCareerForm,CreateScholarshipForm,
+                    CreateCareerForm,
+                    CreateScholarshipForm,
+
                     UpdateThesisProjectForm,
-                    UpdateThesisIndexForm
+                    UpdateThesisIndexForm,
+UpdateCareerForm,UpdateCompletionForm,UpdateScholarshipForm,AddAuthorForm
                     )
 
 from .models import (ThesisFiles,Category,
@@ -24,7 +30,8 @@ def index(request):
     }
     if request.GET:
         query=request.GET.get('search_query')
-        qs=ThesisProject.objects.all().filter(title__icontains=query,is_checked=True)
+        qs=ThesisProject.objects.filter(is_checked=True).filter(Q(title__icontains=query)
+                                                                |Q(desc__name_of_index__icontains = query))
         context['objects']=qs
     if request.POST:
         email=request.POST.get('email')
@@ -252,6 +259,7 @@ def editThesisIndex(request,thesis_slug,id):
         }
     )
     context={
+        'work': 'Update',
         'form':update_form
     }
     return render(request,'new/updateThesisIndex.html',context)
@@ -269,10 +277,10 @@ def addCompetions(request):
             form.save()
             return redirect('competition')
     context={
+        'work': 'ADD Competition',
         'form':form,
     }
-    return render(request,'new/addCompetation.html',context)
-
+    return render(request,'new/add_new.html',context)
 
 def addCareer(request):
     form=CreateCareerForm()
@@ -287,9 +295,28 @@ def addCareer(request):
             form.save()
             return redirect('career')
     context={
+        'work': 'ADD',
         'form':form,
     }
-    return render(request,'new/addCareers.html',context)
+    return render(request, 'new/add_new.html', context)
+
+def addAuthor(request):
+    form=AddAuthorForm()
+
+    # if not request.user.is_authenticated:
+
+    if request.method=="POST":
+        form=AddAuthorForm(request.POST or None,request.FILES or None)
+        if form.is_valid():
+            proj=form.save(commit=False)
+            proj.save()
+            return redirect('authors')
+    context={
+        'work': 'ADD Author',
+        'form':form,
+    }
+    return render(request, 'new/add_new.html', context)
+
 
 
 def addScholarship(request):
@@ -305,6 +332,89 @@ def addScholarship(request):
             form.save()
             return redirect('scholarships')
     context={
+        'work':'ADD Scholarship',
         'form':form,
     }
-    return render(request,'new/addSchorships.html',context)
+    return render(request,'new/add_new.html',context)
+
+def updateCompetitions(request,id):
+    form=UpdateCompletionForm()
+    current_object=Competition.objects.get(id=id)
+    if request.method=="POST":
+        form=UpdateCompletionForm(request.POST or None,request.FILES or None,instance=current_object)
+        if form.is_valid():
+            update=form.save(commit=False)
+            update.save()
+            return redirect('competition')
+
+    form=UpdateCompletionForm(
+        initial={
+            "title":current_object.title,
+            "thumbnail":current_object.thumbnail,
+            "is_checked":current_object.is_checked,
+            "is_complete":current_object.is_complete,
+            "desc":current_object.desc,
+            "url":current_object.url,
+            "acceptedMedia":current_object.acceptedMedia,
+            "eligibility":current_object.eligibility,
+            "deadline":current_object.deadline,
+        }
+    )
+    context={
+        'work':'Update Competition',
+        'form':form,
+    }
+    return render(request,'new/add_new.html',context)
+
+def updateScholarship(request,id):
+    form=UpdateScholarshipForm()
+    current_object=Scholarship.objects.get(id=id)
+    if request.method=="POST":
+        form=UpdateScholarshipForm(request.POST or None,request.FILES or None,instance=current_object)
+        if form.is_valid():
+            update=form.save(commit=False)
+            update.save()
+            return redirect('scholarships')
+
+    form=UpdateScholarshipForm(
+        initial={
+            "title":current_object.title,
+            "thumbnail":current_object.thumbnail,
+            "is_checked":current_object.is_checked,
+            "is_complete":current_object.is_complete,
+            "desc":current_object.desc,
+            "url":current_object.url,
+        }
+    )
+    context={
+        'work':'Update Scholarship',
+        'form':form,
+    }
+    return render(request,'new/add_new.html',context)
+
+def updateCareer(request,id):
+    form=UpdateCareerForm()
+    current_object=Career.objects.get(id=id)
+    if request.method=="POST":
+        form=UpdateCareerForm(request.POST or None,request.FILES or None,instance=current_object)
+        if form.is_valid():
+            update=form.save(commit=False)
+            update.save()
+            return redirect('career')
+
+    form=UpdateCareerForm(
+        initial={
+            "title":current_object.title,
+            "thumbnail":current_object.thumbnail,
+            "is_checked":current_object.is_checked,
+            "is_complete":current_object.is_complete,
+            "desc":current_object.desc,
+            "url":current_object.url,
+        }
+    )
+    context={
+        'work':'Update Career',
+        'form':form,
+    }
+    return render(request, 'new/add_new.html', context)
+

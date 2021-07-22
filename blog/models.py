@@ -17,7 +17,7 @@ class Author(models.Model):
     profile_pic = models.ImageField(upload_to='ProfilePics', default="avatar.svg")
     full_name=models.CharField(max_length=100,default="Full Name")
     college_name=models.CharField(max_length=100,default="College Name",blank=True,null=True)
-    date_of_birth=models.DateField(blank=None,null=True)
+    date_of_birth=models.DateField(blank=True,null=True)
     bio=models.TextField(blank=True,null=True)
     is_active=models.BooleanField(default=True)
 

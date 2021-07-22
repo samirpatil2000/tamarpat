@@ -134,3 +134,4 @@ account/migrations
 
 media/media
 blog/migrations
+/media/ProfilePics/

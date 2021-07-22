@@ -9,6 +9,12 @@
             <div>
                 <h1 class="font-bold text-3xl mb-5">{{ obj.title }}
                 </h1>
+                <a class="btn
+                          text-white
+                          bg-teal-600
+                          hover:bg-teal-700
+                          shadow" href="{% url 'edit_scholarships' obj.id %}"> Edit </a>
+                <img class="w-full max-w-lg my-4" src="{{ obj.thumbnail.url }}" alt="">
                 <p>
                     {{ obj.desc|safe }}
                 </p>
