@@ -11,7 +11,7 @@
               shadow
               rounded
               p-2
-              w-full
+              w-96
               focus:outline-none
               focus:ring-2
               focus:ring-teal-400
@@ -38,14 +38,17 @@
           ">
         <!-- Card - 1 -->
           {% for obj in objects %}
-            <div class="rounded overflow-hidden shadow-lg bg-white">
+            <div class="rounded overflow-hidden shadow-lg bg-white pb-4">
               <div class="text-center">
+                <div class="h-36 overflow-hidden">
                   {% if obj.thumbnail.url %}
                       <img href="{{ obj.get_absolute_url }}" src="{{ obj.thumbnail.url }}" alt="">
 
                   {% else %}
                       <img href="{{ obj.get_absolute_url }}" src="{%  static 'media/banner-1.jpeg' %}" alt="">
                   {% endif %}
+                </div>
+
                 <div class="py-2">
                   <p class="font-bold text-xl mb-2" href="{{ obj.get_absolute_url }}">{{ obj.title }} </p>
                   <p class="text-gray-700 text-base">
@@ -133,7 +136,7 @@
           ">
         <!-- Card - 1 -->
         <div class="rounded overflow-hidden shadow-lg px-6 py-4 text-left bg-white">
-          <p class="font-bold text-2xl mb-2">Academics</p>
+          <p class="font-bold text-2xl mb-2 text-center">Opportunities</p>
           <ul class="list-disc list-inside">
             <li font-semibold mb-2><a  href="{% url 'competition' %}">Competitions</a></li>
             <li font-semibold mb-2><a  href="{% url 'scholarships' %}">Scholarships</a></li>
@@ -141,8 +144,8 @@
           </ul>
         </div>
         <div class="rounded overflow-hidden shadow-lg px-6 py-4 text-left bg-white">
-          <p class="font-bold text-2xl mb-2">Exams and Mentorship</p>
-          <ul class="list-disc list-inside">
+          <p class="font-bold text-2xl mb-2 text-center">Entrance exam and Guidelines</p>
+          <!-- <ul class="list-disc list-inside">
             <li class="font-semibold  mb-2">Entrance Exams</li>
             <li class="font-semibold  mb-2">Guidance</li>
           </ul>
@@ -150,7 +153,7 @@
             <li>Competions</li>
             <li>Scholarships</li>
             <li>Career</li>
-          </ol>
+          </ol> -->
           <p class="my-2 font-medium">        
         Entrance exams guidelines </p>
           <ol class="list-decimal list-inside my-2">
@@ -162,7 +165,7 @@
           </ol>
         </div>
         <div class="rounded overflow-hidden shadow-lg px-6 py-4 text-left bg-white" href="{% url 'publish' %}">
-          <p class="font-bold text-2xl mb-2">Publish Your Work Now</p>
+          <p class="font-bold text-2xl mb-2 text-center">Publish Your Work Now</p>
           <ul class="list-disc list-inside">
             <li class="font-semibold  mb-2">Art Projects</li>
             <li class="font-semibold  mb-2">Thesis</li>
