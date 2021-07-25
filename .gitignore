@@ -132,6 +132,5 @@ env
 account/migrations
 /db.sqlite3
 
-media/media
 blog/migrations
 /media/ProfilePics/
