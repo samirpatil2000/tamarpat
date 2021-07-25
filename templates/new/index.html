@@ -2,9 +2,13 @@
 {% load  static %}
 {% block title %}TAMARPAT{% endblock %}
 {% block content %}
-    <main class="flex-grow bg-tur" xmlns="http://www.w3.org/1999/html">
+    <main class="flex-grow bg-tur relative" xmlns="http://www.w3.org/1999/html">
 
-    <section class="flex flex-col items-center pb-10 max-w-6xl mx-auto mt-20">
+    <img class="absolute " src="/static/images/banner.jpg" width="900" style="position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);" alt="">
+
+    <section class="flex flex-col items-center pb-10 max-w-6xl mx-auto mt-80">
     <form method="get">
       <div class="flex relative w-full px-10" style="max-width: 600px">
         <input name="search_query" class="
@@ -28,6 +32,7 @@
     </form>
       <!-- Cards Container -->
       <div class="
+      z-10
             p-10
             grid grid-cols-1
             sm:grid-cols-1
