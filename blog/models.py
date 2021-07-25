@@ -83,7 +83,6 @@ LANGUAGE = (
 )
 
 class ThesisProject(BaseModel):
-    headline=RichTextField(default="Headline here",blank=True,null=True)
     desc = models.ManyToManyField(ThesisIndex,blank=True)
     author=models.ForeignKey(Author,on_delete=models.SET_NULL,blank=True,null=True)
     language=models.CharField(choices=LANGUAGE,max_length=10,default=LANGUAGE[0][0])
