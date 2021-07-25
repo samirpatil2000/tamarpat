@@ -42,6 +42,17 @@ def index(request):
             messages.success(request, "Subscribe Successfully")
     return render(request,'new/index.html',context)
 
+def thesisListView(request):
+    context={
+        'objects':ThesisProject.objects.filter(is_checked=True),
+    }
+    if request.GET:
+        query=request.GET.get('search_query')
+        qs=ThesisProject.objects.filter(is_checked=True).filter(Q(title__icontains=query)
+                                                                |Q(desc__name_of_index__icontains = query))
+        context['objects']=qs
+    return render(request,'new/thesisListView.html',context)
+
 def opportunity(request):
     return render(request,'new/opportunity.html')
 

@@ -1,0 +1,86 @@
+{% extends 'new/base.html' %}
+{% load  static %}
+{% block title %}TAMARPAT{% endblock %}
+{% block content %}
+    <main class="flex-grow bg-tur" xmlns="http://www.w3.org/1999/html">
+
+    <section class="flex flex-col items-center pb-10 max-w-6xl mx-auto mt-20">
+    <form method="get">
+      <div class="flex relative w-full px-10" style="max-width: 600px">
+        <input name="search_query" class="
+              shadow
+              rounded
+              p-2
+              w-96
+              focus:outline-none
+              focus:ring-2
+              focus:ring-teal-400
+              focus:border-transparent
+            " type="text" placeholder="Search" />
+        <button type="submit" class="absolute right-16 top-2">
+          <svg viewBox="0 0 24 24" width="24" height="24" stroke="#444" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round" fill="none" shape-rendering="geometricPrecision">
+            <path d="M11 17.25a6.25 6.25 0 110-12.5 6.25 6.25 0 010 12.5z" />
+            <path d="M16 16l4.5 4.5" />
+          </svg>
+        </button>
+      </div>
+    </form>
+      <!-- Cards Container -->
+      <div class="
+            p-10
+            grid grid-cols-1
+            sm:grid-cols-1
+            md:grid-cols-3
+            lg:grid-cols-3
+            xl:grid-cols-3
+            gap-5
+          ">
+        <!-- Card - 1 -->
+          {% for obj in objects %}
+            <div class="rounded overflow-hidden shadow-lg bg-white pb-4">
+              <div class="text-center">
+                <div class="h-36 overflow-hidden">
+                  {% if obj.thumbnail.url %}
+                      <img href="{{ obj.get_absolute_url }}" src="{{ obj.thumbnail.url }}" alt="">
+
+                  {% else %}
+                      <img href="{{ obj.get_absolute_url }}" src="{%  static 'media/banner-1.jpeg' %}" alt="">
+                  {% endif %}
+                </div>
+
+                <div class="py-2">
+                  <p class="font-bold text-xl mb-2" href="{{ obj.get_absolute_url }}">{{ obj.title }} </p>
+                  <p class="text-gray-700 text-base">
+                    {{ obj.headline|truncatechars:100|safe }}
+                  </p>
+                </div>
+              <a class="
+                      mt-2
+                      btn
+                      text-white
+                      bg-teal-600
+                      hover:bg-teal-700
+                      mb-4
+                      sm:w-auto sm:mb-0
+                      focus:ring-2 focus:ring-teal-500
+
+
+                    " style="width: 120px;" href="{{ obj.get_absolute_url }}">
+                    Read
+                </a>
+              </div>
+            </div>
+          {% endfor %}
+      </div>
+        <!-- Card - 2 -->
+    </section>
+    <!-- English Marathi Starts  -->
+
+
+    <!-- Engligh Marathi Ends -->
+
+    <!-- Features Section -->
+
+  </main>
+{% endblock %}

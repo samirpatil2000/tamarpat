@@ -87,6 +87,7 @@ class ThesisProject(BaseModel):
     desc = models.ManyToManyField(ThesisIndex,blank=True)
     author=models.ForeignKey(Author,on_delete=models.SET_NULL,blank=True,null=True)
     language=models.CharField(choices=LANGUAGE,max_length=10,default=LANGUAGE[0][0])
+    category=models.ForeignKey('Category',blank=True,null=True,on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name_plural="Thesis Project's"
@@ -98,8 +99,15 @@ TYPE = (
     ('Research Paper', 'Research Paper'),
 )
 
+class Type(models.Model):
+    name = models.CharField(max_length=40,choices=TYPE,unique=True)
+    def __str__(self):return self.name
+
+    class Meta:
+        verbose_name_plural="Type Of Projects"
+
 class Category(models.Model):
-    name=models.CharField(choices=TYPE,max_length=20,unique=True)
+    name=models.CharField(max_length=30,unique=True)
 
     def __str__(self):return self.name
 

@@ -13,6 +13,7 @@ from .models import (ThesisProject,
                      Scholarship,
                      Career,
 ThesisIndex,
+Type
                      )
 
 
@@ -53,3 +54,5 @@ class CareerAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
 admin.site.register(ThesisIndex)
+admin.site.register(Type)
+
