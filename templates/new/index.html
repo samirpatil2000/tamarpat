@@ -4,7 +4,7 @@
 {% block content %}
     <main class="flex-grow bg-tur relative" xmlns="http://www.w3.org/1999/html">
 
-    <img class="absolute " src="/static/images/banner.jpg" width="900" style="position: absolute;
+    <img class="absolute " src="{% static '/images/banner.jpg' %}" width="900" style="position: absolute;
     left: 50%;
     transform: translate(-50%, 0);" alt="">
 
@@ -147,7 +147,7 @@
         <div class="rounded overflow-hidden shadow-lg  mb-2 text-left bg-white">
           <p class="font-bold text-2xl mb-2 text-center h-20 bg-teal-400 py-2 flex items-center justify-center">Opportunities</p>
           <ul class="list-disc list-inside pl-4 py-4">
-            <li  mb-2><Competitions class="font-semibold" href="{% url 'competition' %}">COMPETITIONS</a></li>
+            <li  mb-2><a class="font-semibold" href="{% url 'competition' %}">COMPETITIONS</a></li>
             <li  mb-2><a class="font-semibold" href="{% url 'scholarships' %}">SCHOLARSHIPS</a></li>
             <li  mb-2><a class="font-semibold" href="{% url 'career' %}">CAREER</a></li>
           </ul>
