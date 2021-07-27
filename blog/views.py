@@ -219,7 +219,7 @@ def addThesisProject(request):
             proj=form.save(commit=False)
             proj.slug=createSlug(proj.title)
             form.save()
-            return redirect('detailPage',proj.slug)
+            return redirect('edit_thesis',proj.slug)
     context={
         'form':form,
     }
@@ -241,7 +241,6 @@ def editThesisPoject(request,proj_slug):
             "thumbnail":current_project.thumbnail,
             "is_checked":current_project.is_checked,
             "is_complete":current_project.is_complete,
-            "headline":current_project.headline,
             "author":current_project.author,
             "language":current_project.language,
         }
@@ -271,7 +270,9 @@ def editThesisIndex(request,thesis_slug,id):
     )
     context={
         'work': 'Update',
-        'form':update_form
+        'form':update_form,
+        'slug':thesis_slug,
+        'id':id,
     }
     return render(request,'new/updateThesisIndex.html',context)
 
@@ -429,3 +430,21 @@ def updateCareer(request,id):
     }
     return render(request, 'new/add_new.html', context)
 
+def deleteThesisIndex(request,thesis_slug,index_id):
+    try:
+        obj=ThesisIndex.objects.get(id=index_id)
+        obj.delete()
+        return redirect('detailPage',thesis_slug)
+    except Exception as e:
+        return redirect('detailPage',thesis_slug)
+
+def deleteThesisProjet(request,thesis_slug):
+    # try:
+        obj=ThesisProject.objects.get(slug=thesis_slug)
+        for o in obj.desc.all():
+            idx=ThesisIndex.objects.get(id=o.id)
+            idx.delete()
+        obj.delete()
+        return redirect('thesisListView')
+    # except Exception as e:
+    #     return redirect('thesisListView')

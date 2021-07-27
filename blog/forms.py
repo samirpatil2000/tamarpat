@@ -60,7 +60,6 @@ class UpdateThesisProjectForm(forms.ModelForm):
         proj.thumbnail=self.cleaned_data['thumbnail']
         proj.is_checked=self.cleaned_data['is_checked']
         proj.is_complete=self.cleaned_data['is_complete']
-        proj.headline=self.cleaned_data['headline']
         proj.author=self.cleaned_data['author']
         proj.language=self.cleaned_data['language']
 
