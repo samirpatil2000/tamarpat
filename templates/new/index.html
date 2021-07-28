@@ -2,37 +2,38 @@
 {% load  static %}
 {% block title %}TAMARPAT{% endblock %}
 {% block content %}
-    <main class="flex-grow bg-tur relative" xmlns="http://www.w3.org/1999/html">
+    <main class="flex-grow bg-red-100 relative" xmlns="http://www.w3.org/1999/html">
 
 {#    <img class="absolute " src="{% static '/images/banner.jpg' %}" width="900" style="position: absolute;#}
-    <img class="absolute " src="https://github.com/samirpatil2000/tamarpat/blob/master/static/images/banner.jpg?raw=true" width="900" style="position: absolute;
+    <img class="absolute " src="https://github.com/samirpatil2000/tamarpat/blob/master/static/images/banner.jpg?raw=true" width="700" style="position: absolute;
     left: 50%;
     transform: translate(-50%, 0);" alt="">
 
-    <section class="flex flex-col items-center pb-0 md:pb-10 max-w-6xl mx-auto mt-80">
+    <section class="flex flex-col items-center pb-0 md:pb-10 max-w-6xl mx-auto mt-60">
     <form method="get">
       <div class="flex relative px-10">
-        <input name="search_query" class="
-              shadow
-              rounded
-              p-2
-              w-72
-              focus:outline-none
-              focus:ring-2
-              focus:ring-teal-400
-              focus:border-transparent
-            " type="text" placeholder="Search" />
-        <button type="submit" class="absolute right-16 top-2">
+        <button type="submit" class="absolute left-12 top-2">
           <svg viewBox="0 0 24 24" width="24" height="24" stroke="#444" stroke-width="1.5" stroke-linecap="round"
             stroke-linejoin="round" fill="none" shape-rendering="geometricPrecision">
             <path d="M11 17.25a6.25 6.25 0 110-12.5 6.25 6.25 0 010 12.5z" />
             <path d="M16 16l4.5 4.5" />
           </svg>
         </button>
+        <input name="search_query" class="
+              shadow
+              rounded
+              p-2
+              w-72
+              pl-10
+              focus:outline-none
+              focus:ring-2
+              focus:ring-teal-400
+              focus:border-transparent
+            " type="text" placeholder="Search" />
       </div>
     </form>
 
-    <div style="padding-top: 0.1em; padding-bottom: 0.1rem" class="mt-4 text-smm px-3 bg-white text-teal-800 rounded-full z-10">Recent Uploads</div>
+    <div class="mt-4 text-smm px-5 py-2 bg-white text-teal-800 rounded-full z-10">Recent Uploads</div>
       <!-- Cards Container -->
       <div class="
       z-10
@@ -146,15 +147,15 @@
           ">
         <!-- Card - 1 -->
         <div class="rounded overflow-hidden shadow-lg  mb-2 text-left bg-white">
-          <p class="font-bold text-2xl mb-2 text-center h-20 bg-teal-400 py-2 flex items-center justify-center">Opportunities</p>
+          <p class="font-bold text-2xl mb-2 text-center h-20 bg-teal-600 py-2 flex items-center justify-center text-white">Opportunities</p>
           <ul class="list-disc list-inside pl-4 py-4">
-            <li  mb-2><a class="font-semibold" href="{% url 'competition' %}">COMPETITIONS</a></li>
-            <li  mb-2><a class="font-semibold" href="{% url 'scholarships' %}">SCHOLARSHIPS</a></li>
-            <li  mb-2><a class="font-semibold" href="{% url 'career' %}">CAREER</a></li>
+            <li class="mb-1"><a class="font-semibold" href="{% url 'competition' %}">COMPETITIONS</a></li>
+            <li class="mb-1"><a class="font-semibold" href="{% url 'scholarships' %}">SCHOLARSHIPS</a></li>
+            <li class="mb-1"><a class="font-semibold" href="{% url 'career' %}">CAREER</a></li>
           </ul>
         </div>
         <div class="rounded overflow-hidden shadow-lg text-left bg-white mb-2">
-          <p class="font-bold text-2xl mb-2 text-center  bg-teal-400 py-2 h-20">Entrance exam <br> and Guidelines</p>
+          <p class="font-bold text-2xl mb-2 text-center  bg-teal-600 py-2 h-20 text-white">Entrance exam <br> and Guidelines</p>
           <!-- <ul class="list-disc list-inside">
             <li class="font-semibold  mb-2">Entrance Exams</li>
             <li class="font-semibold  mb-2">Guidance</li>
@@ -174,7 +175,7 @@
           </ul>
         </div>
         <div class="rounded overflow-hidden shadow-lg text-left bg-white" href="{% url 'publish' %}">
-          <p class="font-bold text-2xl mb-2 text-center  bg-teal-400 py-2 h-20 flex items-center justify-center">Publish Your Work Now</p>
+          <p class="font-bold text-2xl mb-2 text-center  bg-teal-600 py-2 h-20 text-white flex items-center justify-center">Publish Your Work Now</p>
           <ul class="list-disc list-inside pl-4 py-2">
             
             <li class="font-semibold  mb-2">THESIS</li>
@@ -252,7 +253,7 @@
               <div class="text-center lg:text-left lg:max-w-xl">
                 <form method="post" class="w-full lg:w-auto">
                   <p class="text-xl font-semibold mb-6">
-                    Get all latest related to Tamrapat delivered directly to your inbox, every week.
+                    Get all latest updates related to Tamrapat <br> delivered directly to your inbox, every week.
                   </p>
                   <div class="
                         flex flex-col
