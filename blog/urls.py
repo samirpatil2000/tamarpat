@@ -38,6 +38,8 @@ urlpatterns = [
     path('u/<str:proj_slug>',views.editThesisPoject,name='edit_thesis'),
     path('u/<str:thesis_slug>/<int:id>', views.editThesisIndex, name='edit_thesisIndex'),
 
-
+    # delete
+    path('delete/<str:thesis_slug>/<int:index_id>',views.deleteThesisIndex,name='delete_thesisIndex'),
+    path('delete/<str:thesis_slug>',views.deleteThesisProjet,name='delete_thesis'),
 
 ]

@@ -27,6 +27,7 @@
         </fieldset>
         <div class="form-group">
             <button class="btn btn-outline-info" type="submit">Update</button>
+            <a class="btn btn-outline-danger"  href="{% url 'delete_thesis' slug %}">Delete</a>
         </div>
     </form>
 
@@ -34,3 +35,51 @@
 </div>
 
 {% endblock %}
+
+
+
+
+{##}
+{#<div class="container">#}
+{#    <form method="POST" enctype="multipart/form-data">#}
+{#        {% csrf_token %}#}
+{#        <fieldset class="form-group">#}
+{#            <legend class="'border-bottom mb-4"> Update Thesis </legend>#}
+{##}
+{##}
+{#            <div id="div_id_title" class="form-group"> <label for="id_title" class=" requiredField">#}
+{#                Title<span class="asteriskField">*</span> </label> <div class=""> <input type="text" name="title" value="Test2" maxlength="200" class="textinput textInput form-control" required="" id="id_title"> </div> </div> <div id="div_id_thumbnail" class="form-group"> <label for="id_thumbnail" class="">#}
+{#                Thumbnail#}
+{#            </label> <div class="">#}
+{#                    Currently: <a href="/media/media/Screenshot_2021-07-13_at_11.59.54_AM.png">media/Screenshot_2021-07-13_at_11.59.54_AM.png</a>#}
+{#            <input type="checkbox" name="thumbnail-clear" id="thumbnail-clear_id">#}
+{#            <label for="thumbnail-clear_id">Clear</label><br>#}
+{#                Change:#}
+{#            <input type="file" name="thumbnail" accept="image/*" class="clearablefileinput form-control-file" id="id_thumbnail"> </div> </div> <div class="form-group"> <div id="div_id_is_checked" class="form-check"> <input type="checkbox" name="is_checked" class="checkboxinput form-check-input" id="id_is_checked" checked=""> <label for="id_is_checked" class="form-check-label">#}
+{#                    Is checked#}
+{#            </label> </div> </div> <div class="form-group"> <div id="div_id_is_complete" class="form-check"> <input type="checkbox" name="is_complete" class="checkboxinput form-check-input" id="id_is_complete" checked=""> <label for="id_is_complete" class="form-check-label">#}
+{#                    Is complete#}
+{#            </label> </div> </div> <div id="div_id_author" class="form-group"> <label for="id_author" class="">#}
+{#                Author#}
+{#            </label> <div class="">#}
+{#            <select name="author" class="select form-control" id="id_author"> <option value="">---------</option> <option value="4">Sagar kamble</option> <option value="5">Darshan Mahajan</option> <option value="6">Kumar Misal</option> <option value="7">Rahul Sawant</option> <option value="8" selected="">Ruchi Manchekar</option> <option value="9">Akshay Mane</option> <option value="10">Rajeshwari Vankit</option> <option value="11">Nilisha Phad</option>#}
+{##}
+{#</select> </div> </div> <div id="div_id_language" class="form-group"> <label for="id_language" class=" requiredField">#}
+{#                Language<span class="asteriskField">*</span> </label> <div class=""> <select name="language" class="select form-control" id="id_language"> <option value="English" selected="">English</option> <option value="Marathi">Marathi</option>#}
+{##}
+{#</select> </div> </div> <div id="div_id_category" class="form-group"> <label for="id_category" class="">#}
+{#                Category#}
+{#            </label> <div class=""> <select name="category" class="select form-control" id="id_category"> <option value="" selected="">---------</option> <option value="1">Metal</option> <option value="2">Category2</option> <option value="3">Category3</option>#}
+{##}
+{#</select> </div> </div>#}
+{##}
+{##}
+{#        </fieldset>#}
+{#        <div class="form-group">#}
+{#            <button class="btn btn-outline-info" type="submit">Update</button>#}
+{#        </div>#}
+{#    </form>#}
+{##}
+{#    <a class="btn btn-outline-info" href="/addIndex/testR">ADD NEW INDEX</a>#}
+{#</div>#}
+
