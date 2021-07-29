@@ -162,3 +162,16 @@
     -o-filter: grayscale(100%);
   }
 }
+
+.dropdown-menu {
+  position: absolute;
+  top: 35px;
+  left: 10px;
+  display: none;
+}
+.dropdown-navbar:hover .dropdown-menu {
+  display: block;
+}
+.dropdown-menu:hover {
+  display: block;
+}

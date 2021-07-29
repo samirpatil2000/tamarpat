@@ -92,7 +92,7 @@
               focus:text-gray-900
 
               focus:bg-gray-200 focus:outline-none focus:shadow-outline
-            " href="{% url 'authors' %}">Our Wordsmiths</a>
+            " href="{% url 'authors' %}">Wordsmiths</a>
         <a class="
               px-4
               py-2
@@ -105,9 +105,17 @@
               md:mt-0 md:ml-4
               hover:text-gray-900
               focus:text-gray-900
-
+              dropdown-navbar
               focus:bg-gray-200 focus:outline-none focus:shadow-outline
-            " href="{% url 'opportunity' %}">Opportunities</a>
+              relative
+            " href="{% url 'opportunity' %}">Opportunities
+            <div class="dropdown-menu">
+            <p class="px-4 py-2 block"></p> 
+            <p class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400">COMPETITIONS</p> 
+            <p class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400">SCHOLARSHIPS</p> 
+            <p class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400">CAREER</p>
+            </div>
+          </a>
         <a class="
               px-4
               py-2
@@ -121,7 +129,7 @@
               hover:text-gray-900
               focus:text-gray-900
               focus:bg-gray-200 focus:outline-none focus:shadow-outline
-            " href="{% url 'publish' %}">Publish</a>
+            " href="{% url 'publish' %}">Submit</a>
           {% if request.user.is_superuser %}
               <a class="
               px-4
