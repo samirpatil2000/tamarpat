@@ -108,12 +108,13 @@
               dropdown-navbar
               focus:bg-gray-200 focus:outline-none focus:shadow-outline
               relative
-            " href="{% url 'opportunity' %}">Opportunities
+            ">Opportunities
             <div class="dropdown-menu">
             <p class="px-4 py-2 block"></p> 
-            <p class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400">COMPETITIONS</p> 
-            <p class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400">SCHOLARSHIPS</p> 
-            <p class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400">CAREER</p>
+            <p class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'competition' %}">COMPETITIONS</p>
+            <p class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'scholarships' %}">SCHOLARSHIPS</p>
+            <p class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'career' %}">CAREER</p>
+
             </div>
           </a>
         <a class="
