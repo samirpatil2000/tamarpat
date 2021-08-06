@@ -1,6 +1,6 @@
 from django import  forms
 
-from .models import Blog, Images, ThesisProject, ThesisIndex, Competition, Scholarship, Career,Author
+from .models import Blog, Images, ThesisProject, ThesisIndex, Competition, Scholarship, Career,Author,Exam
 
 
 class BlogForm(forms.ModelForm):
@@ -100,6 +100,11 @@ class CreateCareerForm(forms.ModelForm):
         model=Career
         fields='__all__'
         exclude = ('date','slug')
+
+class CreateExamForm(forms.ModelForm):
+    class Meta:
+        model=Exam
+        exclude = ('date', 'slug')
 
 class UpdateCompletionForm(forms.ModelForm):
     class Meta:

@@ -166,22 +166,18 @@
             <li>Career</li>
           </ol> -->
           <ul class="list-disc list-outside pl-8 my-2 pl-4 pb-4 py-2">
-
-           <li class="font-semibold mb-2">MH-AAC-CET</li>
-           <li class="font-semibold mb-2">VISVA-BHARATI (SHANTINIKETAN)  COLLEGE </li>
-              <li class="font-semibold mb-2">MSU-BARODA FINE ART</li>
-                <li class="font-semibold mb-2">NID/NIFT</li>
-                  <li class="font-semibold mb-2">UCEED/CEED</li>
+            {% for e in exams %}
+                <li class="mb-2"><a class="font-semibold" href="{% url 'exams_detail' e.slug %}">{{ e.title }}</a></li>
+            {% endfor %}
           </ul>
         </div>
         <div class="rounded overflow-hidden shadow-lg text-left bg-white" href="{% url 'publish' %}">
           <p class="font-bold text-2xl mb-2 text-center  bg-teal-600 py-2 h-20 text-white flex items-center justify-center">Publish Your Work Now</p>
           <ul class="list-disc list-inside pl-4 py-2">
-            
-            <li class="font-semibold  mb-2">THESIS</li>
-            <li class="font-semibold  mb-2">DISSERTATION</li>
-            <li class="font-semibold  mb-2">ART RELATED RESEARCH PAPERS</li>
-            <li class="font-semibold  mb-2">ART PROJECTS</li>
+            <li class="mb-2"><a class="font-semibold" href="{% url 'publish' %}">THESIS</a></li>
+            <li class="mb-2"><a class="font-semibold" href="{% url 'publish' %}">DISSERTATION</a></li>
+            <li class="mb-2"><a class="font-semibold" href="{% url 'publish' %}">ART RELATED RESEARCH PAPERS</a></li>
+            <li class="mb-2"><a class="font-semibold" href="{% url 'publish' %}">ART PROJECTS</a></li>
           </ul>
         </div>
       </div>

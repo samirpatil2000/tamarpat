@@ -12,8 +12,9 @@ from .models import (ThesisProject,
                      Subscriber,
                      Scholarship,
                      Career,
-ThesisIndex,
-Type
+                    Exam,
+                    ThesisIndex,
+                    Type
                      )
 
 
@@ -42,6 +43,7 @@ class ThesisProjectAdmin(admin.ModelAdmin):
 admin.site.register(Author)
 admin.site.register(ThesisFiles)
 admin.site.register(Category)
+admin.site.register(Exam)
 
 
 admin.site.register(Subscriber)

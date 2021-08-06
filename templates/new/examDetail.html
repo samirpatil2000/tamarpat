@@ -1,0 +1,29 @@
+{% extends 'new/base.html' %}
+{% load  static %}
+{% block title %}TAMARPAT{% endblock %}
+{% block content %}
+    <main class="flex-grow px-4 md:px-0">
+    <section class="flex flex-col items-center pb-10 max-w-6xl mx-auto mt-20 ">
+            <div>
+                <h1 class="font-bold text-3xl mb-5">{{ object.title }}
+                </h1>
+{#                <a class="btn#}
+{#                          text-white#}
+{#                          bg-teal-600#}
+{#                          hover:bg-teal-700#}
+{#                          shadow" href="{% url 'edit_scholarships' obj.id %}"> Edit </a>#}
+                <img class="w-full max-w-lg my-4" src="{{ object.thumbnail.url }}" alt="">
+                <p>
+                    {{ object.desc|safe }}
+                </p>
+                <p>
+                  Official Website : <a class="underline text-blue-600 bg-teal-100
+                  px-2 py-1 rounded" href="{{ object.url }}
+                  ">Link</a>
+                </p>
+            </div>
+          <hr style="height:2px;background-color: rgba(128, 128, 128, 0.459);" class="my-10">
+    </section>
+</main>
+
+{% endblock %}

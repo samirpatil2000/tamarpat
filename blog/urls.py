@@ -9,6 +9,7 @@ urlpatterns = [
     path('competition/',views.competition,name='competition'),
     path('scholarships/',views.scholarships,name='scholarships'),
     path('career/',views.career,name='career'),
+    path('exams-detail/<str:slug>',views.examDetailsView,name='exams_detail'),
 
     path('publish/',views.publish,name='publish'),
     path('detailPage/<str:slug>',views.detailPage,name='detailPage'),
@@ -25,6 +26,7 @@ urlpatterns = [
     path('add/competition/',views.addCompetions,name='add_competitions'),
     path('add/scholarships/',views.addScholarship,name='add_scholarship'),
     path('add/career/',views.addCareer,name='add_career'),
+    path('add/entrance-exam/',views.addEntranceExam,name='add_entrance_exam'),
 
     # add author
     path('add/author/',views.addAuthor,name='add_author'),

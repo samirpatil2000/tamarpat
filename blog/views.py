@@ -12,19 +12,20 @@ from .forms import (ImageForm,
 
                     UpdateThesisProjectForm,
                     UpdateThesisIndexForm,
-UpdateCareerForm,UpdateCompletionForm,UpdateScholarshipForm,AddAuthorForm
+UpdateCareerForm,UpdateCompletionForm,UpdateScholarshipForm,AddAuthorForm,CreateExamForm
                     )
 
 from .models import (ThesisFiles,Category,
                      ThesisProject,Subscriber,
                      Competition,Scholarship,
-                     Career,ThesisIndex,
+                     Career,ThesisIndex,Exam,
                      Author)
 import datetime
 
 def index(request):
     context={
         'objects':ThesisProject.objects.filter(is_checked=True)[:3],
+        'exams':Exam.objects.filter(is_checked=True),
         'english_projects':ThesisProject.objects.filter(language__contains="English",is_checked=True),
         'marathi_projects':ThesisProject.objects.filter(language__contains="Marathi",is_checked=True)
     }
@@ -73,6 +74,16 @@ def career(request):
         'objects':Career.objects.all().filter(is_checked=True)
     }
     return render(request,'new/career.html',context)
+
+
+
+def exam(request):
+    context={
+        'objects':Exam.objects.all().filter(is_checked=True)
+    }
+    return render(request,'new/career.html',context)
+# def ListView(request,career=False,thesis=False,scholarship=False,):
+
 
 
 def publish(request):
@@ -165,6 +176,12 @@ def authorDetailView(request,email):
         'user':Author.objects.get(user__email=email)
     }
     return render(request,'new/author.html')
+
+def examDetailsView(request,slug):
+    context={
+        'object':Exam.objects.get(slug=slug)
+    }
+    return render(request,'new/examDetail.html',context)
 
 def add(request):
     return render(request,'new/add.html')
@@ -285,7 +302,7 @@ def addCompetions(request):
         form=CreateCompitationsForm(request.POST or None,request.FILES or None)
         if form.is_valid():
             proj=form.save(commit=False)
-            proj.slug=createSlug(proj.name_of_index)
+            proj.slug=createSlug(proj.title)
             form.save()
             return redirect('competition')
     context={
@@ -303,7 +320,7 @@ def addCareer(request):
         form=CreateCareerForm(request.POST or None,request.FILES or None)
         if form.is_valid():
             proj=form.save(commit=False)
-            proj.slug=createSlug(proj.name_of_index)
+            proj.slug=createSlug(proj.title)
             form.save()
             return redirect('career')
     context={
@@ -340,7 +357,7 @@ def addScholarship(request):
         form=CreateScholarshipForm(request.POST or None,request.FILES or None)
         if form.is_valid():
             proj=form.save(commit=False)
-            proj.slug=createSlug(proj.name_of_index)
+            proj.slug=createSlug(proj.title)
             form.save()
             return redirect('scholarships')
     context={
@@ -348,6 +365,7 @@ def addScholarship(request):
         'form':form,
     }
     return render(request,'new/add_new.html',context)
+
 
 def updateCompetitions(request,id):
     form=UpdateCompletionForm()
@@ -448,3 +466,22 @@ def deleteThesisProjet(request,thesis_slug):
         return redirect('thesisListView')
     # except Exception as e:
     #     return redirect('thesisListView')
+
+
+def addEntranceExam(request):
+    form=CreateExamForm()
+
+    # if not request.user.is_authenticated:
+
+    if request.method=="POST":
+        form=CreateExamForm(request.POST or None,request.FILES or None)
+        if form.is_valid():
+            proj=form.save(commit=False)
+            proj.slug=createSlug(proj.title)
+            form.save()
+            return redirect('index')
+    context={
+        'work':'ADD Entrance Exam',
+        'form':form,
+    }
+    return render(request,'new/add_new.html',context)

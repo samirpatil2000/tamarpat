@@ -59,12 +59,11 @@ class ThesisIndex(models.Model):
                                  )
     name_of_index = models.CharField(max_length=100,default="Title")
     content = RichTextField(default='content here', blank=True, null=True)
-
     def __str__(self):
         return self.name_of_index
-
     class Meta:
         verbose_name_plural="ThesisIndex's"
+
 
 class Scholarship(BaseModel):
     desc = RichTextField(default="Text here", blank=True, null=True)
@@ -77,6 +76,12 @@ class Career(BaseModel):
     url=models.URLField(blank=True,null=True)
     class Meta:
         verbose_name_plural="Career's"
+
+class Exam(BaseModel):
+    desc = RichTextField(default="Text here", blank=True, null=True)
+    url=models.URLField(blank=True,null=True)
+    class Meta:
+        verbose_name_plural="Entrance Exam's"
 
 LANGUAGE = (
     ('English', 'English'),
