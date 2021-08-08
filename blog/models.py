@@ -29,7 +29,6 @@ class BaseModel(models.Model):
     slug=models.SlugField(unique=True,blank=True,null=True)
     is_checked=models.BooleanField(default=True)
     is_complete=models.BooleanField(default=True)
-
     # is_delete=models.BooleanField(default=True)
 
     def __str__(self):return self.title
@@ -93,7 +92,7 @@ class ThesisProject(BaseModel):
     author=models.ForeignKey(Author,on_delete=models.SET_NULL,blank=True,null=True)
     language=models.CharField(choices=LANGUAGE,max_length=10,default=LANGUAGE[0][0])
     category=models.ForeignKey('Category',blank=True,null=True,on_delete=models.SET_NULL)
-
+    pdf_url=models.URLField(blank=True,null=True)
     class Meta:
         verbose_name_plural="Thesis Project's"
 

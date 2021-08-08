@@ -223,7 +223,7 @@ def addIndexTOThesisProject(request,proj_slug):
         'slug':proj_slug,
         'project':project,
     }
-    return render(request,'new/addIndexTOThesis.html',context)
+    return render(request, 'new/NotInUse/addIndexTOThesis.html', context)
 
 def addThesisProject(request):
     form=CreateThesisForm()
@@ -291,7 +291,7 @@ def editThesisIndex(request,thesis_slug,id):
         'slug':thesis_slug,
         'id':id,
     }
-    return render(request,'new/updateThesisIndex.html',context)
+    return render(request, 'new/NotInUse/updateThesisIndex.html', context)
 
 def addCompetions(request):
     form=CreateCompitationsForm()
