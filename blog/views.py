@@ -443,7 +443,6 @@ def updateExam(request, id):
     form = UpdateExamForm(
         initial={
             "title": current_object.title,
-            "thumbnail": current_object.thumbnail,
             "is_checked": current_object.is_checked,
             "is_complete": current_object.is_complete,
             "desc": current_object.desc,

@@ -17,11 +17,11 @@
 {#                          bg-teal-600#}
 {#                          hover:bg-teal-700#}
 {#                          shadow" href="{% url 'edit_scholarships' obj.id %}"> Edit </a>#}
-                {% if object.thumbnail %}
-                    <img class="w-full max-w-lg my-4" src="{{ object.thumbnail.url }}" alt="">
-                {% else %}
-                    <img class="w-full max-w-lg my-4" src="{% static 'no-image.jpg' %}" alt="">
-                {% endif  %}
+{#                {% if object.thumbnail %}#}
+{#                    <img class="w-full max-w-lg my-4" src="{{ object.thumbnail.url }}" alt="">#}
+{#                {% else %}#}
+{#                    <img class="w-full max-w-lg my-4" src="{% static 'no-image.jpg' %}" alt="">#}
+{#                {% endif  %}#}
                 <p>
                     {{ object.desc|safe }}
                 </p>
