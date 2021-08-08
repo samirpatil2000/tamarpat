@@ -2,16 +2,35 @@
 {% load  static %}
 {% block title %}TAMARPAT{% endblock %}
 {% block content %}
-    <div class="container">
-    <h2>{{ object.title }}</h2>
-        {% if object.pdf_url %}
-            <iframe src="{{ object.pdf_url }}"
+<main class="flex-grow bg-tur" xmlns="http://www.w3.org/1999/html">
+
+    <section class="flex flex-col items-center pb-10 max-w-6xl mx-auto mt-20">
+
+        <h2>{{ object.title }}</h2>
+        {% if object.pdf %}
+            <h2>Pdf</h2>
+            <iframe src="{{ object.pdf.url }}"
                     width="100%" height="500px">
             </iframe>
-        {% else %}
-            <iframe src="/uploads/media/default/0001/01/540cb75550adf33f281f29132dddd14fded85bfc.pdf#toolbar=0"
-                    width="100%" height="500px">
+        {% elif object.pdf_url %}
+            <h2>Url</h2>
+            <iframe src="{{ object.pdf_url }}#toolbar=0"
+                width="100%" height="500px">
             </iframe>
         {% endif  %}
-    </div>
+    <h2>Hard - Google Drive</h2>
+    <iframe src="https://drive.google.com/file/d/1Gwp42UTzSf2y9lnQjVQdeto0A7mK1SAJ/view?usp=sharing"
+                    width="100%" height="500px">
+    </iframe>
+    <h2>Hard - Github</h2>
+    <iframe src="https://github.com/rushichandgude/ThesisProject/blob/ecd580483959c1617296a741fe89de040c264415/Introduction_to_algorithms-3rd%20Edition.pdf"
+                    width="100%" height="500px">
+    </iframe>
+    <h2>Test</h2>
+    <iframe src="https://www.w3docs.com/uploads/media/default/0001/01/540cb75550adf33f281f29132dddd14fded85bfc.pdf#toolbar=0"
+                    width="100%" height="500px">
+            </iframe>
+    </section>
+</main>
+
 {% endblock %}

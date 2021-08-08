@@ -93,6 +93,7 @@ class ThesisProject(BaseModel):
     language=models.CharField(choices=LANGUAGE,max_length=10,default=LANGUAGE[0][0])
     category=models.ForeignKey('Category',blank=True,null=True,on_delete=models.SET_NULL)
     pdf_url=models.URLField(blank=True,null=True)
+    pdf=models.FileField(blank=True,null=True,upload_to='media/thesis')
     class Meta:
         verbose_name_plural="Thesis Project's"
 
