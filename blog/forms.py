@@ -165,3 +165,23 @@ class UpdateCareerForm(forms.ModelForm):
         if commit:
             obj.save()
         return obj
+
+
+class UpdateExamForm(forms.ModelForm):
+    class Meta:
+        model=Exam
+        fields='__all__'
+        exclude = ('date','slug')
+
+    def save(self, commit=True):
+        obj = self.instance
+        obj.title=self.cleaned_data['title']
+        obj.thumbnail=self.cleaned_data['thumbnail']
+        obj.is_checked=self.cleaned_data['is_checked']
+        obj.is_complete=self.cleaned_data['is_complete']
+        obj.desc=self.cleaned_data['desc']
+        obj.url=self.cleaned_data['url']
+
+        if commit:
+            obj.save()
+        return obj

@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .models import Competition
 
 urlpatterns = [
     path('',views.index,name='index'),
@@ -35,6 +36,7 @@ urlpatterns = [
     path('u/competition/<int:id>/',views.updateCompetitions,name='edit_competition'),
     path('u/scholarships/<int:id>/',views.updateScholarship,name='edit_scholarships'),
     path('u/career/<int:id>/',views.updateCareer,name='edit_career'),
+    path('u/exam/<int:id>/',views.updateExam,name='edit_exam'),
 
     # update
     path('u/<str:proj_slug>',views.editThesisPoject,name='edit_thesis'),
@@ -43,5 +45,12 @@ urlpatterns = [
     # delete
     path('delete/<str:thesis_slug>/<int:index_id>',views.deleteThesisIndex,name='delete_thesisIndex'),
     path('delete/<str:thesis_slug>',views.deleteThesisProjet,name='delete_thesis'),
+
+
+    path('delete/competition/<int:id>/',views.deleteCompetitions,name='delete_competition'),
+    path('delete/scholarships/<int:id>/',views.deleteScholarship,name='delete_scholarships'),
+    path('delete/career/<int:id>/',views.deleteCareer,name='delete_career'),
+    path('delete/exam/<int:id>/',views.deleteExam,name='delete_exam'),
+
 
 ]

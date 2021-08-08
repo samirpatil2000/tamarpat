@@ -17,7 +17,11 @@
               panel of jurors and more than $55,000 in valuable prizes, it is open to visual artists from Asia at any stage
               of their careers. Painting, sculpture, photography, drawing, mixed media, and print are the accepted mediums.
             </p>
-            <img class="w-full max-w-lg my-4" src="{{ obj.thumbnail.url }}" alt="">
+            {% if object.thumbnail %}
+                    <img class="w-full max-w-lg my-4" src="{{ object.thumbnail.url }}" alt="">
+                {% else %}
+                    <img class="w-full max-w-lg my-4" src="{% static 'no-image.jpg' %}" alt="">
+            {% endif  %}
             <div class="
                 my-5
                 grid grid-cols-1

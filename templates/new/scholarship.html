@@ -14,8 +14,11 @@
                           bg-teal-600
                           hover:bg-teal-700
                           shadow" href="{% url 'edit_scholarships' obj.id %}"> Edit </a>
-                <img class="w-full max-w-lg my-4" src="{{ obj.thumbnail.url }}" alt="">
-                <p>
+                {% if obj.thumbnail %}
+                    <img class="w-full max-w-lg my-4" src="{{ obj.thumbnail.url }}" alt="">
+                {% else %}
+                    <img class="w-full max-w-lg my-4" src="{% static 'no-image.jpg' %}" alt="">
+                {% endif  %}                <p>
                     {{ obj.desc|safe }}
                 </p>
                 <p>

@@ -12,7 +12,8 @@ from .forms import (ImageForm,
 
                     UpdateThesisProjectForm,
                     UpdateThesisIndexForm,
-UpdateCareerForm,UpdateCompletionForm,UpdateScholarshipForm,AddAuthorForm,CreateExamForm
+
+UpdateCareerForm,UpdateCompletionForm,UpdateScholarshipForm,AddAuthorForm,CreateExamForm,UpdateExamForm
                     )
 
 from .models import (ThesisFiles,Category,
@@ -187,11 +188,18 @@ def add(request):
     return render(request,'new/add.html')
 
 def createSlug(title):
+    list_=[]
     slug_=""
+    import random
     for i in title:
         if i!=" ":
-            if ord(i)>=97:slug_+=i
-            else:slug_+=chr(ord(i)+32)
+            if ord(i)>=97:
+                slug_+=i
+            elif ord(i)<=122:
+                slug_ += chr(ord(i) + 32)
+            else:
+                x=random.randint(97,122)
+                slug_+=str(chr(x))
         else:slug_+="-"
     return slug_
 
@@ -207,23 +215,6 @@ def createSlug(title):
 #     return render(request,'')
 
 
-def addIndexTOThesisProject(request,proj_slug):
-    project=ThesisProject.objects.get(slug=proj_slug)
-    form=CreateThesisIndexForm()
-
-    if request.POST:
-        form=CreateThesisIndexForm(request.POST or None,request.FILES or None)
-        if form.is_valid():
-            index=form.save(commit=False)
-            index.save()
-            project.desc.add(index)
-            return redirect('detailPage',proj_slug)
-    context={
-        'form':form,
-        'slug':proj_slug,
-        'project':project,
-    }
-    return render(request, 'new/NotInUse/addIndexTOThesis.html', context)
 
 def addThesisProject(request):
     form=CreateThesisForm()
@@ -241,7 +232,6 @@ def addThesisProject(request):
         'form':form,
     }
     return render(request,'new/addThesisProject.html',context)
-
 def editThesisPoject(request,proj_slug):
     update_form=UpdateThesisProjectForm()
     current_project=ThesisProject.objects.get(slug=proj_slug)
@@ -268,30 +258,7 @@ def editThesisPoject(request,proj_slug):
     }
     return render(request,'new/updateThesisProject.html',context)
 
-def editThesisIndex(request,thesis_slug,id):
-    update_form=UpdateThesisIndexForm()
-    current_index=ThesisIndex.objects.get(id=id)
 
-    if request.POST:
-        update_form=UpdateThesisIndexForm(request.POST or None,request.FILES or None,instance=current_index)
-        if update_form.is_valid():
-            index=update_form.save(commit=False)
-            index.save()
-            return redirect('detailPage',thesis_slug)
-    update_form=UpdateThesisIndexForm(
-        initial={
-            "index_no":current_index.index_no,
-            "name_of_index":current_index.name_of_index,
-            "content":current_index.content,
-        }
-    )
-    context={
-        'work': 'Update',
-        'form':update_form,
-        'slug':thesis_slug,
-        'id':id,
-    }
-    return render(request, 'new/NotInUse/updateThesisIndex.html', context)
 
 def addCompetions(request):
     form=CreateCompitationsForm()
@@ -310,7 +277,6 @@ def addCompetions(request):
         'form':form,
     }
     return render(request,'new/add_new.html',context)
-
 def addCareer(request):
     form=CreateCareerForm()
 
@@ -328,7 +294,6 @@ def addCareer(request):
         'form':form,
     }
     return render(request, 'new/add_new.html', context)
-
 def addAuthor(request):
     form=AddAuthorForm()
 
@@ -345,9 +310,6 @@ def addAuthor(request):
         'form':form,
     }
     return render(request, 'new/add_new.html', context)
-
-
-
 def addScholarship(request):
     form=CreateScholarshipForm()
 
@@ -362,6 +324,23 @@ def addScholarship(request):
             return redirect('scholarships')
     context={
         'work':'ADD Scholarship',
+        'form':form,
+    }
+    return render(request,'new/add_new.html',context)
+def addEntranceExam(request):
+    form=CreateExamForm()
+
+    # if not request.user.is_authenticated:
+
+    if request.method=="POST":
+        form=CreateExamForm(request.POST or None,request.FILES or None)
+        if form.is_valid():
+            proj=form.save(commit=False)
+            proj.slug=createSlug(proj.title)
+            form.save()
+            return redirect('index')
+    context={
+        'work':'ADD Entrance Exam',
         'form':form,
     }
     return render(request,'new/add_new.html',context)
@@ -393,9 +372,10 @@ def updateCompetitions(request,id):
     context={
         'work':'Update Competition',
         'form':form,
+        'id': id,
+        'url': 'delete_competition'
     }
     return render(request,'new/add_new.html',context)
-
 def updateScholarship(request,id):
     form=UpdateScholarshipForm()
     current_object=Scholarship.objects.get(id=id)
@@ -419,9 +399,10 @@ def updateScholarship(request,id):
     context={
         'work':'Update Scholarship',
         'form':form,
+        'id': id,
+        'url': 'delete_scholarships'
     }
     return render(request,'new/add_new.html',context)
-
 def updateCareer(request,id):
     form=UpdateCareerForm()
     current_object=Career.objects.get(id=id)
@@ -445,16 +426,38 @@ def updateCareer(request,id):
     context={
         'work':'Update Career',
         'form':form,
+        'id': id,
+        'url': 'delete_career'
     }
     return render(request, 'new/add_new.html', context)
+def updateExam(request, id):
+    form = UpdateExamForm()
+    current_object = Exam.objects.get(id=id)
+    if request.method == "POST":
+        form = UpdateExamForm(request.POST or None, request.FILES or None, instance=current_object)
+        if form.is_valid():
+            update = form.save(commit=False)
+            update.save()
+            return redirect('exams_detail', update.slug)
 
-def deleteThesisIndex(request,thesis_slug,index_id):
-    try:
-        obj=ThesisIndex.objects.get(id=index_id)
-        obj.delete()
-        return redirect('detailPage',thesis_slug)
-    except Exception as e:
-        return redirect('detailPage',thesis_slug)
+    form = UpdateExamForm(
+        initial={
+            "title": current_object.title,
+            "thumbnail": current_object.thumbnail,
+            "is_checked": current_object.is_checked,
+            "is_complete": current_object.is_complete,
+            "desc": current_object.desc,
+            "url": current_object.url,
+        }
+    )
+
+    context = {
+        'work': 'Update Entrance Exam',
+        'form': form,
+        'id': id,
+        'url': 'delete_exam'
+    }
+    return render(request, 'new/add_new.html', context)
 
 def deleteThesisProjet(request,thesis_slug):
     # try:
@@ -467,21 +470,71 @@ def deleteThesisProjet(request,thesis_slug):
     # except Exception as e:
     #     return redirect('thesisListView')
 
+def deleteCompetitions(request,id,Object):
+    current_object=Object.objects.get(id=id)
+    current_object.delete()
+    return redirect('index')
+def deleteScholarship(request,id):
+    current_object=Scholarship.objects.get(id=id)
+    current_object.delete()
+    return redirect('index')
+def deleteCareer(request,id):
+    current_object=Career.objects.get(id=id)
+    current_object.delete()
+    return redirect('index')
+def deleteExam(request, id):
+    current_object = Exam.objects.get(id=id)
+    current_object.delete()
+    return redirect('index')
 
-def addEntranceExam(request):
-    form=CreateExamForm()
 
-    # if not request.user.is_authenticated:
 
-    if request.method=="POST":
-        form=CreateExamForm(request.POST or None,request.FILES or None)
-        if form.is_valid():
-            proj=form.save(commit=False)
-            proj.slug=createSlug(proj.title)
-            form.save()
-            return redirect('index')
+#TO REMOVE
+def deleteThesisIndex(request,thesis_slug,index_id):
+    try:
+        obj=ThesisIndex.objects.get(id=index_id)
+        obj.delete()
+        return redirect('detailPage',thesis_slug)
+    except Exception as e:
+        return redirect('detailPage',thesis_slug)
+def editThesisIndex(request,thesis_slug,id):
+    update_form=UpdateThesisIndexForm()
+    current_index=ThesisIndex.objects.get(id=id)
+
+    if request.POST:
+        update_form=UpdateThesisIndexForm(request.POST or None,request.FILES or None,instance=current_index)
+        if update_form.is_valid():
+            index=update_form.save(commit=False)
+            index.save()
+            return redirect('detailPage',thesis_slug)
+    update_form=UpdateThesisIndexForm(
+        initial={
+            "index_no":current_index.index_no,
+            "name_of_index":current_index.name_of_index,
+            "content":current_index.content,
+        }
+    )
     context={
-        'work':'ADD Entrance Exam',
-        'form':form,
+        'work': 'Update',
+        'form':update_form,
+        'slug':thesis_slug,
+        'id':id,
     }
-    return render(request,'new/add_new.html',context)
+    return render(request, 'new/NotInUse/updateThesisIndex.html', context)
+def addIndexTOThesisProject(request,proj_slug):
+    project=ThesisProject.objects.get(slug=proj_slug)
+    form=CreateThesisIndexForm()
+
+    if request.POST:
+        form=CreateThesisIndexForm(request.POST or None,request.FILES or None)
+        if form.is_valid():
+            index=form.save(commit=False)
+            index.save()
+            project.desc.add(index)
+            return redirect('detailPage',proj_slug)
+    context={
+        'form':form,
+        'slug':proj_slug,
+        'project':project,
+    }
+    return render(request, 'new/NotInUse/addIndexTOThesis.html', context)

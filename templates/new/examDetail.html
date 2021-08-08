@@ -7,12 +7,21 @@
             <div>
                 <h1 class="font-bold text-3xl mb-5">{{ object.title }}
                 </h1>
+                <a class="btn
+                          text-white
+                          bg-teal-600
+                          hover:bg-teal-700
+                          shadow" href="{% url 'edit_exam' object.id %}"> Edit </a>
 {#                <a class="btn#}
 {#                          text-white#}
 {#                          bg-teal-600#}
 {#                          hover:bg-teal-700#}
 {#                          shadow" href="{% url 'edit_scholarships' obj.id %}"> Edit </a>#}
-                <img class="w-full max-w-lg my-4" src="{{ object.thumbnail.url }}" alt="">
+                {% if object.thumbnail %}
+                    <img class="w-full max-w-lg my-4" src="{{ object.thumbnail.url }}" alt="">
+                {% else %}
+                    <img class="w-full max-w-lg my-4" src="{% static 'no-image.jpg' %}" alt="">
+                {% endif  %}
                 <p>
                     {{ object.desc|safe }}
                 </p>
