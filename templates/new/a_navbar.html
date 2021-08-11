@@ -3,14 +3,12 @@
   sticky top-0 left-0 z-50
         navbar
         w-full
-        text-gray-700
-        bg-white
+        text-gray-900
         shadow
-        md:bg-opacity-90
         transition
         duration-300
         ease-in-out
-        bg-nav-tur
+        bg-yellow-200
         blur
         shadow-lg
       ">
@@ -27,25 +25,11 @@
               text-lg
               font-bold
               tracking-widest
-              text-gray-900
+              text-black
               uppercase
               rounded-lg
               focus:outline-none focus:shadow-outline
             ">Tamrapat</a>
-          <a class="
-              px-4
-              py-2
-              mt-2
-              text-sm
-              font-semibold
-              bg-transparent
-              rounded-lg
-              md:mt-0 md:ml-4
-              hover:text-gray-900
-              focus:text-gray-900
-
-              focus:bg-gray-200 focus:outline-none focus:shadow-outline
-            " href="{% url 'index' %}">Home</a>
         <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
           <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
             <path x-show="!open" fill-rule="evenodd"
@@ -70,13 +54,10 @@
               mt-2
               text-sm
               font-semibold
-              text-gray-900
-
               rounded-lg
               md:mt-0
               hover:text-gray-900
               focus:text-gray-900
-
               focus:bg-gray-200 focus:outline-none focus:shadow-outline
             " href="{% url 'thesisListView' %}">Library</a>
         <a class="
@@ -93,13 +74,12 @@
 
               focus:bg-gray-200 focus:outline-none focus:shadow-outline
             " href="{% url 'authors' %}">Wordsmiths</a>
-        <a class="
+        <div class="
               px-4
               py-2
               mt-2
               text-sm
               font-semibold
-              bg-transparent
               rounded-lg
 
               md:mt-0 md:ml-4
@@ -110,12 +90,12 @@
               relative
             ">Opportunities
             <div class="dropdown-menu">
-                <p class="px-4 py-2 block"></p>
-                <p class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'competition' %}">COMPETITIONS</p>
-                <p class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'scholarships' %}">SCHOLARSHIPS</p>
-                <p class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'career' %}">CAREER</p>
+                
+                <a class="px-8 py-4 block bg-yellow-100 border hover:bg-gray-100" href="{% url 'competition' %}">Competitions</a>
+                <a class="px-8 py-4 block bg-yellow-100 border hover:bg-gray-100" href="{% url 'scholarships' %}">Scholarships</a>
+                <a class="px-8 py-4 block bg-yellow-100 border hover:bg-gray-100" href="{% url 'career' %}">Carrer</a>
             </div>
-          </a>
+          </div>
         <a class="
               px-4
               py-2
