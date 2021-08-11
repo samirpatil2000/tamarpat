@@ -2,12 +2,38 @@
 {% load  static %}
 {% block title %}TAMARPAT{% endblock %}
 {% block content %}
-    <main class="flex-grow bg-red-100 relative" xmlns="http://www.w3.org/1999/html">
+<!-- <style>
+  .tam{
+    position: absolute;
+    top: 7%;
+    left: 3%;
+    letter-spacing: .3em;  
+  }
+  .im{
+    box-shadow: 0 0 2px 10px rgb(255, 220, 124),
+    0 0 2px 20px rgb(255, 240, 147),
+    0 0 2px 30px rgb(255, 280, 187)
+    ;
+  }
+  @media screen and (max-width:1000px) {
+    .tam{
+      display: none;
+    }
+    .im{
+      box-shadow: none;
+      
+    }
+  }
+  
+</style> -->
+    <main class="flex-grow bg-yellow-100 relative" xmlns="http://www.w3.org/1999/html">
 
-{#    <img class="absolute " src="{% static '/images/banner.jpg' %}" width="900" style="position: absolute;#}
-    <img class="absolute " src="https://github.com/samirpatil2000/tamarpat/blob/master/static/images/banner.jpg?raw=true" width="700" style="position: absolute;
+{#    <img class="absolute " src="{% static '/images/banner.jpg' %}" width="900" style="position: absolute;"> #}
+    <img class="absolute im" src="https://github.com/samirpatil2000/tamarpat/blob/master/static/images/banner.jpg?raw=true" width="700" style="position: absolute;
     left: 50%;
     transform: translate(-50%, 0);" alt="">
+    <div class="border"></div>
+    <!-- <p class="tam px-2 shadow-lg bg-white text-yellow-200 text-9xl">ताम्रपट</p> -->
 
     <section class="flex flex-col items-center pb-0 md:pb-10 max-w-6xl mx-auto mt-60">
     <form method="get">
@@ -36,8 +62,8 @@
     <div class="mt-4 text-smm px-5 py-2 bg-white text-teal-800 rounded-full z-10">Recent Uploads</div>
       <!-- Cards Container -->
       <div class="
-      z-10
-      p-10
+            z-10
+            p-10
             md:pb-10
             pb-0
             grid grid-cols-1
@@ -49,7 +75,7 @@
           ">
         <!-- Card - 1 -->
           {% for obj in objects %}
-            <div class="rounded overflow-hidden shadow-lg bg-white pb-4">
+            <a href="{{ obj.get_absolute_url }}" class="rounded hover:bg-yellow-200 overflow-hidden shadow-lg bg-white pb-4">
               <div class="text-center">
                 <div class="h-36 overflow-hidden">
                   {% if obj.thumbnail.url %}
@@ -60,35 +86,23 @@
                   {% endif %}
                 </div>
 
-                <div class="py-2">
-                  <p class="font-bold text-xl mb-2" href="{{ obj.get_absolute_url }}">{{ obj.title }} </p>
-                  <p class="text-gray-700 text-base">
+                <div class="py-4">
+                  <p class="font-semibold text-xl mb-2 underline" href="{{ obj.get_absolute_url }}">{{ obj.title }} </p>
+                  <p class="text-gray-900 text-lg my-4">
                     {{ obj.author.full_name }}
                   </p>
                 </div>
-              <a class="
-                      mt-2
-                      btn
-                      text-white
-                      bg-teal-600
-                      hover:bg-teal-700
-                      mb-4
-                      sm:w-auto sm:mb-0
-                      focus:ring-2 focus:ring-teal-500
-
-
-                    " style="width: 120px;" href="{{ obj.get_absolute_url }}">
-                    Read
-                </a>
+              
               </div>
-            </div>
+            </a>
           {% endfor %}
+          
         <!-- Card - 2 -->
     </section>
 
     <!-- English Marathi Starts  -->
 
-    <section class="flex flex-col items-center max-w-6xl mx-auto mt-10 mb-20 px-6">
+    <section class=" flex flex-col items-center max-w-6xl mx-auto mt-10 mb-20 px-6">
       <div class="flex flex-wrap w-full justify-around">
         <div class="shadow rounded flex-start flex-col px-4 py-2 w-full sm:w-96 bg-white md:my-0 pt-6">
           <span class="text-2xl mt-4 px-4 py-2 bg-teal-600 text-white rounded">English</span>

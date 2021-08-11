@@ -1,17 +1,14 @@
-<!-- Navbar -->
-  
+  <!-- Navbar -->
   <div class="
   sticky top-0 left-0 z-50
         navbar
         w-full
-        text-gray-700
-        bg-white
+        text-gray-900
         shadow
-        md:bg-opacity-90
         transition
         duration-300
         ease-in-out
-        bg-nav-tur
+        bg-yellow-200
         blur
         shadow-lg
       ">
@@ -28,25 +25,11 @@
               text-lg
               font-bold
               tracking-widest
-              text-gray-900
+              text-black
               uppercase
               rounded-lg
               focus:outline-none focus:shadow-outline
             ">Tamrapat</a>
-          <a class="
-              px-4
-              py-2
-              mt-2
-              text-sm
-              font-semibold
-              bg-transparent
-              rounded-lg
-              md:mt-0 md:ml-4
-              hover:text-gray-900
-              focus:text-gray-900
-
-              focus:bg-gray-200 focus:outline-none focus:shadow-outline
-            " href="{% url 'index' %}">Home</a>
         <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
           <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
             <path x-show="!open" fill-rule="evenodd"
@@ -67,22 +50,19 @@
           ">
         <a class="
               px-4
-              py-4
+              py-2
               mt-2
               text-sm
               font-semibold
-              text-gray-900
-
               rounded-lg
               md:mt-0
               hover:text-gray-900
               focus:text-gray-900
-
               focus:bg-gray-200 focus:outline-none focus:shadow-outline
             " href="{% url 'thesisListView' %}">Library</a>
         <a class="
               px-4
-              py-4
+              py-2
               mt-2
               text-sm
               font-semibold
@@ -94,56 +74,31 @@
 
               focus:bg-gray-200 focus:outline-none focus:shadow-outline
             " href="{% url 'authors' %}">Wordsmiths</a>
-        <!-- <a class="
+        <div class="
               px-4
               py-2
               mt-2
               text-sm
               font-semibold
-              bg-transparent
               rounded-lg
-              cursor-pointer
+
               md:mt-0 md:ml-4
               hover:text-gray-900
               focus:text-gray-900
-              dropdown
+              dropdown-navbar
               focus:bg-gray-200 focus:outline-none focus:shadow-outline
               relative
-            ">Opportunities</a>
-            <div class="dropdown-menu absolute hidden h-auto flex pt-4 ">
-              <ul class="block w-full bg-white px-12 py-8">
-                <li><a class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'competition' %}">COMPETITIONS</a></li>
-                <li><a class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'scholarships' %}">SCHOLARSHIPS</a></li>
-                <li><a class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'career' %}">CAREER</a></li>   
-              </ul>
-            </div> -->
-            <div x-data="{see: false}" @click.away="see = false">
-              <button @click="see = ! see" class="block text-gray-800 px-4 text-sm py-2 overflow-hidden focus:outline-none">
-                  <div class="flex">
-                      <span class="px-4
-                  py-2
-                  mt-2
-                  text-sm
-                  font-semibold
-                  bg-transparent
-                  rounded-lg
-                  cursor-pointer
-                  md:mt-0 md:ml-4
-                  hover:text-gray-900
-                  focus:text-gray-900
-                  dropdown
-                  focus:bg-gray-200 focus:outline-none focus:shadow-outline">Opportunities</span> 
-                  </div>
-              </button>
-              <div x-show="see" class="absolute z-10 mt-2 py-2 w-48 bg-white rounded-lg shadow-xl">
-                <a class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'competition' %}">COMPETITIONS</a>
-                <a class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'scholarships' %}">SCHOLARSHIPS</a>
-                <a class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'career' %}">CAREER</a>
-              </div>
+            ">Opportunities
+            <div class="dropdown-menu">
+                
+                <a class="px-8 py-4 block bg-yellow-100 border hover:bg-gray-100" href="{% url 'competition' %}">Competitions</a>
+                <a class="px-8 py-4 block bg-yellow-100 border hover:bg-gray-100" href="{% url 'scholarships' %}">Scholarships</a>
+                <a class="px-8 py-4 block bg-yellow-100 border hover:bg-gray-100" href="{% url 'career' %}">Carrer</a>
+            </div>
           </div>
         <a class="
               px-4
-              py-4
+              py-2
               mt-2
               text-sm
               font-semibold
@@ -158,7 +113,7 @@
           {% if request.user.is_superuser %}
               <a class="
               px-4
-              py-4
+              py-2
               mt-2
               text-sm
               font-semibold
