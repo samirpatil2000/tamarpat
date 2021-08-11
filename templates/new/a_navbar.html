@@ -1,13 +1,4 @@
-  <style>
-    .lg{
-      background: rgb(255,246,147);
-background: linear-gradient(90deg, rgba(255,246,147,1) 25%, rgba(255,228,99,1) 63%);}
-      .s{
-        font-size: 10px;
-      }
-  </style>
-<!-- Navbar -->
-  
+  <!-- Navbar -->
   <div class="
   sticky top-0 left-0 z-50
         navbar
@@ -17,7 +8,8 @@ background: linear-gradient(90deg, rgba(255,246,147,1) 25%, rgba(255,228,99,1) 6
         transition
         duration-300
         ease-in-out
-        lg
+        bg-yellow-200
+        blur
         shadow-lg
       ">
     <div x-data="{ open: false }" class="
@@ -35,7 +27,7 @@ background: linear-gradient(90deg, rgba(255,246,147,1) 25%, rgba(255,228,99,1) 6
               tracking-widest
               text-black
               uppercase
-              
+              rounded-lg
               focus:outline-none focus:shadow-outline
             ">Tamrapat</a>
         <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
@@ -58,82 +50,80 @@ background: linear-gradient(90deg, rgba(255,246,147,1) 25%, rgba(255,228,99,1) 6
           ">
         <a class="
               px-4
-              py-4
+              py-2
               mt-2
               text-sm
               font-semibold
-              
+              rounded-lg
               md:mt-0
-              hover:bg-yellow-200
               hover:text-gray-900
               focus:text-gray-900
-              focus:bg-yellow-200 focus:outline-none focus:shadow-outline
+              focus:bg-gray-200 focus:outline-none focus:shadow-outline
             " href="{% url 'thesisListView' %}">Library</a>
         <a class="
               px-4
-              py-4
+              py-2
               mt-2
               text-sm
               font-semibold
               bg-transparent
+              rounded-lg
               md:mt-0 md:ml-4
               hover:text-gray-900
               focus:text-gray-900
-              hover:bg-yellow-200
-              focus:bg-yellow-200 focus:outline-none focus:shadow-outline
-            " href="{% url 'authors' %}">Wordsmiths</a>
 
-            <div x-data="{show: false}" @click.away="show = false">
-              <button @click="show = ! show" class="block text-gray-800 px-4 text-sm py-2 overflow-hidden focus:outline-none">
-                  <div class="flex">
-                      <span class="
-                  
-                  py-2
-                  mt-2
-                  text-sm
-                  font-semibold                  
-                  cursor-pointer
-                  md:mt-0 md:ml-4
-                  hover:text-gray-900
-                  focus:text-gray-900
-                  dropdown
-                  focus:bg-gray-200 focus:outline-none focus:shadow-outline">Opportunities <span class="s">&#9660;</span></span> 
-                  </div>
-              </button>
-              <div x-show="show" class="absolute z-10 w-48
-                  shadow-lg bg-white ">
-                <a class="px-8 py-4 block hover:bg-yellow-100 border bg-white" href="{% url 'competition' %}">Competitions</a>
-                <a class="px-8 py-4 block hover:bg-yellow-100 border bg-white" href="{% url 'scholarships' %}">Scholarships</a>
-                <a class="px-8 py-4 block hover:bg-yellow-100 border bg-white" href="{% url 'career' %}">Carrer</a>
-              </div>
+              focus:bg-gray-200 focus:outline-none focus:shadow-outline
+            " href="{% url 'authors' %}">Wordsmiths</a>
+        <div class="
+              px-4
+              py-2
+              mt-2
+              text-sm
+              font-semibold
+              rounded-lg
+
+              md:mt-0 md:ml-4
+              hover:text-gray-900
+              focus:text-gray-900
+              dropdown-navbar
+              focus:bg-gray-200 focus:outline-none focus:shadow-outline
+              relative
+            ">Opportunities
+            <div class="dropdown-menu">
+                
+                <a class="px-8 py-4 block bg-yellow-100 border hover:bg-gray-100" href="{% url 'competition' %}">Competitions</a>
+                <a class="px-8 py-4 block bg-yellow-100 border hover:bg-gray-100" href="{% url 'scholarships' %}">Scholarships</a>
+                <a class="px-8 py-4 block bg-yellow-100 border hover:bg-gray-100" href="{% url 'career' %}">Carrer</a>
+            </div>
           </div>
         <a class="
               px-4
-              py-4
+              py-2
               mt-2
               text-sm
               font-semibold
               bg-transparent
-              
+              rounded-lg
+
               md:mt-0 md:ml-4
-              hover:bg-yellow-200
               hover:text-gray-900
               focus:text-gray-900
-              focus:bg-yellow-200 focus:outline-none focus:shadow-outline
+              focus:bg-gray-200 focus:outline-none focus:shadow-outline
             " href="{% url 'publish' %}">Submit</a>
           {% if request.user.is_superuser %}
               <a class="
               px-4
-              py-4
+              py-2
               mt-2
               text-sm
               font-semibold
               bg-transparent
-              hover:bg-yellow-200
+              rounded-lg
+
               md:mt-0 md:ml-4
               hover:text-gray-900
               focus:text-gray-900
-              focus:bg-yellow-200 focus:outline-none focus:shadow-outline"
+              focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                  href="{% url 'add' %}">ADD NEW</a>
           {% endif %}
       </nav>

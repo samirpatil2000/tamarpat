@@ -2,7 +2,7 @@
 {% load  static %}
 {% block title %}TAMARPAT{% endblock %}
 {% block content %}
-<style>
+<!-- <style>
   .tam{
     position: absolute;
     top: 7%;
@@ -25,7 +25,7 @@
     }
   }
   
-</style>
+</style> -->
     <main class="flex-grow bg-yellow-100 relative" xmlns="http://www.w3.org/1999/html">
 
 {#    <img class="absolute " src="{% static '/images/banner.jpg' %}" width="900" style="position: absolute;"> #}
@@ -72,11 +72,10 @@
             lg:grid-cols-3
             xl:grid-cols-3
             gap-5
-            
           ">
         <!-- Card - 1 -->
           {% for obj in objects %}
-            <a href="{{ obj.get_absolute_url }}" class="rounded hover:bg-yellow-200 overflow-hidden shadow-md bg-white pb-4">
+            <a href="{{ obj.get_absolute_url }}" class="rounded hover:bg-yellow-200 overflow-hidden shadow-lg bg-white pb-4">
               <div class="text-center">
                 <div class="h-36 overflow-hidden">
                   {% if obj.thumbnail.url %}
@@ -88,8 +87,8 @@
                 </div>
 
                 <div class="py-4">
-                  <p class="font-semibold text-xl mb-2 hover:underline" href="{{ obj.get_absolute_url }}">{{ obj.title }} </p>
-                  <p class="text-gray-900 text-xl my-4">
+                  <p class="font-semibold text-xl mb-2 underline" href="{{ obj.get_absolute_url }}">{{ obj.title }} </p>
+                  <p class="text-gray-900 text-lg my-4">
                     {{ obj.author.full_name }}
                   </p>
                 </div>
@@ -103,7 +102,7 @@
 
     <!-- English Marathi Starts  -->
 
-    <section class=" border py-2 border-gray-400 flex flex-col items-center max-w-6xl mx-auto mt-10 mb-20 px-2">
+    <section class=" flex flex-col items-center max-w-6xl mx-auto mt-10 mb-20 px-6">
       <div class="flex flex-wrap w-full justify-around">
         <div class="shadow rounded flex-start flex-col px-4 py-2 w-full sm:w-96 bg-white md:my-0 pt-6">
           <span class="text-2xl mt-4 px-4 py-2 bg-teal-600 text-white rounded">English</span>
@@ -145,6 +144,7 @@
         </div>
       </div>
     </section>
+
     <!-- Engligh Marathi Ends -->
 
     <!-- Features Section -->
@@ -243,7 +243,7 @@
     <section>
       <div class="max-w-6xl mx-auto px-4 sm:px-6">
         <div class="pb-12 md:pb-20">
-           <div class="
+          <div class="
                 relative
                 bg-white
                 rounded
