@@ -17,6 +17,8 @@ urlpatterns = [
     path('detailWithIndexPage/<str:thesis_slug>/<int:id>',views.detailWithIndexPage,name='detailWithIndexPage'),
     path('authors/',views.authors,name='authors'),
 
+    path('author/<int:id>/',views.authorDetailView,name='authors-detail'),
+
 
     # add thesis
     path('add/',views.add,name='add'),

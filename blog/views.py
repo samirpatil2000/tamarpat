@@ -172,11 +172,13 @@ def authors(request):
     return  render(request,'new/author.html',context)
 
 
-def authorDetailView(request,email):
+def authorDetailView(request,id):
+    # print(x:=[i.id for i in Author.objects.all()])
     context={
-        'user':Author.objects.get(user__email=email)
+        'object':Author.objects.get(id=id),
+        'objects': ThesisProject.objects.filter(is_complete=True,author__id=id)
     }
-    return render(request,'new/author.html')
+    return render(request,'new/profilePage.html',context)
 
 def examDetailsView(request,slug):
     context={
