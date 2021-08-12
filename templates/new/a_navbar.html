@@ -87,6 +87,7 @@ background: linear-gradient(90deg, rgba(255,246,147,1) 25%, rgba(255,228,99,1) 6
               <button @click="show = ! show" class="block text-gray-800 px-4 text-sm py-2 overflow-hidden focus:outline-none">
                   <div class="flex">
                       <span class="
+                  
                   py-2
                   mt-2
                   text-sm
@@ -99,10 +100,11 @@ background: linear-gradient(90deg, rgba(255,246,147,1) 25%, rgba(255,228,99,1) 6
                   focus:bg-gray-200 focus:outline-none focus:shadow-outline">Opportunities <span class="s">&#9660;</span></span> 
                   </div>
               </button>
-              <div x-show="show" class="absolute z-10 w-48 bg-white">
-                <a class="px-8 py-4 block hover:bg-yellow-100 border bg-gray-100" href="{% url 'competition' %}">Competitions</a>
-                <a class="px-8 py-4 block hover:bg-yellow-100 border bg-gray-100" href="{% url 'scholarships' %}">Scholarships</a>
-                <a class="px-8 py-4 block hover:bg-yellow-100 border bg-gray-100" href="{% url 'career' %}">Carrer</a>
+              <div x-show="show" class="absolute z-10 w-48
+                  shadow-lg bg-white ">
+                <a class="px-8 py-4 block hover:bg-yellow-100 border bg-white" href="{% url 'competition' %}">Competitions</a>
+                <a class="px-8 py-4 block hover:bg-yellow-100 border bg-white" href="{% url 'scholarships' %}">Scholarships</a>
+                <a class="px-8 py-4 block hover:bg-yellow-100 border bg-white" href="{% url 'career' %}">Carrer</a>
               </div>
           </div>
         <a class="
