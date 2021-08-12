@@ -1,0 +1,502 @@
+diff --git a/templates/new/a_navbar.html b/templates/new/a_navbar.html
+index 47ddbc9..29ae478 100644
+--- a/templates/new/a_navbar.html
++++ b/templates/new/a_navbar.html
+@@ -1,9 +1,13 @@
+   <!-- Navbar -->
++  <style>
++.navcolor{
++  background: rgb(255, 248, 237);
++}
++  </style>
+   <div class="
+         sticky 
+         top-0 left-0 z-50     
+         text-gray-700
+-        bg-white
+         shadow
+         md:bg-opacity-90
+         transition
+@@ -12,25 +16,26 @@
+         bg-nav-tur
+         blur
+         shadow-lg
++        py-4
++        navcolor
+       ">
+     <div x-data="{ open: false }" class="
+           flex flex-col
+           max-w-screen-2xl
+           px-4
+-          
+           md:items-center md:justify-between md:flex-row md:px-6
+           lg:px-8
+         ">
+-      <div class="p-4 flex flex-row items-center justify-between">
+-        <a href="{% url 'index' %}" class="
+-              text-lg
++      <div class="p-2 flex flex-row items-center justify-between">
++        <h1><a href="{% url 'index' %}" class="
++              text-xl
++              md:text-2xl
+               font-bold
+               tracking-widest
+               text-gray-900
+               uppercase
+-              rounded-lg
+               focus:outline-none focus:shadow-outline
+-            ">Tamrapat</a>
++            ">Tamrapat</a></h1>
+           
+         <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
+           <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+@@ -51,7 +56,7 @@
+             md:flex md:justify-end md:flex-row
+           ">
+           <a class="
+-              px-4
++              px-2
+               py-2
+               mt-2
+               text-sm
+@@ -61,26 +66,23 @@
+               md:mt-0 md:ml-4
+               hover:text-gray-900
+               focus:text-gray-900
+-
+               focus:bg-gray-200 focus:outline-none focus:shadow-outline
+             " href="{% url 'index' %}">Home</a>
+         <a class="
+-              px-4
++              px-2
+               py-2
+               mt-2
+               text-sm
+               font-semibold
+-              text-gray-900
+-
++              bg-transparent
+               rounded-lg
+-              md:mt-0
++              md:mt-0 md:ml-4
+               hover:text-gray-900
+               focus:text-gray-900
+-
+               focus:bg-gray-200 focus:outline-none focus:shadow-outline
+             " href="{% url 'thesisListView' %}">Library</a>
+         <a class="
+-              px-4
++              px-2
+               py-2
+               mt-2
+               text-sm
+@@ -90,18 +92,16 @@
+               md:mt-0 md:ml-4
+               hover:text-gray-900
+               focus:text-gray-900
+-
+               focus:bg-gray-200 focus:outline-none focus:shadow-outline
+             " href="{% url 'authors' %}">Wordsmiths</a>
+-        <a class="
+-              px-4
++        <div class="
++              px-2
+               py-2
+               mt-2
+               text-sm
+               font-semibold
+               bg-transparent
+               rounded-lg
+-
+               md:mt-0 md:ml-4
+               hover:text-gray-900
+               focus:text-gray-900
+@@ -111,11 +111,11 @@
+             ">Opportunities
+             <div class="dropdown-menu">
+                 <p class="px-4 py-2 block"></p>
+-                <p class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'competition' %}">COMPETITIONS</p>
+-                <p class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'scholarships' %}">SCHOLARSHIPS</p>
+-                <p class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'career' %}">CAREER</p>
++                <a class="px-4 py-2 block text-black bg-teal-100 hover:bg-gray-200" href="{% url 'competition' %}">COMPETITIONS</a>
++                <a class="px-4 py-2 block text-black bg-teal-100 hover:bg-gray-200" href="{% url 'scholarships' %}">SCHOLARSHIPS</a>
++                <a class="px-4 py-2 block text-black bg-teal-100 hover:bg-gray-200" href="{% url 'career' %}">CAREER</a>
+             </div>
+-          </a>
++          </div>
+         <a class="
+               px-4
+               py-2
+@@ -124,7 +124,6 @@
+               font-semibold
+               bg-transparent
+               rounded-lg
+-
+               md:mt-0 md:ml-4
+               hover:text-gray-900
+               focus:text-gray-900
+@@ -139,7 +138,6 @@
+               font-semibold
+               bg-transparent
+               rounded-lg
+-
+               md:mt-0 md:ml-4
+               hover:text-gray-900
+               focus:text-gray-900
+diff --git a/templates/new/author.html b/templates/new/author.html
+index 42c96d8..28e993a 100644
+--- a/templates/new/author.html
++++ b/templates/new/author.html
+@@ -21,7 +21,7 @@
+         >
+           <!-- Card - 1 -->
+               {% for obj in objects %}
+-                  <div class="rounded overflow-hidden shadow-lg">
++                  <div class="rounded overflow-hidden shadow-lg hover:bg-red-100">
+                     <div class="px-6 py-4 flex flex-col items-center">
+                       <img
+                           class="relative rounded-full"
+diff --git a/templates/new/competition.html b/templates/new/competition.html
+index 0b5232d..8b5cc3d 100644
+--- a/templates/new/competition.html
++++ b/templates/new/competition.html
+@@ -4,14 +4,17 @@
+ {% block content %}
+ 
+ <main class="flex-grow px-4 md:px-0">
+-    <section class="flex flex-col items-center pb-10 max-w-6xl mx-auto mt-20 ">
++  
++    <section class=" flex flex-col items-center pb-10 max-w-6xl mx-auto mt-20 ">
++      
+         {% for obj in objects %}
+-            <h1 class="font-bold text-3xl mb-5">{{ obj.title }}
+-            </h1> <a class="btn
++        <div class="border p-10 my-6 bg-gray-200 shadow-xl rounded-lg">
++            <h1 class="underline text-gray-900 font-bold text-3xl mb-5">{{ obj.title }}</h1>
++            <a class="btn
+                           text-white
+-                          bg-teal-600
+-                          hover:bg-teal-700
+-                          shadow" href="{% url 'edit_competition' obj.id %}"> Edit </a>
++                          bg-blue-500
++                          hover:bg-blue-800
++                          " href="{% url 'edit_competition' obj.id %}">Edit</a>
+             <p class="text-lg">
+               The Competition is an ideal way to exhibit your talent to a wider international audience. With a distinguished
+               panel of jurors and more than $55,000 in valuable prizes, it is open to visual artists from Asia at any stage
+@@ -28,21 +31,21 @@
+                 gap-5
+               ">
+               <!-- Card - 1 -->
+-              <div class="rounded overflow-hidden shadow-lg p-2">
+-                <p class="font-bold text-xl mb-2">Accepted Media</p>
++              <div class="rounded overflow-hidden bg-white p-2">
++                <p class="font-bold text-xl text-gray-800 text-center mb-2">Accepted Media</p>
+                 <p class="text-gray-700 text-base">
+                   {{ obj.acceptedMedia }}
+                 </p>
+               </div>
+-              <div class="rounded overflow-hidden shadow-lg p-2">
+-                <p class="font-bold text-xl mb-2">Eligibility</p>
++              <div class="rounded overflow-hidden bg-white p-2">
++                <p class="font-bold text-xl text-gray-800 text-center mb-2">Eligibility</p>
+                 <p class="text-gray-700 text-base">
+                   {{ obj.eligibility }}
+                 </p>
+               </div>
+-              <div class="rounded overflow-hidden shadow-lg p-2">
++              <div class="rounded overflow-hidden bg-white p-2">
+ 
+-                <p class="font-bold text-xl mb-2">Deadline</p>
++                <p class="font-bold text-xl text-gray-800 text-center mb-2">Deadline</p>
+                 <p class="text-gray-700 text-base">
+                  {{ obj.deadline }}
+                 </p>
+@@ -52,8 +55,9 @@
+                 Official Website : <a class="underline text-blue-600 bg-teal-100
+                 px-2 py-1 rounded" href="{{ obj.url }}">Link</a>
+               </p>
++              
+             </div>
+-            <hr style="height:2px;background-color: rgba(128, 128, 128, 0.459);" class="my-10">
++          </div>
+         {% endfor %}
+ 
+     </section>
+diff --git a/templates/new/index.html b/templates/new/index.html
+index f795179..252f6cf 100644
+--- a/templates/new/index.html
++++ b/templates/new/index.html
+@@ -2,7 +2,20 @@
+ {% load  static %}
+ {% block title %}TAMARPAT{% endblock %}
+ {% block content %}
+-    <main class="flex-grow bg-red-100 relative" xmlns="http://www.w3.org/1999/html">
++<style>
++  .maincolor{
++    background: rgb(255, 212, 160);
++  }
++  .thesisclass{
++    position: relative;
++    top:-90px;
++  }
++  .inp{
++    position: relative;
++    top:-60px;
++  }
++</style>
++    <main class="flex-grow bg-red-900 maincolor relative" xmlns="http://www.w3.org/1999/html">
+ 
+ {#  <img class="absolute " src="{% static '/images/banner.jpg' %}" width="900" style="position: absolute">#}
+     <img class = "absolute" src="https://github.com/samirpatil2000/tamarpat/blob/master/static/images/banner.jpg?raw=true" width="700" style="position: absolute;
+@@ -13,13 +26,14 @@
+     <form method="get">
+       <div class="flex relative px-10">
+         <button type="submit" class="absolute left-12 top-2">
+-          <svg viewBox="0 0 24 24" width="24" height="24" stroke="#444" stroke-width="1.5" stroke-linecap="round"
++          <svg class="inp" viewBox="0 0 24 24" width="24" height="24" stroke="#444" stroke-width="1.5" stroke-linecap="round"
+             stroke-linejoin="round" fill="none" shape-rendering="geometricPrecision">
+             <path d="M11 17.25a6.25 6.25 0 110-12.5 6.25 6.25 0 010 12.5z" />
+             <path d="M16 16l4.5 4.5" />
+           </svg>
+         </button>
+         <input name="search_query" class="
++              inp
+               shadow
+               rounded
+               p-2
+@@ -33,7 +47,7 @@
+       </div>
+     </form>
+ 
+-    <div class="mt-4 text-smm px-5 py-2 bg-white text-teal-800 rounded-full z-10">Recent Uploads</div>
++    <div class="inp mt-2 text-smm px-5 py-2 bg-white text-teal-800 rounded-full z-10">Recent Uploads</div>
+       <!-- Cards Container -->
+       <div class="
+       z-10
+@@ -50,7 +64,8 @@
+           ">
+         <!-- Card - 1 -->
+           {% for obj in objects %}
+-            <div class="rounded overflow-hidden shadow-lg bg-white pb-4 hover:bg-red-200">
++          <a href="{{ obj.get_absolute_url }}">
++            <div class="hover:bg-yellow-100 thesisclass rounded overflow-hidden shadow-lg bg-white pb-4">
+               <div class="text-center">
+                 <div class="h-36 overflow-hidden">
+                   {% if obj.thumbnail.url %}
+@@ -63,11 +78,16 @@
+ 
+                 <div class="py-2">
+                   <p class="font-bold text-xl mb-2" href="{{ obj.get_absolute_url }}">{{ obj.title }} </p>
+-                  <p class="text-gray-700 text-base">
++                  <p class="text-gray-700 text-xl">
+                     {{ obj.author.full_name }}
+                   </p>
+                 </div>
+-              <a class="
++              </div>
++            </div>
++          </a>
++          {% endfor %}
++        <!-- Card - 2 
++         class="
+                       mt-2
+                       btn
+                       text-white
+@@ -76,15 +96,9 @@
+                       mb-4
+                       sm:w-auto sm:mb-0
+                       focus:ring-2 focus:ring-teal-500
+-
+-
+-                    " style="width: 120px;" href="{{ obj.get_absolute_url }}">
+-                    Read
+-                </a>
+-              </div>
+-            </div>
+-          {% endfor %}
+-        <!-- Card - 2 -->
++                    " style="width: 120px;" 
++        
++        -->
+     </section>
+ 
+     <!-- English Marathi Starts  -->
+@@ -97,28 +111,29 @@
+                 <div class="my-2 border-b pb-2">
+                     <a class="font-semibold text-lg h3" href="{% url 'detailPage' obj.slug %}">{{ obj.title }}</a>
+                     <p>{{ obj.headline|truncatechars:100|safe }}</p>
+-                </div>
+-            {% endfor %}
+-         {% comment %}
+-           <div class="my-2 border-b pb-2">
+-            <h3 class="font-semibold text-lg">Lorem ipsum dolor sit amet.</h3>
+-            <p>Lorem, ipsum dolor.</p>
+-          </div>
+-           <div class="my-2 border-b pb-2">
+-            <h3 class="font-semibold text-lg">Lorem ipsum dolor sit amet.</h3>
+-            <p>Lorem, ipsum dolor.</p>
+-          </div>
++                    
++                  </div>
++                  {% endfor %}
++                  {% comment %}
++            <div class="my-2 border-b pb-2">
++              <h3 class="font-semibold text-lg">Lorem ipsum dolor sit amet.</h3>
++              <p>Lorem, ipsum dolor.</p>
++            </div>
++            <div class="my-2 border-b pb-2">
++              <h3 class="font-semibold text-lg">Lorem ipsum dolor sit amet.</h3>
++              <p>Lorem, ipsum dolor.</p>
++            </div>
+           {% endcomment %}
+         </div>
+         <div class="shadow rounded flex-start flex-col px-4 py-2 w-full sm:w-96 bg-white my-4 md:my-0 pt-6">
+           <span class="text-2xl mt-4 px-4 py-2 bg-teal-600 text-white rounded">αñ«αñ░αñ╛αñáαÑÇ</span>
+-            {% for obj in marathi_projects %}
+-                <div class="my-2 border-b pb-2">
+-                    <a class="font-semibold text-lg h3" href="{% url 'detailPage' obj.slug %}">{{ obj.title }}</a>
+-                    <p>{{ obj.headline|truncatechars:100|safe }}</p>
+-                </div>
+-            {% endfor %}
+-        {% comment %}
++          {% for obj in marathi_projects %}
++          <div class="my-2 border-b pb-2">
++            <a class="font-semibold text-lg h3" href="{% url 'detailPage' obj.slug %}">{{ obj.title }}</a>
++            <p>{{ obj.headline|truncatechars:100|safe }}</p>
++          </div>
++          {% endfor %}
++          {% comment %}
+           <div class="my-2 border-b pb-2">
+             <h3 class="font-semibold text-lg">Lorem ipsum dolor sit amet.</h3>
+             <p>Lorem, ipsum dolor.</p>
+@@ -130,6 +145,7 @@
+           {% endcomment %}
+         </div>
+       </div>
++      <a class="btn bg-teal-700 text-white mt-10 rounded " href="{% url 'thesisListView' %}">see more</a>
+     </section>
+ 
+     <!-- Engligh Marathi Ends -->
+diff --git a/templates/new/scholarship.html b/templates/new/scholarship.html
+index f3e0500..0b4bf52 100644
+--- a/templates/new/scholarship.html
++++ b/templates/new/scholarship.html
+@@ -4,7 +4,7 @@
+ {% block content %}
+ 
+ <main class="flex-grow px-4 md:px-0">
+-    <section class="flex flex-col items-center pb-10 max-w-6xl mx-auto mt-20 ">
++    <section class=" flex flex-col items-center pb-10 max-w-6xl mx-auto mt-20 ">
+         {% for obj in objects %}
+             <div>
+                 <h1 class="font-bold text-3xl mb-5">{{ obj.title }}
+diff --git a/templates/new/thesisDetail.html b/templates/new/thesisDetail.html
+index e453137..8d3b712 100644
+--- a/templates/new/thesisDetail.html
++++ b/templates/new/thesisDetail.html
+@@ -11,26 +11,65 @@
+         scroll-behavior: smooth;
+         scroll-padding-top: 40px;
+       }
++      .slider{
++        overflow-y: scroll;
++        max-height: 500px;
++        min-width: 300px;
++      }
++      @media screen and (max-width:760px){  
++      .slider{
++        /* display: none */
++        position: relative;
++        top: 0;
++        left:0px;
++        overflow-y: scroll;
++        min-width:300px;
++        max-height: 200px;
++
++      }
++      .content{
++        position: relative;
++        top: 250px;
++        right:350px;
++        overflow: scroll;
++        min-width: 80%;
++        margin-right: 10px;
++        font-size: .6em;
++      }
++    }
+     </style>
+-  <section class="flex justify-between max-w-5xl mx-auto pt-10">
++  
++  <section class="flex justify-between max-w-5xl mx-10 pt-10">
+     <!-- Sidebar -->
+-    <div class=" sticky top-10  bg-gray-100 w-72 overflow-scroll hidden px-4 text-left" style="height: 400px;">
+-
+-      <p class="font-bold text-lg">Index</p>
++    <div class=" 
++    slider
++    sticky 
++    bg-gray-100 
++    w-72  
++    px-2 
++    text-left 
++    border-solid
++    border-blue-200
++    border-2
++    rounded 
++    " 
++>
++      <p class="font-bold text-lg text-center uppercase underline">Index</p>
+         {% for obj in desc %}
+-            <a href="#{{ obj.index_no }}" class="block my-2 py-1 underline">{{ forloop.counter }} .  {{ obj.name_of_index|safe }}</a>
++            <a href="#{{ obj.index_no }}" class="block 
++            my-4 
++            uppercase 
++            hover:underline 
++            text-blue-400 
++            py-1
++            ">{{ obj.name_of_index|safe }}</a>
+         {% endfor %}
+-      <!-- <div class="font-bold mt-4">
+-        Company Logo
+-      </div> -->
+-      <!-- <p class="my-4">
+-        Cadre is building the world's first digital stock market for alternative assets. We leverage our superior technology and data-driven insight to open once-exclusive industries to the worldΓÇÖs investors.
+-      </p> -->
++      
+     </div>
+     <!-- Content -->
+-    <div class="pl-10 overflow-scroll">
++    <div class="content pl-10  ">
+         <h1>{{ object.title }}</h1>
+-        <a class="btn text-white bg-teal-600 hover:bg-teal-700 shadow" href="{% url 'edit_thesis' object.slug %}">Edit</a>
++        <a class=" btn text-white bg-teal-600 hover:bg-teal-700  shadow" href="{% url 'edit_thesis' object.slug %}">Edit</a>
+     <!-- {% if object.thumbnail %}
+         <img src="{{ object.thumbnail.url }}">
+     {% else %}
+@@ -38,14 +77,14 @@
+     {% endif %} -->
+         {% for obj in desc %}
+ 
+-            <h1 id="{{ obj.index_no }}" class="font-bold text-4xl my-4">
++            <h1 id="{{ obj.index_no }}" class="font-semibold text-xl underline m-2 uppercase">
+             {{ obj.name_of_index|safe }}
+-          </h1>
+-            <a class="btn text-white bg-teal-600 hover:bg-teal-700 shadow"
++          </h1><hr>
++            <a class="btn text-black bg-teal-600 m-2 hover:bg-teal-700 shadow"
+                href="{% url 'edit_thesisIndex' object.slug obj.id %}">Edit</a>
+ {#            <a class="btn text-white bg-red-600 hover:bg-red-700 shadow"#}
+ {#               href="{% url 'delete_thesisIndex' object.slug obj.id %}">Delete</a>#}
+-          <p class="text-lg my-4">
++          <p class="text-md my-4 w-full">
+             {{ obj.content|safe }}
+           </p>
+         {% endfor %}
+@@ -165,4 +204,4 @@
+ 
+ 
+   <!-- Footer -->
+- {% endcomment %}
+\ No newline at end of file
++ {% endcomment %}

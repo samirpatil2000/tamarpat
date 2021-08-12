@@ -7,6 +7,8 @@ background: linear-gradient(90deg, rgba(255,246,147,1) 25%, rgba(255,228,99,1) 6
         font-size: 10px;
       }
   </style>
+<!-- Navbar -->
+  
   <div class="
   sticky top-0 left-0 z-50
         navbar
@@ -57,7 +59,7 @@ background: linear-gradient(90deg, rgba(255,246,147,1) 25%, rgba(255,228,99,1) 6
           ">
         <a class="
               px-4
-              py-2
+              py-4
               mt-2
               text-sm
               font-semibold
@@ -70,7 +72,7 @@ background: linear-gradient(90deg, rgba(255,246,147,1) 25%, rgba(255,228,99,1) 6
             " href="{% url 'thesisListView' %}">Library</a>
         <a class="
               px-4
-              py-2
+              py-4
               mt-2
               text-sm
               font-semibold
@@ -83,12 +85,12 @@ background: linear-gradient(90deg, rgba(255,246,147,1) 25%, rgba(255,228,99,1) 6
               focus:bg-yellow-200 focus:outline-none focus:shadow-outline
             " href="{% url 'authors' %}">Wordsmiths</a>
         <div class="
+        <!-- <a class="
               px-4
               py-2
               mt-2
               text-sm
-              font-semibold
-              
+              font-semibold              
 
               md:mt-0 md:ml-4
               hover:text-gray-900
@@ -103,10 +105,50 @@ background: linear-gradient(90deg, rgba(255,246,147,1) 25%, rgba(255,228,99,1) 6
                 <a class="px-8 py-4 block hover:bg-yellow-100 border bg-gray-100" href="{% url 'scholarships' %}">Scholarships</a>
                 <a class="px-8 py-4 block hover:bg-yellow-100 border bg-gray-100" href="{% url 'career' %}">Carrer</a>
             </div>
+              bg-transparent
+              rounded-lg
+              cursor-pointer
+              md:mt-0 md:ml-4
+              hover:text-gray-900
+              focus:text-gray-900
+              dropdown
+              focus:bg-gray-200 focus:outline-none focus:shadow-outline
+              relative
+            ">Opportunities</a>
+            <div class="dropdown-menu absolute hidden h-auto flex pt-4 ">
+              <ul class="block w-full bg-white px-12 py-8">
+                <li><a class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'competition' %}">COMPETITIONS</a></li>
+                <li><a class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'scholarships' %}">SCHOLARSHIPS</a></li>
+                <li><a class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'career' %}">CAREER</a></li>   
+              </ul>
+            </div> -->
+            <div x-data="{show: false}" @click.away="show = false">
+              <button @click="show = ! show" class="block text-gray-800 px-4 text-sm py-2 overflow-hidden focus:outline-none">
+                  <div class="flex">
+                      <span class="px-4
+                  py-2
+                  mt-2
+                  text-sm
+                  font-semibold
+                  bg-transparent
+                  rounded-lg
+                  cursor-pointer
+                  md:mt-0 md:ml-4
+                  hover:text-gray-900
+                  focus:text-gray-900
+                  dropdown
+                  focus:bg-gray-200 focus:outline-none focus:shadow-outline">Opportunities</span> 
+                  </div>
+              </button>
+              <div x-show="show" class="absolute z-10 mt-2 py-2 w-48 bg-white rounded-lg shadow-xl">
+                <a class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'competition' %}">COMPETITIONS</a>
+                <a class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'scholarships' %}">SCHOLARSHIPS</a>
+                <a class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'career' %}">CAREER</a>
+              </div>
           </div>
         <a class="
               px-4
-              py-2
+              py-4
               mt-2
               text-sm
               font-semibold
@@ -121,7 +163,7 @@ background: linear-gradient(90deg, rgba(255,246,147,1) 25%, rgba(255,228,99,1) 6
           {% if request.user.is_superuser %}
               <a class="
               px-4
-              py-2
+              py-4
               mt-2
               text-sm
               font-semibold

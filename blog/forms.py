@@ -104,7 +104,7 @@ class CreateCareerForm(forms.ModelForm):
 class CreateExamForm(forms.ModelForm):
     class Meta:
         model=Exam
-        exclude = ('date', 'slug')
+        exclude = ('date', 'slug','thumbnail')
 
 class UpdateCompletionForm(forms.ModelForm):
     class Meta:
@@ -157,6 +157,25 @@ class UpdateCareerForm(forms.ModelForm):
         obj = self.instance
         obj.title=self.cleaned_data['title']
         obj.thumbnail=self.cleaned_data['thumbnail']
+        obj.is_checked=self.cleaned_data['is_checked']
+        obj.is_complete=self.cleaned_data['is_complete']
+        obj.desc=self.cleaned_data['desc']
+        obj.url=self.cleaned_data['url']
+
+        if commit:
+            obj.save()
+        return obj
+
+
+class UpdateExamForm(forms.ModelForm):
+    class Meta:
+        model=Exam
+        fields='__all__'
+        exclude = ('date','slug','thumbnail')
+
+    def save(self, commit=True):
+        obj = self.instance
+        obj.title=self.cleaned_data['title']
         obj.is_checked=self.cleaned_data['is_checked']
         obj.is_complete=self.cleaned_data['is_complete']
         obj.desc=self.cleaned_data['desc']

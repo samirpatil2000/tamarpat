@@ -1,168 +1,45 @@
 {% extends 'new/base.html' %}
+{% load  static %}
 {% block title %}TAMARPAT{% endblock %}
-{% load static %}
-
-
-
 {% block content %}
+<main class="flex-grow bg-tur" xmlns="http://www.w3.org/1999/html">
 
-    <style>
-      html{
-        scroll-behavior: smooth;
-        scroll-padding-top: 40px;
-      }
-    </style>
-  <section class="flex justify-between max-w-5xl mx-auto pt-10">
-    <!-- Sidebar -->
-    <div class="sticky top-10  bg-gray-100 w-72 px-4 text-left" style="height: 600px;">
+    <section class="flex flex-col justify-center items-center pb-10 max-w-6xl mx-auto mt-20">
 
-      <p class="font-bold text-lg">Index</p>
-        {% for obj in desc %}
-            <a href="#{{ obj.index_no }}" class="block my-2 py-1 underline">{{ forloop.counter }} .  {{ obj.name_of_index|safe }}</a>
-        {% endfor %}
-      <!-- <div class="font-bold mt-4">
-        Company Logo
-      </div> -->
-      <!-- <p class="my-4">
-        Cadre is building the world's first digital stock market for alternative assets. We leverage our superior technology and data-driven insight to open once-exclusive industries to the world’s investors.
-      </p> -->
-    </div>
-    <!-- Content -->
-    <div class="pl-10 w-full">
-        <h1>{{ object.title }}</h1>
-        <a class="btn text-white bg-teal-600 hover:bg-teal-700 shadow" href="{% url 'edit_thesis' object.slug %}">Edit</a>
-    <!-- {% if object.thumbnail %}
-        <img src="{{ object.thumbnail.url }}">
-    {% else %}
-              <img src="https://images.unsplash.com/photo-1626320290598-03656e931a31?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="">
-    {% endif %} -->
-        {% for obj in desc %}
+        <h2>{{ object.title }}</h2>
+                <a class="btn
+                          text-white
+                          bg-teal-600
+                          hover:bg-teal-700
+                          mb-4
+                          shadow" href="{% url 'edit_thesis' object.slug %}"> Edit </a>
+                <p>
 
-            <h1 id="{{ obj.index_no }}" class="font-bold text-4xl my-4">
-            {{ obj.name_of_index|safe }}
-          </h1>
-            <a class="btn text-white bg-teal-600 hover:bg-teal-700 shadow"
-               href="{% url 'edit_thesisIndex' object.slug obj.id %}">Edit</a>
-{#            <a class="btn text-white bg-red-600 hover:bg-red-700 shadow"#}
-{#               href="{% url 'delete_thesisIndex' object.slug obj.id %}">Delete</a>#}
-          <p class="text-lg my-4">
-            {{ obj.content|safe }}
-          </p>
-        {% endfor %}
-
-    </div>
-  </section>
-
-{% endblock %}
-{% comment %}
-
-  <main class="flex-grow break-words">
-
-    <section class="flex flex-col items-center pb-10 max-w-6xl mx-auto mt-20 px-4 md:px-0">
-      <!-- Blog Header -->
-      <h1 class="font-bold text-5xl">{{ object.title }}</h1>
-      <!-- Blog Meta -->
-
-      <div class="flex items-center mt-20 mb-10 w-full mx-auto justify-around">
-
-        <div class="flex items-center space-x-2">
-            {% if object.author.profile_pic.url %}
-                  <img class="inline object-cover w-10 h-10 mr-2 rounded-full"
-                    src="{{ object.author.profile_pic.url }}"
-                    alt="Profile image" />
-            {% else %}
-                <img class="inline object-cover w-10 h-10 mr-2 rounded-full"
-                src="https://images.pexels.com/photos/2589653/pexels-photo-2589653.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-                alt="Profile image" />
-            {% endif %}
-          <span class="font-semibold">{{ object.author.full_name }}</span>
-          <span>Jun 9 2020</span>
-          <span>10min read</span>
-        </div>
-
-        <span>
-          <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5"
-            stroke-linecap="round" stroke-linejoin="round" fill="none" shape-rendering="geometricPrecision">
-            <circle cx="18" cy="5" r="3" />
-            <circle cx="6" cy="12" r="3" />
-            <circle cx="18" cy="19" r="3" />
-            <path d="M8.59 13.51l6.83 3.98" />
-            <path d="M15.41 6.51l-6.82 3.98" />
-          </svg>
-        </span>
-      </div>
-
-      <!-- Blog Content -->
-      <div class="max-w-2xl text-lg  tracking-wide">
-
-      {% for index in object.desc.all %}
-          <a href="{% url 'detailWithIndexPage' object.slug index.id %}">{{ index.name_of_index }}</a>
-          <br>
-      {% endfor %}
-
-      </div>
-
-
-      <div class="mt-20 mb-5 text-4xl font-bold">
-        <p>Read More</p>
-      </div>
-
-
-
-      <!-- Show More Container -->
-      <div class="
-            p-10
-            grid grid-cols-1
-            sm:grid-cols-1
-            md:grid-cols-3
-            lg:grid-cols-3
-            xl:grid-cols-3
-            gap-5
-          ">
-        <!-- Card - 1 -->
-        <div class="rounded overflow-hidden shadow-lg bg-white">
-          <div class="text-center">
-            <img src="{% static '/media/banner-1.jpeg' %}" alt="">
-            <div class="py-2">
-              <p class="font-bold text-xl mb-2">Title: Lorem ipsum </p>
-              <p class="text-gray-700 text-base">
-                Voluptatibus quia, nulla!
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- Card - 2 -->
-        <div class="rounded overflow-hidden shadow-lg bg-white">
-          <div class="text-center">
-            <img src="{% static '/media/banner-2.jpeg' %}" alt="">
-            <div class="py-2">
-              <p class="font-bold text-xl mb-2">Title: Lorem ipsum </p>
-              <p class="text-gray-700 text-base">
-                Voluptatibus quia, nulla!
-              </p>
-            </div>
-          </div>
-        </div>
-        <!-- Card - 3 -->
-        <div class="rounded overflow-hidden shadow-lg bg-white">
-          <div class="text-center">
-            <img src="{% static '/media/banner-6.jpeg' %}" alt="">
-            <div class="py-2">
-              <p class="font-bold text-xl mb-2">Title: Lorem ipsum </p>
-              <p class="text-gray-700 text-base">
-                Voluptatibus quia, nulla!
-              </p>
-            </div>
-          </div>
+        <div class="w-screen h-screen relative">
+            <div class="w-11/12 h-screen z-10 absolute bg-transparent"></div>>
+            {% if object.pdf %}
+            <iframe class="w-screen h-4/5 absolute" frameborder="0" src="https://www.ph.ucla.edu/epi/rapidsurveys/RScourse/RSbook_ch3.pdf#toolbar=0"></iframe>
+            </iframe>
+        {% elif object.pdf_url %}
+            <h2>Url</h2>
+            <iframe class="w-screen h-4/5"  src="{{ object.pdf_url }}#toolbar=0">
+            </iframe>
+        {% endif  %}
         </div>
     </section>
+</main>
 
-    
-
-    <!--  -->
-
-  </main>
-
-
-  <!-- Footer -->
- {% endcomment %}
+{% endblock %}
+<h1>TEST</h1>
+    <h2>Hard - Google Drive</h2>
+    <iframe src="https://drive.google.com/file/d/1Gwp42UTzSf2y9lnQjVQdeto0A7mK1SAJ/view?usp=sharing"
+                    width="100%" height="500px">
+    </iframe>
+    <h2>Hard - Github</h2>
+    <iframe src="https://github.com/rushichandgude/ThesisProject/blob/ecd580483959c1617296a741fe89de040c264415/Introduction_to_algorithms-3rd%20Edition.pdf"
+                    width="100%" height="500px">
+    </iframe>
+    <h2>Test</h2>
+    <iframe src="https://www.w3docs.com/uploads/media/default/0001/01/540cb75550adf33f281f29132dddd14fded85bfc.pdf#toolbar=0"
+                    width="100%" height="500px">
+    </iframe>
