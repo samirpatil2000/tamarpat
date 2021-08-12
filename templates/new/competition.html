@@ -4,10 +4,11 @@
 {% block content %}
 
 <main class="flex-grow px-4 md:px-0">
-    <section class="border flex flex-col items-center pb-10 max-w-6xl mx-auto mt-20 ">
+    <section class="flex flex-col items-center pb-10 max-w-6xl mx-auto mt-20 ">
         {% for obj in objects %}
-            <h1 class="font-bold text-3xl mb-5">{{ obj.title }}</h1>
-             <a class="btn
+{#            <h1 class="font-bold text-3xl mb-5">{{ obj.title }}#}
+{#            </h1> #}
+            <a class="btn
                           text-white
                           bg-teal-600
                           hover:bg-teal-700
@@ -17,7 +18,11 @@
               panel of jurors and more than $55,000 in valuable prizes, it is open to visual artists from Asia at any stage
               of their careers. Painting, sculpture, photography, drawing, mixed media, and print are the accepted mediums.
             </p>
-            <img class="w-full max-w-lg my-4" src="{{ obj.thumbnail.url }}" alt="">
+            {% if obj.thumbnail %}
+                    <img class="w-full max-w-lg my-4" src="{{ obj.thumbnail.url }}" alt="">
+{#                {% else %}#}
+{#                    <img class="w-full max-w-lg my-4" height="330px" width="330px" src="{% static 'no-image.jpg' %}" alt="">#}
+            {% endif  %}
             <div class="
                 my-5
                 grid grid-cols-1
