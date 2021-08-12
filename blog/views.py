@@ -27,8 +27,8 @@ def index(request):
     context={
         'objects':ThesisProject.objects.filter(is_checked=True)[:3],
         'exams':Exam.objects.filter(is_checked=True),
-        'english_projects':ThesisProject.objects.filter(language__contains="English",is_checked=True),
-        'marathi_projects':ThesisProject.objects.filter(language__contains="Marathi",is_checked=True)
+        'english_projects':ThesisProject.objects.filter(language__contains="English",is_checked=True)[:3],
+        'marathi_projects':ThesisProject.objects.filter(language__contains="Marathi",is_checked=True)[:3]
     }
     if request.GET:
         query=request.GET.get('search_query')
