@@ -2,9 +2,13 @@
 {% load  static %}
 {% block title %}TAMARPAT{% endblock %}
 {% block content %}
-    <main class="flex-grow bg-tur" xmlns="http://www.w3.org/1999/html">
 
-    <section class="flex flex-col items-center pb-10 max-w-6xl mx-auto mt-20">
+    <main class="flex-grow bg-yellow-100" xmlns="http://www.w3.org/1999/html">
+
+    <section class="flex flex-col items-center pb-10 max-w-6xl mx-auto mt-20">      
+    <form method="get">
+      <div class="flex relative w-full px-10" style="max-width: 600px">
+        <input name="search_query" class="
       <form method="get">
       <div class="flex relative w-full px-10">
         <div x-data="{show: false}" @click.away="show = false">
@@ -52,42 +56,32 @@
           ">
         <!-- Card - 1 -->
           {% for obj in objects %}
-            <div class="rounded overflow-hidden shadow-lg bg-white pb-4">
-              <div class="text-center">
-                <div class="h-36 overflow-hidden">
-                  {% if obj.thumbnail.url %}
-                      <img href="{{ obj.get_absolute_url }}" src="{{ obj.thumbnail.url }}" alt="">
-                  {% else %}
-                      <img href="{{ obj.get_absolute_url }}" src="{%  static 'media/banner-1.jpeg' %}" alt="">
-                  {% endif %}
-                </div>
+          <a href="{{ obj.get_absolute_url }}" class="rounded hover:bg-yellow-200 overflow-hidden shadow-md bg-white pb-4">
+            <div class="text-center">
+              <div class="h-36 overflow-hidden">
+                {% if obj.thumbnail.url %}
+                    <img href="{{ obj.get_absolute_url }}" src="{{ obj.thumbnail.url }}" alt="">
 
-                <div class="py-2">
-                  <p class="font-bold text-xl mb-2" href="{{ obj.get_absolute_url }}">{{ obj.title }} </p>
-                  <p class="text-gray-700 text-base">
-                    {{ obj.author.full_name }}
-                  </p>
-                </div>
-              <a class="
-                      mt-2
-                      btn
-                      text-white
-                      bg-teal-600
-                      hover:bg-teal-700
-                      mb-4
-                      sm:w-auto sm:mb-0
-                      focus:ring-2 focus:ring-teal-500
-
-
-                    " style="width: 120px;" href="{{ obj.get_absolute_url }}">
-                    Read
-                </a>
+                {% else %}
+                    <img href="{{ obj.get_absolute_url }}" src="{%  static 'media/banner-1.jpeg' %}" alt="">
+                {% endif %}
               </div>
+
+              <div class="py-4">
+                <p class="font-semibold text-xl mb-2 underline" href="{{ obj.get_absolute_url }}">{{ obj.title }} </p>
+                <p class="text-gray-900 text-xl my-4">
+                  {{ obj.author.full_name }}
+                </p>
+              </div>
+            
             </div>
+          </a>
           {% endfor %}
       </div>
+
         <!-- Card - 2 -->
     </section>
+    <hr>
     <!-- English Marathi Starts  -->
 
 

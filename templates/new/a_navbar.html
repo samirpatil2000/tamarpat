@@ -1,18 +1,24 @@
+  <!-- Navbar -->
+  <style>
+    .lg{
+      background: rgb(255,246,147);
+background: linear-gradient(90deg, rgba(255,246,147,1) 25%, rgba(255,228,99,1) 63%);}
+      .s{
+        font-size: 10px;
+      }
+  </style>
 <!-- Navbar -->
   
   <div class="
   sticky top-0 left-0 z-50
         navbar
         w-full
-        text-gray-700
-        bg-white
+        text-gray-900
         shadow
-        md:bg-opacity-90
         transition
         duration-300
         ease-in-out
-        bg-nav-tur
-        blur
+        lg
         shadow-lg
       ">
     <div x-data="{ open: false }" class="
@@ -28,25 +34,11 @@
               text-lg
               font-bold
               tracking-widest
-              text-gray-900
+              text-black
               uppercase
-              rounded-lg
+              
               focus:outline-none focus:shadow-outline
             ">Tamrapat</a>
-          <a class="
-              px-4
-              py-2
-              mt-2
-              text-sm
-              font-semibold
-              bg-transparent
-              rounded-lg
-              md:mt-0 md:ml-4
-              hover:text-gray-900
-              focus:text-gray-900
-
-              focus:bg-gray-200 focus:outline-none focus:shadow-outline
-            " href="{% url 'index' %}">Home</a>
         <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
           <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
             <path x-show="!open" fill-rule="evenodd"
@@ -71,14 +63,12 @@
               mt-2
               text-sm
               font-semibold
-              text-gray-900
-
-              rounded-lg
+              
               md:mt-0
+              hover:bg-yellow-200
               hover:text-gray-900
               focus:text-gray-900
-
-              focus:bg-gray-200 focus:outline-none focus:shadow-outline
+              focus:bg-yellow-200 focus:outline-none focus:shadow-outline
             " href="{% url 'thesisListView' %}">Library</a>
         <a class="
               px-4
@@ -87,19 +77,34 @@
               text-sm
               font-semibold
               bg-transparent
-              rounded-lg
+              
               md:mt-0 md:ml-4
               hover:text-gray-900
               focus:text-gray-900
-
-              focus:bg-gray-200 focus:outline-none focus:shadow-outline
+              hover:bg-yellow-200
+              focus:bg-yellow-200 focus:outline-none focus:shadow-outline
             " href="{% url 'authors' %}">Wordsmiths</a>
+        <div class="
         <!-- <a class="
               px-4
               py-2
               mt-2
               text-sm
-              font-semibold
+              font-semibold              
+
+              md:mt-0 md:ml-4
+              hover:text-gray-900
+              focus:text-gray-900
+              dropdown-navbar
+              focus:bg-yellow-200 focus:outline-none focus:shadow-outline
+              relative
+            "> Opportunities <span class="s">&#9660;</span>
+            <div class="dropdown-menu">
+                
+                <a class="px-8 py-4 block hover:bg-yellow-100 border bg-gray-100" href="{% url 'competition' %}">Competitions</a>
+                <a class="px-8 py-4 block hover:bg-yellow-100 border bg-gray-100" href="{% url 'scholarships' %}">Scholarships</a>
+                <a class="px-8 py-4 block hover:bg-yellow-100 border bg-gray-100" href="{% url 'career' %}">Carrer</a>
+            </div>
               bg-transparent
               rounded-lg
               cursor-pointer
@@ -148,12 +153,12 @@
               text-sm
               font-semibold
               bg-transparent
-              rounded-lg
-
+              
               md:mt-0 md:ml-4
+              hover:bg-yellow-200
               hover:text-gray-900
               focus:text-gray-900
-              focus:bg-gray-200 focus:outline-none focus:shadow-outline
+              focus:bg-yellow-200 focus:outline-none focus:shadow-outline
             " href="{% url 'publish' %}">Submit</a>
           {% if request.user.is_superuser %}
               <a class="
@@ -163,12 +168,11 @@
               text-sm
               font-semibold
               bg-transparent
-              rounded-lg
-
+              hover:bg-yellow-200
               md:mt-0 md:ml-4
               hover:text-gray-900
               focus:text-gray-900
-              focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+              focus:bg-yellow-200 focus:outline-none focus:shadow-outline"
                  href="{% url 'add' %}">ADD NEW</a>
           {% endif %}
       </nav>
