@@ -1,5 +1,8 @@
-<head>
-    <style>
+{% extends 'new/base.html' %}
+{% load  static %}
+{% block title %}Scholarship{% endblock %}
+{% block content %}
+<style>
         .base{
             border: 1px solid black;
             padding: 3em;
@@ -49,17 +52,49 @@
             font-weight: bold;
         }
     </style>
-</head>
-<main class="base">
-    <img class="authimg" src="" alt="">
+<main class="flex-grow bg-tur" xmlns="http://www.w3.org/1999/html">
 
-    <article class="bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. At ipsa suscipit doloremque nesciunt necessitatibus beatae repellat vitae autem laudantium cumque. Voluptas, odio! Quibusdam, perferendis qui rerum delectus quos doloribus eaque obcaecati? Odio iste vel dignissimos vitae est enim ratione quaerat consequuntur sit unde, eum eos suscipit maiores molestiae nostrum voluptates minima quo assumenda hic facere debitis velit ad aut! Officiis repellat impedit odit itaque vitae, aliquam iste? Praesentium consequatur nulla quas eaque in? Neque architecto soluta maiores saepe inventore pariatur! Optio, autem quidem repellendus quae perspiciatis quaerat excepturi laboriosam nam corporis sapiente earum est odit neque reprehenderit dignissimos doloremque odio.</article>
-    <div>
-        <ul>
-            <li><a href="/">Thesis1</a></li>
-            <li><a href="/">Thesis2</a></li>
-            <li><a href="/">Thesis3</a></li>
-            <li><a href="/">Thesis4</a></li>
-        </ul>
-    </div>
+    <section class="flex flex-col justify-center items-center pb-10 max-w-6xl mx-auto mt-20">
+        <img class="authimg" src="{{ object.profile_pic.url }}" alt="">
+        <article class="bio">{{ object.bio }}</article>
+{#        <div>#}
+{#            <ul>#}
+{#                <li><a href="/">Thesis1</a></li>#}
+{#                <li><a href="/">Thesis2</a></li>#}
+{#                <li><a href="/">Thesis3</a></li>#}
+{#                <li><a href="/">Thesis4</a></li>#}
+{#            </ul>#}
+{#        </div>#}
+        <div class="
+            p-10
+            grid grid-cols-1
+            sm:grid-cols-1
+            md:grid-cols-3
+            lg:grid-cols-3
+            xl:grid-cols-3
+            gap-5">
+        <!-- Card - 1 -->
+          {% for obj in objects %}
+          <a href="{{ obj.get_absolute_url }}" class="rounded hover:bg-yellow-200 overflow-hidden shadow-md bg-white pb-4">
+            <div class="text-center">
+              <div class="h-36 overflow-hidden">
+                {% if obj.thumbnail.url %}
+                    <img href="{{ obj.get_absolute_url }}" src="{{ obj.thumbnail.url }}" alt="">
+
+                {% else %}
+                    <img href="{{ obj.get_absolute_url }}" src="{%  static 'media/banner-1.jpeg' %}" alt="">
+                {% endif %}
+              </div>
+              <div class="py-4">
+                <p class="font-semibold text-xl mb-2 hover:underline" href="{{ obj.get_absolute_url }}">{{ obj.title }} </p>
+                <p class="text-gray-900 text-xl my-4">
+                  {{ obj.author.full_name }}
+                </p>
+              </div>
+            </div>
+          </a>
+          {% endfor %}
+      </div>
+    </section>
 </main>
+{% endblock %}

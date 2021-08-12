@@ -22,7 +22,7 @@
         >
           <!-- Card - 1 -->
               {% for obj in objects %}
-                  <a href="" class="overflow-hidden shadow-md bg-white
+                  <a href="{% url 'authors-detail' obj.id %}" class="overflow-hidden shadow-md bg-white
             hover:bg-yellow-200">
                     <div class="px-6 py-4 flex flex-col items-center">
                       <img
