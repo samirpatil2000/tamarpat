@@ -498,6 +498,7 @@ def deleteThesisIndex(request,thesis_slug,index_id):
         return redirect('detailPage',thesis_slug)
     except Exception as e:
         return redirect('detailPage',thesis_slug)
+
 def editThesisIndex(request,thesis_slug,id):
     update_form=UpdateThesisIndexForm()
     current_index=ThesisIndex.objects.get(id=id)
