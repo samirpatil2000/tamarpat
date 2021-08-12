@@ -2,7 +2,7 @@
 {% load  static %}
 {% block title %}TAMARPAT{% endblock %}
 {% block content %}
-<!-- <style>
+<style>
   .tam{
     position: absolute;
     top: 7%;
@@ -25,7 +25,7 @@
     }
   }
   
-</style> -->
+</style>
     <main class="flex-grow bg-yellow-100 relative" xmlns="http://www.w3.org/1999/html">
 
 {#    <img class="absolute " src="{% static '/images/banner.jpg' %}" width="900" style="position: absolute;"> #}
@@ -88,7 +88,7 @@
                 </div>
 
                 <div class="py-4">
-                  <p class="font-semibold text-xl mb-2 underline" href="{{ obj.get_absolute_url }}">{{ obj.title }} </p>
+                  <p class="font-semibold text-xl mb-2 hover:underline" href="{{ obj.get_absolute_url }}">{{ obj.title }} </p>
                   <p class="text-gray-900 text-xl my-4">
                     {{ obj.author.full_name }}
                   </p>

@@ -2,7 +2,7 @@
 {% block title %}TAMARPAT{% endblock %}
 {% block content %}
 
-    <main class="flex-grow">
+    <main class="flex-grow bg-yellow-100">
       <section class="relative">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 mt-28">
           <h1 class="text-3xl font-bold">Wordsmiths</h1>
@@ -17,11 +17,13 @@
             lg:grid-cols-6
             xl:grid-cols-6
             gap-5
+           
           "
         >
           <!-- Card - 1 -->
               {% for obj in objects %}
-                  <div class="rounded overflow-hidden shadow-lg">
+                  <a href="" class="overflow-hidden shadow-md bg-white
+            hover:bg-yellow-200">
                     <div class="px-6 py-4 flex flex-col items-center">
                       <img
                           class="relative rounded-full"
@@ -32,7 +34,7 @@
                         />
                       <div class="font-bold text-xl my-2 text-center">{{ obj.full_name }}</div>
                     </div>
-                  </div>
+                  </a>
               {% endfor %}
               {% comment %}
           <div class="rounded overflow-hidden shadow-lg">
