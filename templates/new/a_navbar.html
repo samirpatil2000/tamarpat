@@ -117,8 +117,8 @@
                 <li><a class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'career' %}">CAREER</a></li>   
               </ul>
             </div> -->
-            <div x-data="{show: false}" @click.away="show = false">
-              <button @click="show = ! show" class="block text-gray-800 px-4 text-sm py-2 overflow-hidden focus:outline-none">
+            <div x-data="{see: false}" @click.away="see = false">
+              <button @click="see = ! see" class="block text-gray-800 px-4 text-sm py-2 overflow-hidden focus:outline-none">
                   <div class="flex">
                       <span class="px-4
                   py-2
@@ -135,7 +135,7 @@
                   focus:bg-gray-200 focus:outline-none focus:shadow-outline">Opportunities</span> 
                   </div>
               </button>
-              <div x-show="show" class="absolute z-10 mt-2 py-2 w-48 bg-white rounded-lg shadow-xl">
+              <div x-show="see" class="absolute z-10 mt-2 py-2 w-48 bg-white rounded-lg shadow-xl">
                 <a class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'competition' %}">COMPETITIONS</a>
                 <a class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'scholarships' %}">SCHOLARSHIPS</a>
                 <a class="px-4 py-2 block text-black bg-teal-300 hover:bg-gray-400" href="{% url 'career' %}">CAREER</a>
