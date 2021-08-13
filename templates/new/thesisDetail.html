@@ -36,7 +36,11 @@
   align-items: center;
   padding: 0.25em 0.5em;
 }
-
+#toolbar {
+  background-color: #555;
+  color: #fff;
+  
+}
 #viewport-container {
   flex: 1;
   background: #eee;
@@ -68,14 +72,14 @@
                           text-white
                           bg-teal-600
                           hover:bg-teal-700
-                          shadow" href="{% url 'edit_thesis' object.slug %}"> Edit </a>
+                          shadow" href="{% url 'edit_thesis' object.slug %}">Edit</a>
     </section>
 
             <div id="app">
               <div role="toolbar" id="toolbar">
                 <div id="pager" class="flex justify-between">
-                  <button class="bg-gray-100 ml-6 mb-4" data-pager="prev"> &lt;&lt; Prev </button>
-                  <button class="bg-gray-100 mr-6 mb-4" data-pager="next"> Next >> </button>
+                  <button class="bg-gray-100 ml-8 m-4" data-pager="prev"> &lt;&lt; Prev </button>
+                  <button class="bg-gray-100 mr-8 m-4" data-pager="next"> Next >> </button>
                 </div>
                 <div style="display:none;" id="page-mode">
                   <label>Page Mode<input type="number" value="1" min="1"/></label>
