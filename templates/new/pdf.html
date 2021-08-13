@@ -47,7 +47,8 @@
             zoom: 1
         } 
         //doc link
-        var pdf='media/media/example.pdf';
+        {#var pdf='/media/media/example.pdf';#}
+        var pdf="/media/{{ pdf_ }}";
         console.log(pdf);
         pdfjsLib.getDocument(pdf).then((pdf) => {
       
@@ -66,9 +67,9 @@
  
                 canvas.width = viewport.width;
                 canvas.height = viewport.height;
-                var blob = new Blob([pdf_], {type: 'application/pdf'});
-                var blobURL = URL.createObjectURL(blob);
-                window.open(blobURL);
+                {#var blob = new Blob([pdf_], {type: 'application/pdf'});#}
+                {#var blobURL = URL.createObjectURL(blob);#}
+                {#window.open(blobURL);#}
                 page.render({
                     canvasContext: ctx,
                     viewport: viewport

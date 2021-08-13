@@ -23,8 +23,8 @@
     <script src="https://unpkg.com/pdfjs-dist@2.0.489/build/pdf.min.js"></script>
     <script src="{% static 'src/index.js' %}"></script>
     <script>
-        var pdf='/media/media/example.pdf';
-        initPDFViewer(pdf);
+        {#var pdf={{ pdf_ }};#}
+        initPDFViewer("/media/{{ pdf_2 }}");
     </script>
   </body>
 </html>
