@@ -18,17 +18,25 @@
              0 0 0 10px black inset;
         }
         .authimg{
-            height:250px;
-            width:250px;
+            height:150px;
+            width:150px;
             border-radius: 50%;
             background: blue;
             overflow: hidden;
-            margin-bottom: 2em;
-            box-shadow: 5px 5px 10px ;
+            box-shadow: 2px 2px 4px ;
+        }
+        .imgName{
+            display: flex;
+            flex-direction: column;
+            min-height: 250px;
+            justify-content: space-evenly;
+            padding-left: 10%;
         }
         .bio{
             color: darkslategray;
-            padding: 3em;
+            padding: 0 2em 2em 2em;
+            border: 1px solid transparent;
+            border-bottom-color: black;
         }
         ul{
             list-style: none;
@@ -52,11 +60,22 @@
             color: #333;
             font-weight: bold;
         }
+    @media screen and (max-width:500px) {
+    .authimg{
+        height:100px;
+        width:100px;
+    }
+  }
+
+
     </style>
 <main class="flex-grow bg-tur" xmlns="http://www.w3.org/1999/html">
 
-    <section class="flex flex-col justify-center items-center pb-10 max-w-6xl mx-auto mt-20">
+    <div class="imgName"> 
         <img class="authimg" src="{{ object.profile_pic.url }}" alt="">
+        <h1 class="font-bold text-3xl">Author name</h1>
+    </div>
+    <section class="flex flex-col justify-center items-center pb-10 max-w-6xl mx-auto ">
         <article class="bio">{{ object.bio }}</article>
 {#        <div>#}
 {#            <ul>#}
