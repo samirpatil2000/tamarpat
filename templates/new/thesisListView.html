@@ -3,7 +3,7 @@
 {% block title %}TAMARPAT{% endblock %}
 {% block content %}
 
-    <main class="flex-grow bg-yellow-100" xmlns="http://www.w3.org/1999/html">
+    <main class="flex-grow bg-yellow-200" xmlns="http://www.w3.org/1999/html">
 
     <section class="flex flex-col items-center pb-10 max-w-6xl mx-auto mt-20">      
     <form method="get">
@@ -65,7 +65,7 @@
           ">
         <!-- Card - 1 -->
           {% for obj in objects %}
-          <a href="{{ obj.get_absolute_url }}" class="rounded hover:bg-yellow-200 overflow-hidden shadow-md bg-white pb-4">
+          <a href="{{ obj.get_absolute_url }}" class="rounded hover:bg-yellow-100 overflow-hidden shadow-md bg-white pb-4">
             <div class="text-center">
               <div class="h-36 overflow-hidden">
                 {% if obj.thumbnail.url %}

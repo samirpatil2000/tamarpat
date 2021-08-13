@@ -26,7 +26,7 @@
   }
   
 </style>
-    <main class="flex-grow bg-yellow-100 relative" xmlns="http://www.w3.org/1999/html">
+    <main class="flex-grow bg-yellow-200 relative" xmlns="http://www.w3.org/1999/html">
 
 {#    <img class="absolute " src="{% static '/images/banner.jpg' %}" width="900" style="position: absolute;"> #}
     <img class="absolute im" src="https://github.com/samirpatil2000/tamarpat/blob/master/static/images/banner.jpg?raw=true" width="700" style="position: absolute;
@@ -76,7 +76,7 @@
           ">
         <!-- Card - 1 -->
           {% for obj in objects %}
-            <a href="{{ obj.get_absolute_url }}" class="rounded hover:bg-yellow-200 overflow-hidden shadow-md bg-white pb-4">
+            <a href="{{ obj.get_absolute_url }}" class="rounded hover:bg-yellow-100 overflow-hidden shadow-md bg-white pb-4">
               <div class="text-center">
                 <div class="h-36 overflow-hidden">
                   {% if obj.thumbnail.url %}
