@@ -498,6 +498,7 @@ def deleteThesisIndex(request,thesis_slug,index_id):
         return redirect('detailPage',thesis_slug)
     except Exception as e:
         return redirect('detailPage',thesis_slug)
+
 def editThesisIndex(request,thesis_slug,id):
     update_form=UpdateThesisIndexForm()
     current_index=ThesisIndex.objects.get(id=id)
@@ -539,3 +540,19 @@ def addIndexTOThesisProject(request,proj_slug):
         'project':project,
     }
     return render(request, 'new/NotInUse/addIndexTOThesis.html', context)
+
+
+def pdf(request):
+    obj=ThesisProject.objects.filter(id=30)[0]
+    context={
+        'pdf_':'https://www.ph.ucla.edu/epi/rapidsurveys/RScourse/RSbook_ch3.pdf',
+        'pdf_2':obj.pdf,
+    }
+    return render(request,'new/control_pdf.html',context)
+
+def pdf2(request):
+    obj=ThesisProject.objects.filter(id=30)[0]
+    context={
+        'pdf_':obj.pdf
+    }
+    return render(request,'new/pdf.html',context)
