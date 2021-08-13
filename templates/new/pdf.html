@@ -47,7 +47,9 @@
             zoom: 1
         } 
         //doc link
-        pdfjsLib.getDocument('./pdf.pdf').then((pdf) => {
+        var pdf='media/media/example.pdf';
+        console.log(pdf);
+        pdfjsLib.getDocument(pdf).then((pdf) => {
       
             myState.pdf = pdf;
             render();
@@ -64,7 +66,9 @@
  
                 canvas.width = viewport.width;
                 canvas.height = viewport.height;
-          
+                var blob = new Blob([pdf_], {type: 'application/pdf'});
+                var blobURL = URL.createObjectURL(blob);
+                window.open(blobURL);
                 page.render({
                     canvasContext: ctx,
                     viewport: viewport
