@@ -2,15 +2,15 @@
 {% load  static %}
 {% block title %}Competition{% endblock %}
 {% block content %}
+<h1 class="rounded text-lg sm:text-4xl md:text-6xl tracking-widest bg-yellow-100 overflow-hidden text-center py-4 shadow text-yellow-300 font-semibold uppercase" >Competitions</h1>
 
 <main class="flex-grow px-4 md:px-0">
-  <h1 class="text-6xl rounded bg-yellow-100 py-4 text-center shadow text-yellow-300 font-semibold uppercase" >Competitions</h1>
-    <section class="flex flex-col items-center pb-10 max-w-6xl mx-auto mt-20 ">
+    <section class="flex flex-col items-center pb-10 max-w-6xl mx-auto mt-10">
         {% for obj in objects %}
 
 {#            <h1 class="font-bold text-3xl mb-5">{{ obj.title }}#}
 {#            </h1> #}
-<div class="border p-6 bg-gray-100 shadow-md">
+<div class="border p-4 bg-gray-100 shadow-md">
             {% if request.user.is_superuser %}
                 <a class="btn
                               text-white
