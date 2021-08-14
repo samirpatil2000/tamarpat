@@ -12,13 +12,13 @@
 {#            </h1> #}
 <div class="border p-6 bg-gray-100 shadow-md">
             {% if request.user.is_superuser %}
-            <a class="btn
-                          text-white
-                          bg-blue-500
-                          hover:bg-blue-600
-                          shadow
-                          
-                          " href="{% url 'edit_competition' obj.id %}">Edit <i class="fas fa-edit"></i>
+                <a class="btn
+                              text-white
+                              bg-blue-500
+                              hover:bg-blue-600
+                              shadow"
+                   href="{% url 'edit_competition' obj.id %}">Edit <i class="fas fa-edit"></i>
+                </a>
             {% endif %}
             <p class="text-lg">
               The Competition is an ideal way to exhibit your talent to a wider international audience. With a distinguished

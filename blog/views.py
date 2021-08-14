@@ -24,11 +24,12 @@ from .models import (ThesisFiles,Category,
 import datetime
 
 def index(request):
+    first_row_obj=ThesisProject.objects.filter(is_checked=True)[:3].values('id')
     context={
         'objects':ThesisProject.objects.filter(is_checked=True)[:3],
         'exams':Exam.objects.filter(is_checked=True),
-        'english_projects':ThesisProject.objects.filter(language__contains="English",is_checked=True)[:3],
-        'marathi_projects':ThesisProject.objects.filter(language__contains="Marathi",is_checked=True)[:3]
+        'english_projects':ThesisProject.objects.filter(language__contains="English",is_checked=True).exclude(id__in=first_row_obj)[:4],
+        'marathi_projects':ThesisProject.objects.filter(language__contains="Marathi",is_checked=True).exclude(id__in=first_row_obj)[:4]
     }
     if request.GET:
         query=request.GET.get('search_query')
@@ -543,16 +544,11 @@ def addIndexTOThesisProject(request,proj_slug):
 
 
 def pdf(request):
-    obj=ThesisProject.objects.filter(id=30)[0]
-    context={
-        'pdf_':'https://www.ph.ucla.edu/epi/rapidsurveys/RScourse/RSbook_ch3.pdf',
-        'pdf_2':obj.pdf,
-    }
-    return render(request,'new/control_pdf.html',context)
+    return render(request,'new/control_pdf.html')
 
-def pdf2(request):
-    obj=ThesisProject.objects.filter(id=30)[0]
-    context={
-        'pdf_':obj.pdf
-    }
-    return render(request,'new/pdf.html',context)
+# def pdf2(request):
+#     obj=ThesisProject.objects.filter(id=30)[0]
+#     context={
+#         'pdf_':obj.pdf
+#     }
+#     return render(request,'new/pdf.html',context)

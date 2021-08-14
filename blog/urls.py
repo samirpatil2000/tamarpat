@@ -55,5 +55,4 @@ urlpatterns = [
     path('delete/exam/<int:id>/',views.deleteExam,name='delete_exam'),
 
     path('pdf/',views.pdf,name='pdf'),
-    path('pdf-2/',views.pdf2,name='pdf'),
 ]
