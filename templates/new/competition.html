@@ -21,9 +21,7 @@
                 </a>
             {% endif %}
             <p class="text-lg">
-              The Competition is an ideal way to exhibit your talent to a wider international audience. With a distinguished
-              panel of jurors and more than $55,000 in valuable prizes, it is open to visual artists from Asia at any stage
-              of their careers. Painting, sculpture, photography, drawing, mixed media, and print are the accepted mediums.
+                {{ obj.desc|safe }}
             </p>
             {% if obj.thumbnail %}
                     <img class="w-full max-w-lg my-4" src="{{ obj.thumbnail.url }}" alt="">
@@ -61,7 +59,7 @@
               </div>
               <p>
                 Official Website : <a class="underline text-blue-600 bg-teal-100
-                px-2 py-1 rounded" href="{{ obj.url }}">Link</a>
+                px-2 py-1 rounded" href="{{ obj.url }}" target="_blank">Link</a>
               </p>
             </div>
           </div>
