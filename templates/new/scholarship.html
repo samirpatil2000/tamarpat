@@ -5,9 +5,9 @@
 <h1 class="rounded text-lg sm:text-4xl md:text-6xl tracking-widest bg-yellow-100 overflow-hidden text-center py-4 shadow text-yellow-300 font-semibold uppercase" >Scholarship</h1>
 
 <main class="flex-grow px-4 md:px-0">
-    <section class="flex flex-col items-center pb-10 max-w-6xl mx-auto mt-20 ">
+    <section class="flex flex-col items-center pb-10 max-w-6xl mx-auto mt-5 ">
         {% for obj in objects %}
-            <div>
+            <div class="border shadow rounded bg-gray-100 p-4">
 {#                <h1 class="font-bold text-3xl mb-5">{{ obj.title }}#}
 {#                </h1>#}
             {% if request.user.is_superuser %}
