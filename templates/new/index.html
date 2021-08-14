@@ -38,12 +38,17 @@
     min-width: 100px;
     min-height: 100px;
     height: 100px;
-    background: red;
+    background: white;
   }
-  
+  .bg{
+    background: rgb(255, 280, 210);
+  }
 
+  .shad{
+    box-shadow: 0 0 5px 1px rgb(156, 156, 156);
+  }
 </style>
-    <main class="flex-grow bg-yellow-200 relative" xmlns="http://www.w3.org/1999/html">
+    <main class="flex-grow bg relative" xmlns="http://www.w3.org/1999/html">
 
 {#    <img class="absolute " src="{% static '/images/banner.jpg' %}" width="900" style="position: absolute;"> #}
     <img class="absolute im" src="https://github.com/samirpatil2000/tamarpat/blob/master/static/images/banner.jpg?raw=true" width="700" style="position: absolute;
@@ -80,9 +85,8 @@
       <!-- Cards Container -->
       <div class="
             z-10
-            p-10
-            md:pb-10
-            pb-0
+            p-6
+            md:pb-6
             grid grid-cols-1
             sm:grid-cols-1
             md:grid-cols-3
@@ -93,7 +97,7 @@
           ">
         <!-- Card - 1 -->
           {% for obj in objects %}
-            <a href="{{ obj.get_absolute_url }}" class="rounded hover:bg-yellow-100 overflow-hidden shadow-md bg-white pb-4">
+            <a href="{{ obj.get_absolute_url }}" class="rounded hover:bg-yellow-100 overflow-hidden shadow-md bg-white ">
               <div class="text-center">
                 <div class="h-36 overflow-hidden">
                   {% if obj.thumbnail.url %}
@@ -120,10 +124,10 @@
 
     <!-- English Marathi Starts  -->
 
-    <section class=" py-2  flex flex-col items-center max-w-6xl mx-auto mt-10 mb-20 px-2">
+    <section class="py-2 flex flex-col items-center max-w-6xl mx-auto mb-10 px-2">
       <div class="flex flex-wrap w-full justify-around">
-        <div class="shadow text-center rounded flex-start flex-col px-4 py-2 w-full sm:w-96 bg-white md:my-0 pt-6">
-          <span class="text-2xl mt-4 px-4 py-2 bg-yellow-300 text-gray-800 rounded">English</span>
+        <div class="shadow rounded flex-start flex-col px-4 py-2 w-full sm:w-96 bg-white md:my-0 pt-6">
+          <span class="text-xl mt-4 px-2 py-2 uppercase underline  text-gray-800 rounded-lg">English</span>
             {% for obj in english_projects %}
                 <a href="{% url 'detailPage' obj.slug %}" class="bg-gray-100 hover:bg-gray-200 shadow rounded flex my-4 border-b pb-2">
                     <img class="thumbnail m-2" src="{{ obj.thumbnail.url }}" alt="">
@@ -145,8 +149,8 @@
           </div>
           {% endcomment %}
         </div>
-        <div class="shadow rounded text-center flex-start flex-col px-4 py-2 w-full sm:w-96 bg-white my-4 md:my-0 pt-6">
-          <span class="text-2xl mt-4 px-4 py-2 bg-yellow-300 text-gray-800 rounded">मराठी</span>
+        <div class="shadow rounded flex-start flex-col px-4 py-2 w-full sm:w-96 bg-white my-4 md:my-0 pt-6">
+          <span class="text-xl mt-4 px-2 py-2 uppercase underline  text-gray-800 rounded-lg">मराठी</span>
             {% for obj in marathi_projects %}
             <a href="{% url 'detailPage' obj.slug %}" class="bg-gray-100 hover:bg-gray-200 shadow rounded flex my-4 border-b pb-2">
               <img class="thumbnail m-2" src="{{ obj.thumbnail.url }}" alt="">
@@ -188,30 +192,30 @@
             gap-5
           ">
         <!-- Card - 1 -->
-        <div class="rounded overflow-hidden shadow-lg  mb-2 text-left bg-white">
-          <p class="text-2xl mb-2 text-center h-20 bg-yellow-300 py-2 flex items-center justify-center text-bg-700">Opportunities</p>
+        <div class="rounded overflow-hidden shad mb-2 text-left bg-white">
+          <p class="text-2xl mb-2 text-center h-20 bg-yellow-200 py-2 flex items-center justify-center text-bg-700">Opportunities</p>
           <ul class="list-disc list-inside pl-4 py-4" style="list-style: none;">
-            <li class="mb-1 border p-2 m-2 rounded-lg hover:bg-gray-100"><a class="font-semibold" href="{% url 'competition' %}">COMPETITIONS</a></li>
-            <li class="mb-1 border p-2 m-2 rounded-lg hover:bg-gray-100"><a class="font-semibold" href="{% url 'scholarships' %}">SCHOLARSHIPS</a></li>
-            <li class="mb-1 border p-2 m-2 rounded-lg hover:bg-gray-100"><a class="font-semibold" href="{% url 'career' %}">CAREER</a></li>
+            <a class="font-semibold" href="{% url 'competition' %}"><li class="mb-1 border p-2 m-2 rounded-lg hover:bg-gray-100">COMPETITIONS</li></a>
+            <a class="font-semibold" href="{% url 'scholarships' %}"><li class="mb-1 border p-2 m-2 rounded-lg hover:bg-gray-100">SCHOLARSHIPS</li></a>
+            <a class="font-semibold" href="{% url 'career' %}"><li class="mb-1 border p-2 m-2 rounded-lg hover:bg-gray-100">CAREER</li></a>
           </ul>
         </div>
-        <div class="rounded overflow-hidden shadow-lg text-left bg-white mb-2">
-          <p class="text-2xl mb-2 text-center  bg-yellow-300 py-2 h-20 text-bg-700">Entrance Exam<br> and Guidelines</p>
+        <div class="rounded overflow-hidden shad text-left bg-white mb-2">
+          <p class="text-2xl mb-2 text-center  bg-yellow-200 py-2 h-20 text-bg-700">Entrance Exam<br> and Guidelines</p>
           
           <ul class="list-disc list-outside pl-8 my-2 pl-4 pb-4 py-2" style="list-style: none;">
             {% for e in exams %}
-                <li class="mb-2 border p-2 m-2 rounded-lg hover:bg-gray-100"><a class="font-semibold" href="{% url 'exams_detail' e.slug %}">{{ e.title }}</a></li>
+                <a class="font-semibold" href="{% url 'exams_detail' e.slug %}"><li class="mb-2 border p-2 m-2 rounded-lg hover:bg-gray-100">{{ e.title }}</li></a>
             {% endfor %}
           </ul>
         </div>
-        <div class="rounded overflow-hidden shadow-lg text-left bg-white mb-2" >
-          <a href="{% url 'publish' %}" class="text-2xl mb-2 text-center bg-yellow-300 py-2 h-20 text-bg-700 flex items-center justify-center">Submit your work now</a>
+        <div class="rounded overflow-hidden shad text-left bg-white mb-2" >
+          <a href="{% url 'publish' %}" class="text-2xl mb-2 text-center bg-yellow-200 py-2 h-20 text-bg-700 flex items-center justify-center">Submit your work now</a>
           <ul class="list-disc list-inside pl-4" style="list-style: none;">
-            <li class="mb-2 border p-2 m-2 rounded-lg hover:bg-gray-100"><a class="font-semibold" href="{% url 'publish' %}">THESIS</a></li>
-            <li class="mb-2 border p-2 m-2 rounded-lg hover:bg-gray-100"><a class="font-semibold" href="{% url 'publish' %}">DISSERTATION</a></li>
-            <li class="mb-2 border p-2 m-2 rounded-lg hover:bg-gray-100"><a class="font-semibold" href="{% url 'publish' %}">ART RELATED RESEARCH PAPERS</a></li>
-            <li class="mb-2 border p-2 m-2 rounded-lg hover:bg-gray-100"><a class="font-semibold" href="{% url 'publish' %}">ART PROJECTS</a></li>
+            <a class="font-semibold" href="{% url 'publish' %}"><li class="mb-2 border p-2 m-2 rounded-lg hover:bg-gray-100">THESIS</li></a>
+            <a class="font-semibold" href="{% url 'publish' %}"><li class="mb-2 border p-2 m-2 rounded-lg hover:bg-gray-100">DISSERTATION</li></a>
+            <a class="font-semibold" href="{% url 'publish' %}"><li class="mb-2 border p-2 m-2 rounded-lg hover:bg-gray-100">ART RELATED RESEARCH PAPERS</li></a>
+            <a class="font-semibold" href="{% url 'publish' %}"><li class="mb-2 border p-2 m-2 rounded-lg hover:bg-gray-100">ART PROJECTS</li></a>
           </ul>
         </div>
       </div>

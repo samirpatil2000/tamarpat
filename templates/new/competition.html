@@ -2,7 +2,12 @@
 {% load  static %}
 {% block title %}Competition{% endblock %}
 {% block content %}
-<h1 class="rounded text-lg sm:text-4xl md:text-6xl tracking-widest bg-yellow-100 overflow-hidden text-center py-4 shadow text-yellow-300 font-semibold uppercase" >Competitions</h1>
+<style>
+  .bg{
+    background: rgb(255, 280, 187);
+  }
+  </style>
+<h1 class="rounded text-lg sm:text-4xl md:text-6xl tracking-widest bg overflow-hidden text-center py-4 shadow text-yellow-800 font-semibold uppercase" >Competitions</h1>
 
 <main class="flex-grow px-4 md:px-0">
     <section class="flex flex-col items-center pb-10 max-w-6xl mx-auto mt-10">
@@ -10,7 +15,7 @@
 
 {#            <h1 class="font-bold text-3xl mb-5">{{ obj.title }}#}
 {#            </h1> #}
-<div class="border p-4 bg-gray-100 shadow-md">
+<div class="border p-4 bg-white shadow-md">
             {% if request.user.is_superuser %}
                 <a class="btn
                               text-white
@@ -38,19 +43,19 @@
                 gap-5
               ">
               <!-- Card - 1 -->
-              <div class="rounded overflow-hidden shadow p-2">
+              <div class="rounded overflow-hidden shadow-lg p-2">
                 <p class="font-semibold underline text-xl  mb-2">Accepted Media</p>
                 <p class="text-gray-600 text-base">
                   {{ obj.acceptedMedia }}
                 </p>
               </div>
-              <div class="rounded overflow-hidden shadow p-2">
+              <div class="rounded overflow-hidden shadow-lg p-2">
                 <p class="font-semibold underline text-xl  mb-2">Eligibility</p>
                 <p class="text-gray-600 text-base">
                   {{ obj.eligibility }}
                 </p>
               </div>
-              <div class="rounded overflow-hidden shadow p-2">
+              <div class="rounded overflow-hidden shadow-lg p-2">
                 <p class="font-semibold underline text-xl  mb-2">Deadline</p>
                 <p class="text-gray-600 text-base">
                  {{ obj.deadline }}
@@ -58,7 +63,7 @@
 
               </div>
               <p>
-                Official Website : <a class="underline text-blue-600 bg-teal-100
+                Official Website : <a class=" text-white bg-blue-500 hover:bg-blue-600
                 px-2 py-1 rounded" href="{{ obj.url }}" target="_blank">Link</a>
               </p>
             </div>
