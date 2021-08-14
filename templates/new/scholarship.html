@@ -29,11 +29,14 @@
                 {% endif  %}                <p>
                     {{ obj.desc|safe }}
                 </p>
+            {% if obj.url %}
+
                 <p>
                   Official Website : <a class=" text-white bg-blue-500 hover:bg-blue-600
                   px-2 py-1 rounded" href="{{ obj.url }}
                   ">Link</a>
                 </p>
+            {% endif %}
             </div>
           <hr style="height:2px;background-color: rgba(128, 128, 128, 0.459);" class="my-10">
         {% endfor %}

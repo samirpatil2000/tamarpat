@@ -14,7 +14,8 @@ from .models import (ThesisProject,
                      Career,
                     Exam,
                     ThesisIndex,
-                    Type
+                    Type,
+                    Constant
                      )
 
 
@@ -57,4 +58,5 @@ class CareerAdmin(admin.ModelAdmin):
 
 admin.site.register(ThesisIndex)
 admin.site.register(Type)
+admin.site.register(Constant)
 

@@ -155,3 +155,10 @@ class Subscriber(models.Model):
 
     class Meta:
         verbose_name_plural="Subscriber's"
+
+
+class Constant(models.Model):
+    term_and_conditions = RichTextField(default="Text here", blank=True, null=True)
+    about_us = RichTextField(default="About Us", blank=True, null=True)
+    contact_us = RichTextField(default="Contact Us", blank=True, null=True)
+

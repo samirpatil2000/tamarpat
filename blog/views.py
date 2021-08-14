@@ -19,7 +19,7 @@ UpdateCareerForm,UpdateCompletionForm,UpdateScholarshipForm,AddAuthorForm,Create
 from .models import (ThesisFiles,Category,
                      ThesisProject,Subscriber,
                      Competition,Scholarship,
-                     Career,ThesisIndex,Exam,
+                     Career,ThesisIndex,Exam,Constant,
                      Author)
 import datetime
 
@@ -564,3 +564,28 @@ def pdf(request,id,pk_i):
 #         'pdf_':obj.pdf
 #     }
 #     return render(request,'new/pdf.html',context)
+
+def constants(request,str_):
+
+    try:
+        header=""
+        template_name = "new/constants.html"
+        object = Constant.objects.all()[0]
+        obj = ""
+        if str_=="contact_us":
+            obj=object.contact_us
+            header="Contact Us"
+        elif str_=="about_us":
+            obj=object.about_us
+            header="About Us"
+
+        elif str_=="terms":
+            obj=object.term_and_conditions
+            header="Terms and Conditions"
+    except:
+        return redirect('index')
+
+    return render(request,
+                  template_name,
+                  {'obj': obj, 'title': str_,"header": header},)
+
