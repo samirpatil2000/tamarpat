@@ -547,8 +547,14 @@ def pdf(request,id):
     if id==0:
         return render(request,'new/control_pdf.html')
     else:
+        pk_=30
+        for obj in ThesisProject.objects.all():
+            if obj.pdf:
+                pk_=obj.pk
+                break
+
         context={
-            'pdf_':ThesisProject.objects.get(id=30).pdf
+            'pdf_':ThesisProject.objects.get(id=pk_).pdf
         }
         return render(request, 'new/pdf.html',context)
 
