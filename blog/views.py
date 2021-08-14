@@ -543,8 +543,14 @@ def addIndexTOThesisProject(request,proj_slug):
     return render(request, 'new/NotInUse/addIndexTOThesis.html', context)
 
 
-def pdf(request):
-    return render(request,'new/control_pdf.html')
+def pdf(request,id):
+    if id==0:
+        return render(request,'new/control_pdf.html')
+    else:
+        context={
+            'pdf_':ThesisProject.objects.get(id=30).pdf
+        }
+        return render(request, 'new/pdf.html',context)
 
 # def pdf2(request):
 #     obj=ThesisProject.objects.filter(id=30)[0]
