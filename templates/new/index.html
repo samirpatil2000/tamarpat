@@ -122,17 +122,17 @@
 
     <section class=" py-2  flex flex-col items-center max-w-6xl mx-auto mt-10 mb-20 px-2">
       <div class="flex flex-wrap w-full justify-around">
-        <div class="shadow rounded flex-start flex-col px-4 py-2 w-full sm:w-96 bg-white md:my-0 pt-6">
+        <div class="shadow text-center rounded flex-start flex-col px-4 py-2 w-full sm:w-96 bg-white md:my-0 pt-6">
           <span class="text-2xl mt-4 px-4 py-2 bg-yellow-300 text-gray-800 rounded">English</span>
             {% for obj in english_projects %}
-                <div class=" flex my-4 border-b pb-2">
+                <a href="{% url 'detailPage' obj.slug %}" class="bg-gray-100 hover:bg-gray-200 shadow rounded flex my-4 border-b pb-2">
                     <img class="thumbnail m-2" src="{{ obj.thumbnail.url }}" alt="">
                     <div>
-                      <a class="font-semibold text-lg h3" href="{% url 'detailPage' obj.slug %}">{{ obj.title }}</a>
+                      <p class="text-left font-semibold text-lg h3" >{{ obj.title }}</p>
                       <p>{{ obj.headline|truncatechars:100|safe }}</p>
-                      <p class="text-gray-700">{{ obj.author.full_name }}</p>
+                      <p class="text-left text-gray-700">{{ obj.author.full_name }}</p>
                     </div>
-                </div>
+                  </a>
                 {% endfor %}
          {% comment %}
            <div class="my-2 border-b pb-2">
@@ -145,17 +145,17 @@
           </div>
           {% endcomment %}
         </div>
-        <div class="shadow rounded flex-start flex-col px-4 py-2 w-full sm:w-96 bg-white my-4 md:my-0 pt-6">
+        <div class="shadow rounded text-center flex-start flex-col px-4 py-2 w-full sm:w-96 bg-white my-4 md:my-0 pt-6">
           <span class="text-2xl mt-4 px-4 py-2 bg-yellow-300 text-gray-800 rounded">मराठी</span>
             {% for obj in marathi_projects %}
-            <div class=" flex my-4 border-b pb-2">
+            <a href="{% url 'detailPage' obj.slug %}" class="bg-gray-100 hover:bg-gray-200 shadow rounded flex my-4 border-b pb-2">
               <img class="thumbnail m-2" src="{{ obj.thumbnail.url }}" alt="">
               <div>
-                <a class="font-semibold text-lg h3" href="{% url 'detailPage' obj.slug %}">{{ obj.title }}</a>
+                <p class="text-left font-semibold text-lg h3" >{{ obj.title }}</p>
                 <p>{{ obj.headline|truncatechars:100|safe }}</p>
-                <p class="text-gray-700">{{ obj.author.full_name }}</p>
+                <p class="text-left text-gray-700">{{ obj.author.full_name }}</p>
               </div>
-          </div>
+            </a>
             {% endfor %}
         {% comment %}
           <div class="my-2 border-b pb-2">
@@ -198,23 +198,15 @@
         </div>
         <div class="rounded overflow-hidden shadow-lg text-left bg-white mb-2">
           <p class="text-2xl mb-2 text-center  bg-yellow-300 py-2 h-20 text-bg-700">Entrance Exam<br> and Guidelines</p>
-          <!-- <ul class="list-disc list-inside">
-            <li class="font-semibold  mb-2">Entrance Exams</li>
-            <li class="font-semibold  mb-2">Guidance</li>
-          </ul>
-          <ol class="list-decimal list-inside my-2">
-            <li>Competions</li>
-            <li>Scholarships</li>
-            <li>Career</li>
-          </ol> -->
+          
           <ul class="list-disc list-outside pl-8 my-2 pl-4 pb-4 py-2" style="list-style: none;">
             {% for e in exams %}
                 <li class="mb-2 border p-2 m-2 rounded-lg hover:bg-gray-100"><a class="font-semibold" href="{% url 'exams_detail' e.slug %}">{{ e.title }}</a></li>
             {% endfor %}
           </ul>
         </div>
-        <div class="rounded overflow-hidden shadow-lg text-left bg-white" href="{% url 'publish' %}">
-          <a href="{% url 'publish' %}" class="text-2xl mb-2 text-center  bg-yellow-300 py-2 h-20 text-bg-700 flex items-center justify-center">Submit your work now</a>
+        <div class="rounded overflow-hidden shadow-lg text-left bg-white mb-2" >
+          <a href="{% url 'publish' %}" class="text-2xl mb-2 text-center bg-yellow-300 py-2 h-20 text-bg-700 flex items-center justify-center">Submit your work now</a>
           <ul class="list-disc list-inside pl-4" style="list-style: none;">
             <li class="mb-2 border p-2 m-2 rounded-lg hover:bg-gray-100"><a class="font-semibold" href="{% url 'publish' %}">THESIS</a></li>
             <li class="mb-2 border p-2 m-2 rounded-lg hover:bg-gray-100"><a class="font-semibold" href="{% url 'publish' %}">DISSERTATION</a></li>
