@@ -1,13 +1,17 @@
 {% extends 'new/base.html' %}
 {% block title %}TAMARPAT{% endblock %}
 {% block content %}
-
+<style>
+  .bg{
+    background: rgb(255, 280, 187);
+  }
+</style>
 <main class="flex-grow">
     <section class="relative">
 
       <div class="max-w-6xl mx-auto px-4 sm:px-6 mt-28">
         
-        <h1 class="text-6xl rounded bg-yellow-100 py-4 text-center shadow text-yellow-300 font-semibold">SUBMIT</h1>
+        <h1 class="text-6xl rounded bg py-4 text-center shadow text-yellow-800 font-semibold">SUBMIT</h1>
 
         <p class="my-6">
           Artist/Writer/Student are requested to submit only their own and
@@ -15,7 +19,7 @@
           strictly according to rules.
         </p>
 
-        <form method="POST" action="" class="mb-2 bg-gray-100 text-gray-800 rounded-md flex border p-6 flex-col pb-4">
+        <form method="POST" action="" class="mb-2 bg text-gray-800 rounded-md flex border p-6 flex-col pb-4">
             {% csrf_token %}
           <span>Project / thesis Title :* </span>
           <input type="text" name="thesis_title" required="True" class="shadow
@@ -120,7 +124,9 @@
             </span>
           
 
-          <button class="
+          
+</div>
+<button class="
           mt-10
           ml-10
           btn
@@ -133,8 +139,6 @@
         " style="width: 120px;" type="submit">
             Submit
           </button>
-</div>
-
 
 
         </form>

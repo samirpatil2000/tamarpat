@@ -4,7 +4,28 @@
 
     <main class="flex-grow bg-yellow-100">
       <section class="relative">
+        <div class="flex absolute px-10">
+          <button type="submit" class="absolute left-12 top-2">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="#444" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" fill="none" shape-rendering="geometricPrecision">
+              <path d="M11 17.25a6.25 6.25 0 110-12.5 6.25 6.25 0 010 12.5z" />
+              <path d="M16 16l4.5 4.5" />
+            </svg>
+          </button>
+          <input name="search_query" class="
+                shadow
+                rounded
+                p-2
+                w-72
+                pl-10
+                focus:outline-none
+                focus:ring-2
+                focus:ring-teal-400
+                focus:border-transparent
+              " type="text" placeholder="Search" />
+        </div>
         <div class="max-w-6xl mx-auto px-4 sm:px-6 mt-28">
+
           <h1 class="text-3xl font-bold">Wordsmiths</h1>
 
           <!-- Author Cards -->
@@ -32,7 +53,7 @@
                           height="96"
                           alt="Testimonial 01"
                         />
-                      <div class="font-bold text-xl my-2 text-center">{{ obj.full_name }}</div>
+                      <div class="font-semibold sm:text-xl text-sm my-2 text-center">{{ obj.full_name }}</div>
                     </div>
                   </a>
               {% endfor %}
