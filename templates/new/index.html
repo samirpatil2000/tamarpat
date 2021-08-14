@@ -126,11 +126,11 @@
           <span class="text-2xl mt-4 px-4 py-2 bg-yellow-300 text-gray-800 rounded">English</span>
             {% for obj in english_projects %}
                 <div class=" flex my-4 border-b pb-2">
-                    <img class="thumbnail m-2" src="" alt="">
+                    <img class="thumbnail m-2" src="{{ obj.thumbnail.url }}" alt="">
                     <div>
                       <a class="font-semibold text-lg h3" href="{% url 'detailPage' obj.slug %}">{{ obj.title }}</a>
                       <p>{{ obj.headline|truncatechars:100|safe }}</p>
-                      <p class="text-gray-700">author name</p>
+                      <p class="text-gray-700">{{ obj.author.full_name }}</p>
                     </div>
                 </div>
                 {% endfor %}
@@ -149,11 +149,11 @@
           <span class="text-2xl mt-4 px-4 py-2 bg-yellow-300 text-gray-800 rounded">मराठी</span>
             {% for obj in marathi_projects %}
             <div class=" flex my-4 border-b pb-2">
-              <img class="thumbnail m-2" src="" alt="">
+              <img class="thumbnail m-2" src="{{ obj.thumbnail.url }}" alt="">
               <div>
                 <a class="font-semibold text-lg h3" href="{% url 'detailPage' obj.slug %}">{{ obj.title }}</a>
                 <p>{{ obj.headline|truncatechars:100|safe }}</p>
-                <p class="text-gray-700">author name</p>
+                <p class="text-gray-700">{{ obj.author.full_name }}</p>
               </div>
           </div>
             {% endfor %}

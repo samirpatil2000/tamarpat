@@ -68,11 +68,13 @@
     <section class="flex flex-col justify-center items-center pb-10 max-w-6xl mx-auto mt-2">
 
         <h1>{{ object.title }}</h1>
+        {% if request.user.is_superuser %}
                 <a class="btn
                           text-white
                           bg-teal-600
                           hover:bg-teal-700
                           shadow" href="{% url 'edit_thesis' object.slug %}">Edit</a>
+        {% endif %}
     </section>
 
             <div id="app">

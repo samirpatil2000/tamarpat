@@ -11,13 +11,15 @@
 {#            <h1 class="font-bold text-3xl mb-5">{{ obj.title }}#}
 {#            </h1> #}
 <div class="border p-6 bg-gray-100 shadow-md">
+            {% if request.user.is_superuser %}
             <a class="btn
                           text-white
                           bg-blue-500
                           hover:bg-blue-600
                           shadow
                           
-                          " href="{% url 'edit_competition' obj.id %}">Edit <i class="fas fa-edit"></i></a>
+                          " href="{% url 'edit_competition' obj.id %}">Edit <i class="fas fa-edit"></i>
+            {% endif %}
             <p class="text-lg">
               The Competition is an ideal way to exhibit your talent to a wider international audience. With a distinguished
               panel of jurors and more than $55,000 in valuable prizes, it is open to visual artists from Asia at any stage
