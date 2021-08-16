@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'account',
     'blog',
 
+    'storages',
+
 ]
 
 AUTH_USER_MODEL = 'account.Account' #appName.modelName
@@ -160,3 +162,39 @@ CKEDITOR_CONFIGS = {
         'width': 'auto',
     },
 }
+
+dict_={
+  "Id": "Policy1628967063009",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1628967058686",
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::tamrapat/*",
+      "Principal": "*"
+    }
+  ]
+}
+
+
+#AWS_ACCESS_KEY_ID = "AKIAVPWZXGEYFLKTFIW4"
+# AWS_SECRET_ACCESS_KEY = "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"
+
+AWS_ACCESS_KEY_ID = "AKIAVPWZXGEYDO2BFFHI"
+AWS_SECRET_ACCESS_KEY = "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"
+AWS_STORAGE_BUCKET_NAME = "tamrapat01"
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+
+AWS_REGION_NAME = "ap-south-1"
+AWS_S3_SIGNATURE_VERSION ="s3v4"
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
+x="AKIAVPWZXGEYDO2BFFHI"
+s="KhEdc6dfgmG/pmdvb5jwhFksi/I5iHx4zUhocBWW"
