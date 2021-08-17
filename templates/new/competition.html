@@ -6,6 +6,10 @@
   .bg{
     background: rgb(255, 280, 187);
   }
+  .ebox{
+    height: 50px;
+    overflow: hidden;
+  }
   </style>
 <h1 class="rounded text-lg sm:text-4xl md:text-6xl tracking-widest bg overflow-hidden text-center py-4 shadow text-yellow-800 font-semibold uppercase" >Competitions</h1>
 
@@ -15,7 +19,7 @@
 
 {#            <h1 class="font-bold text-3xl mb-5">{{ obj.title }}#}
 {#            </h1> #}
-<div class="border p-4 bg-white shadow-md">
+<div id="ebox" class="border ebox p-4 bg-white shadow-md">
             {% if request.user.is_superuser %}
                 <a class="btn
                               text-white
@@ -70,9 +74,18 @@
                 {% endif %}
             </div>
           </div>
+          <button onclick="seemore()" >See More</button>
             <hr style="height:2px;background-color: rgba(128, 128, 128, 0.459);" class="my-10">
         {% endfor %}
-
     </section>
 </main>
+<script>
+  const sm = document.getElementById('seemore')
+  const ebox = document.getElementById('ebox')
+  function seemore(){
+    ebox.classList.remove('ebox')
+    console.log('pressed');
+  }
+  
+</script>
 {% endblock %}
