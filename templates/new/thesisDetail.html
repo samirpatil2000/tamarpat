@@ -3,7 +3,9 @@
 {% block title %}TAMARPAT{% endblock %}
 {% block content %}
 <style>
-
+.none{
+  display: none;
+}
   body {
   margin: 0;
   font-family: sans-serif;
@@ -76,7 +78,7 @@
                           shadow" href="{% url 'edit_thesis' object.slug %}">Edit</a>
         {% endif %}
     </section>
-
+      <p class="loadWait">LOADING...Please Wait</p>
             <div id="app">
               <div role="toolbar" id="toolbar">
                 <div id="pager" class="flex justify-between">

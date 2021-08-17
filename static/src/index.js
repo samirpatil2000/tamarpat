@@ -8,13 +8,14 @@
   const viewport = document.querySelector("#viewport");
   window.initPDFViewer = function(pdfURL) {
     pdfjsLib.getDocument(pdfURL).then(pdf => {
+      console.log('loaded');
       pdfInstance = pdf;
       totalPagesCount = pdf.numPages;
       initPager();
       initPageMode();
       render();
-    });
-  };
+    })
+}
 
   function onPagerButtonsClick(event) {
     const action = event.target.getAttribute("data-pager");
@@ -79,6 +80,8 @@
       }"><canvas></canvas></div>`.repeat(pages.length);
       viewport.innerHTML = pagesHTML;
       pages.forEach(renderPage);
+      document.querySelector('.loadWait').classList.add('none')
+
     });
   }
 
