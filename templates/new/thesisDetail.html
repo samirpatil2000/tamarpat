@@ -98,13 +98,16 @@
  
 
 <div class="container">
-  <div id="viewpdf" style="margin-left: 200px; height: 1000px;"></div>
+  <div id="viewpdf" style="
+    margin:3rem;
+    width:70rem;
+    height:70rem;"></div>
 </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.6/pdfobject.js" integrity="sha512-I5DeI8/00iidt2UqCjN6/VXjksWSsSwuEleCimq5QuPmhfbnMWSRrfp4cvS6lESaZXYCNv+0qs2Kor9ItoMORA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-      PDFObject.embed("{{ object.pdf.url }}",'#viewpdf')
+      PDFObject.embed("{{ object.pdf.url }}#toolbar=0",'#viewpdf')
       if(PDFObject.supportsPDFs){
       console.log("Yay, this browser supports inline PDFs.");
       } else {
