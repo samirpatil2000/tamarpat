@@ -96,23 +96,23 @@
         {% endif %}
     </section>
  
-    <div class="container">
-      <div id="viewpdf">
-        pdf viewer
-      </div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.6/pdfobject.js"></script>
+    
+   
+</main>
+
+<div class="container">
+  <div id="viewpdf"></div>
+</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.6/pdfobject.js" integrity="sha512-I5DeI8/00iidt2UqCjN6/VXjksWSsSwuEleCimq5QuPmhfbnMWSRrfp4cvS6lESaZXYCNv+0qs2Kor9ItoMORA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
       PDFObject.embed("{{ object.pdf.url }}",'#viewpdf')
       if(PDFObject.supportsPDFs){
-   console.log("Yay, this browser supports inline PDFs.");
-  } else {
-   console.log("Boo, inline PDFs are not supported by this browser");
-  }
-    </script>
-   
-</main>
+      console.log("Yay, this browser supports inline PDFs.");
+      } else {
+      console.log("Boo, inline PDFs are not supported by this browser");
+      }
+  </script>
 
 {% endblock %}
 
