@@ -8,7 +8,6 @@
   const viewport = document.querySelector("#viewport");
   window.initPDFViewer = function(pdfURL) {
     pdfjsLib.getDocument(pdfURL).then(pdf => {
-      console.log('loaded');
       pdfInstance = pdf;
       totalPagesCount = pdf.numPages;
       initPager();
@@ -80,8 +79,8 @@
       }"><canvas></canvas></div>`.repeat(pages.length);
       viewport.innerHTML = pagesHTML;
       pages.forEach(renderPage);
-      document.querySelector('.loadWait').classList.add('none')
-
+      document.getElementsByClassName('loadcontainer').classList.add('none')
+      console.log(document.getElementsByClassName('loadcontainer').classList);
     });
   }
 
