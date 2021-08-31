@@ -55,7 +55,9 @@ urlpatterns = [
     path('delete/exam/<int:id>/',views.deleteExam,name='delete_exam'),
 
     path('pdf/<int:id>/<int:pk_i>',views.pdf,name='pdf'),
+    path('new_pdf/',views.new_pdf,name='pdf_2'),
 
     path('constant/<str:str_>',views.constants,name='constant'),
+
 
 ]

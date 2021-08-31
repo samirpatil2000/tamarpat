@@ -558,12 +558,14 @@ def pdf(request,id,pk_i):
         }
         return render(request, 'new/pdf.html',context)
 
-# def pdf2(request):
-#     obj=ThesisProject.objects.filter(id=30)[0]
-#     context={
-#         'pdf_':obj.pdf
-#     }
-#     return render(request,'new/pdf.html',context)
+
+
+def new_pdf(request):
+    obj=ThesisProject.objects.all()[0]
+    context={
+        'pdf_':obj.pdf
+    }
+    return render(request,'new/new_pdf.html',context)
 
 def constants(request,str_):
 
